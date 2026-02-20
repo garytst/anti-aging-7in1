@@ -108,48 +108,196 @@
         /* ===== HERO ===== */
         .hero {
             text-align: center;
-            padding: 80px 0 60px;
+            padding: 0;
             position: relative;
+            overflow: hidden;
         }
-        .hero::before {
+        .hero-bg-wrapper {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 24px 40px;
+            background: url('images/hero-bg.png') center center / cover no-repeat;
+        }
+        .hero-bg-wrapper::before {
             content: '';
-            position: absolute;
-            top: -100px; left: 50%; transform: translateX(-50%);
-            width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(34,211,238,0.08), transparent 70%);
-            pointer-events: none;
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(10,22,40,0.5) 0%, rgba(10,22,40,0.3) 50%, rgba(10,22,40,0.85) 100%);
+            z-index: 1;
         }
+        .hero-bg-wrapper::after {
+            content: '';
+            position: absolute; bottom: 0; left: 0; right: 0; height: 120px;
+            background: linear-gradient(to top, var(--bg-primary), transparent);
+            z-index: 2;
+        }
+        .hero-content { position: relative; z-index: 3; max-width: 1280px; width: 100%; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 8px 24px;
-            background: linear-gradient(135deg, rgba(34,211,238,0.15), rgba(16,185,129,0.15));
-            border: 1px solid rgba(34,211,238,0.3);
+            padding: 10px 28px;
+            background: linear-gradient(135deg, rgba(34,211,238,0.2), rgba(167,139,250,0.2));
+            border: 1px solid rgba(34,211,238,0.4);
             border-radius: 9999px;
             font-size: 0.8rem; font-weight: 600; color: var(--accent-cyan);
-            margin-bottom: 24px;
+            margin-bottom: 28px;
             letter-spacing: 2px;
+            backdrop-filter: blur(10px);
+            animation: fadeInDown 0.8s ease-out;
         }
-        .hero-badge .dot { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; animation: pulse 2s infinite; }
+        .hero-badge .dot { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; animation: pulse 2s infinite; box-shadow: 0 0 10px var(--accent-cyan); }
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(3rem, 7vw, 5.5rem);
             font-weight: 900;
-            margin-bottom: 8px;
-            letter-spacing: 3px;
-        }
-        .hero h1 .gradient { background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald), var(--accent-teal)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero .subtitle-zh {
-            font-size: 1.5rem; font-weight: 700;
-            color: var(--accent-gold);
             margin-bottom: 12px;
+            letter-spacing: 4px;
+            text-shadow: 0 0 60px rgba(34,211,238,0.3);
+        }
+        .hero h1 .gradient {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald), var(--accent-teal), var(--accent-cyan));
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: gradientShift 6s ease infinite;
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .hero .subtitle-zh {
+            font-size: 1.8rem; font-weight: 700;
+            color: var(--accent-gold);
+            margin-bottom: 14px;
+            text-shadow: 0 0 30px rgba(251,191,36,0.3);
         }
         .hero .subtitle-en {
-            font-size: 1rem; color: var(--text-secondary);
-            letter-spacing: 4px; text-transform: uppercase;
+            font-size: 1.05rem; color: var(--text-secondary);
+            letter-spacing: 5px; text-transform: uppercase;
         }
         .hero .tagline {
-            margin-top: 24px;
-            font-size: 1.1rem; color: var(--text-secondary);
+            margin-top: 28px;
+            font-size: 1.15rem; color: var(--text-secondary);
             font-weight: 300;
+        }
+        /* Floating 4D Icons */
+        .hero-floating-icons {
+            display: flex; justify-content: center; gap: 40px;
+            margin: 36px 0 20px;
+        }
+        .hero-float-icon {
+            width: 100px; height: 100px;
+            border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            position: relative;
+            animation: float 4s ease-in-out infinite;
+            transition: all 0.3s;
+        }
+        .hero-float-icon:nth-child(1) { animation-delay: 0s; }
+        .hero-float-icon:nth-child(2) { animation-delay: 0.5s; }
+        .hero-float-icon:nth-child(3) { animation-delay: 1s; }
+        .hero-float-icon:nth-child(4) { animation-delay: 1.5s; }
+        .hero-float-icon:hover { transform: scale(1.15); }
+        .hero-float-icon .icon-glow {
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+            backdrop-filter: blur(8px);
+        }
+        .hero-float-icon.eecp .icon-glow { background: rgba(16,185,129,0.2); border: 2px solid rgba(16,185,129,0.5); box-shadow: 0 0 30px rgba(16,185,129,0.3); }
+        .hero-float-icon.hbot .icon-glow { background: rgba(34,211,238,0.2); border: 2px solid rgba(34,211,238,0.5); box-shadow: 0 0 30px rgba(34,211,238,0.3); }
+        .hero-float-icon.infrared .icon-glow { background: rgba(248,113,113,0.2); border: 2px solid rgba(248,113,113,0.5); box-shadow: 0 0 30px rgba(248,113,113,0.3); }
+        .hero-float-icon.stemcell .icon-glow { background: rgba(167,139,250,0.2); border: 2px solid rgba(167,139,250,0.5); box-shadow: 0 0 30px rgba(167,139,250,0.3); }
+        .hero-float-icon .icon-label { font-size: 0.7rem; font-weight: 700; margin-top: 8px; letter-spacing: 1px; }
+        .hero-float-icon.eecp .icon-label { color: var(--accent-emerald); }
+        .hero-float-icon.hbot .icon-label { color: var(--accent-cyan); }
+        .hero-float-icon.infrared .icon-label { color: var(--accent-red); }
+        .hero-float-icon.stemcell .icon-label { color: var(--accent-purple); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        /* Connection Lines */
+        .hero-connections {
+            display: flex; align-items: center; justify-content: center; gap: 0;
+            margin: -8px 0 16px;
+        }
+        .hero-conn-line {
+            width: 80px; height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(34,211,238,0.4), transparent);
+            position: relative;
+        }
+        .hero-conn-line::after {
+            content: ''; position: absolute; top: -3px; left: 50%; transform: translateX(-50%);
+            width: 8px; height: 8px; border-radius: 50%;
+            background: var(--accent-cyan); box-shadow: 0 0 10px var(--accent-cyan);
+            animation: pulse 2s infinite;
+        }
+        .hero-conn-label {
+            font-size: 0.6rem; color: var(--text-muted); padding: 0 8px;
+            white-space: nowrap; letter-spacing: 0.5px;
+        }
+        /* 4D Mechanism Image */
+        .hero-mechanism-img {
+            width: 100%; max-width: 1000px;
+            margin: 24px auto 0;
+            display: block;
+            border-radius: 24px;
+            border: 1px solid rgba(56,189,248,0.25);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 80px rgba(34,211,238,0.1);
+            transition: all 0.4s ease;
+        }
+        .hero-mechanism-img:hover {
+            transform: scale(1.01);
+            box-shadow: 0 35px 90px rgba(0,0,0,0.6), 0 0 100px rgba(34,211,238,0.15);
+        }
+        /* Stats Banner in Hero */
+        .hero-stats {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+            margin: 32px auto 0;
+            max-width: 900px;
+            background: url('images/hero-stats-bg.png') center center / cover no-repeat;
+            border-radius: 20px;
+            padding: 28px 20px;
+            border: 1px solid rgba(56,189,248,0.2);
+            backdrop-filter: blur(10px);
+        }
+        .hero-stat {
+            text-align: center;
+            padding: 12px;
+        }
+        .hero-stat-value {
+            font-size: 2.4rem; font-weight: 900; font-family: 'Inter', sans-serif;
+            text-shadow: 0 0 20px currentColor;
+        }
+        .hero-stat-value.cyan { color: var(--accent-cyan); }
+        .hero-stat-value.red { color: var(--accent-red); }
+        .hero-stat-value.gold { color: var(--accent-gold); }
+        .hero-stat-label { font-size: 0.78rem; color: var(--text-secondary); margin-top: 4px; }
+        .hero-stat-sub { font-size: 0.68rem; color: var(--text-muted); margin-top: 2px; }
+        /* Scroll indicator */
+        .scroll-indicator {
+            margin-top: 32px;
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
+            animation: fadeInUp 1s ease-out 1.5s both;
+        }
+        .scroll-indicator span { font-size: 0.7rem; color: var(--text-muted); letter-spacing: 2px; }
+        .scroll-arrow {
+            width: 24px; height: 24px;
+            border-right: 2px solid var(--accent-cyan); border-bottom: 2px solid var(--accent-cyan);
+            transform: rotate(45deg);
+            animation: scrollBounce 2s infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: rotate(45deg) translateY(0); opacity: 1; }
+            50% { transform: rotate(45deg) translateY(8px); opacity: 0.5; }
+        }
+        /* Particle Canvas */
+        #particles-canvas {
+            position: absolute; inset: 0; z-index: 2;
+            pointer-events: none;
         }
 
         /* ===== KEY METRICS BANNER ===== */
@@ -412,42 +560,94 @@
             .timeline, .roadmap { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.2rem; }
             .synergy-formula { font-size: 1.8rem; }
+            .hero-floating-icons { gap: 16px; }
+            .hero-float-icon { width: 70px; height: 70px; }
+            .hero-float-icon .icon-glow { width: 56px; height: 56px; font-size: 1.4rem; }
+            .hero-float-icon .icon-label { font-size: 0.55rem; }
+            .hero-stats { grid-template-columns: 1fr; gap: 8px; }
+            .hero-connections { display: none; }
+            .hero-conn-line { width: 40px; }
         }
     </style>
 </head>
 <body>
     <div class="bg-grid"></div>
 
+    <!-- HERO -->
+    <section class="hero">
+            <div class="hero-bg-wrapper">
+                <canvas id="particles-canvas"></canvas>
+                <div class="hero-content">
+                    <div class="hero-badge"><span class="dot"></span>SYSTEM 2.0 UPGRADE</div>
+                    <h1><span class="gradient">Anti-Aging System</span></h1>
+                    <div class="subtitle-zh">四維逆齡系統</div>
+                    <div class="subtitle-en">EECP × HBOT × Infrared × Stem Cells</div>
+                    <div class="tagline">從心出發 · 由內到外 &nbsp;|&nbsp; Start from the Heart, Inside Out</div>
+
+                    <!-- Floating 4D Icons -->
+                    <div class="hero-floating-icons">
+                        <div class="hero-float-icon eecp">
+                            <div class="icon-glow">❤️</div>
+                            <div class="icon-label">EECP</div>
+                        </div>
+                        <div class="hero-float-icon hbot">
+                            <div class="icon-glow">🫧</div>
+                            <div class="icon-label">HBOT</div>
+                        </div>
+                        <div class="hero-float-icon infrared">
+                            <div class="icon-glow">☀️</div>
+                            <div class="icon-label">INFRARED</div>
+                        </div>
+                        <div class="hero-float-icon stemcell">
+                            <div class="icon-glow">🧬</div>
+                            <div class="icon-label">STEM CELLS</div>
+                        </div>
+                    </div>
+
+                    <!-- Connection Flow -->
+                    <div class="hero-connections">
+                        <div class="hero-conn-line"></div>
+                        <div class="hero-conn-label">Opens Highway</div>
+                        <div class="hero-conn-line"></div>
+                        <div class="hero-conn-label">Protects Signals</div>
+                        <div class="hero-conn-line"></div>
+                        <div class="hero-conn-label">Last Mile Delivery</div>
+                        <div class="hero-conn-line"></div>
+                    </div>
+
+                    <!-- 4D Mechanism Image -->
+                    <img src="images/hero-4d-mechanism.png" alt="4-Dimensional Anti-Aging Synergy Mechanism" class="hero-mechanism-img">
+                    <div class="image-caption">4-DIMENSIONAL ANTI-AGING SYNERGY MECHANISM</div>
+
+                    <!-- Stats Banner -->
+                    <div class="hero-stats">
+                        <div class="hero-stat">
+                            <div class="hero-stat-value cyan" id="stat-telomere">+20%</div>
+                            <div class="hero-stat-label">端粒長度增加 Telomere Length</div>
+                            <div class="hero-stat-sub">B細胞 +37.63% | T輔助細胞 +29.30%</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value red" id="stat-senescent">-37%</div>
+                            <div class="hero-stat-label">衰老細胞清除 Senescent Cells Cleared</div>
+                            <div class="hero-stat-sub">清除分泌毒素的「殭屍細胞」</div>
+                        </div>
+                        <div class="hero-stat">
+                            <div class="hero-stat-value gold" id="stat-bioage">5-10</div>
+                            <div class="hero-stat-label">生物年齡逆轉 Bio-Age Reversal (Years)</div>
+                            <div class="hero-stat-sub">四維協同系統綜合預測效果</div>
+                        </div>
+                    </div>
+
+                    <!-- Scroll Indicator -->
+                    <div class="scroll-indicator">
+                        <span>SCROLL TO EXPLORE</span>
+                        <div class="scroll-arrow"></div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
     <div class="container">
-        <!-- HERO -->
-        <section class="hero">
-            <div class="hero-badge"><span class="dot"></span>SYSTEM 2.0 UPGRADE</div>
-            <h1><span class="gradient">Anti-Aging System</span></h1>
-            <div class="subtitle-zh">四維逆齡系統</div>
-            <div class="subtitle-en">EECP × HBOT × Infrared × Stem Cells</div>            <div class="hero .tagline">從心出發 · 由內到外 &nbsp;|&nbsp; Start from the Heart, Inside Out</div>
-            <img src="images/hero-synergy.png" alt="4D Anti-Aging Synergy Mechanism" class="hero-image">
-            <div class="image-caption">4-DIMENSIONAL ANTI-AGING SYNERGY MECHANISM</div></div>
-        </section>
-
-        <!-- KEY METRICS -->
-        <div class="metrics-banner">
-            <div class="metric-card fade-in fade-in-1">
-                <div class="metric-value cyan">+20%</div>
-                <div class="metric-label">端粒長度增加 Telomere Length</div>
-                <div class="metric-sub">B細胞 +37.63% | T輔助細胞 +29.30%</div>
-            </div>
-            <div class="metric-card fade-in fade-in-2">
-                <div class="metric-value red">-37%</div>
-                <div class="metric-label">衰老細胞清除 Senescent Cells Cleared</div>
-                <div class="metric-sub">清除分泌毒素的「殭屍細胞」</div>
-            </div>
-            <div class="metric-card fade-in fade-in-3">
-                <div class="metric-value gold">5-10</div>
-                <div class="metric-label">生物年齡逆轉 Bio-Age Reversal (Years)</div>
-                <div class="metric-sub">四維協同系統綜合預測效果</div>
-            </div>
-        </div>
-
         <!-- 3 PILLARS -->
         <section class="section fade-in fade-in-1">
             <div class="section-header">
@@ -898,5 +1098,112 @@
             <p style="margin-top: 8px;">Powered by Clinical Evidence & AI Intelligence</p>
         </footer>
     </div>
+
+    <script>
+    // Particle Animation for Hero Section
+    (function() {
+        const canvas = document.getElementById('particles-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        const colors = ['rgba(34,211,238,', 'rgba(16,185,129,', 'rgba(167,139,250,', 'rgba(248,113,113,', 'rgba(251,191,36,'];
+
+        function resize() {
+            const wrapper = canvas.parentElement;
+            canvas.width = wrapper.offsetWidth;
+            canvas.height = wrapper.offsetHeight;
+        }
+
+        function createParticle() {
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            return {
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2.5 + 0.5,
+                speedX: (Math.random() - 0.5) * 0.4,
+                speedY: (Math.random() - 0.5) * 0.4,
+                opacity: Math.random() * 0.5 + 0.1,
+                color: color,
+                pulse: Math.random() * Math.PI * 2,
+                pulseSpeed: Math.random() * 0.02 + 0.005
+            };
+        }
+
+        function init() {
+            resize();
+            particles = [];
+            const count = Math.min(Math.floor((canvas.width * canvas.height) / 8000), 120);
+            for (let i = 0; i < count; i++) {
+                particles.push(createParticle());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.speedX;
+                p.y += p.speedY;
+                p.pulse += p.pulseSpeed;
+                const currentOpacity = p.opacity * (0.6 + Math.sin(p.pulse) * 0.4);
+
+                if (p.x < 0) p.x = canvas.width;
+                if (p.x > canvas.width) p.x = 0;
+                if (p.y < 0) p.y = canvas.height;
+                if (p.y > canvas.height) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = p.color + currentOpacity + ')';
+                ctx.fill();
+
+                // Glow effect
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size * 3, 0, Math.PI * 2);
+                ctx.fillStyle = p.color + (currentOpacity * 0.15) + ')';
+                ctx.fill();
+            });
+
+            // Draw connections between nearby particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = 'rgba(34,211,238,' + (0.08 * (1 - dist / 120)) + ')';
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            requestAnimationFrame(animate);
+        }
+
+        init();
+        animate();
+        window.addEventListener('resize', init);
+    })();
+
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        observer.observe(el);
+    });
+    </script>
 </body>
 </html>
