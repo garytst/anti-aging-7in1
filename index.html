@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七合一構成與協同 - 整合性抗衰老系統</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-200: #a7f3d0;
+            --emerald-300: #6ee7b7;
+            --emerald-400: #34d399;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --emerald-800: #065f46;
+            --emerald-900: #064e3b;
+            --teal-50: #f0fdfa;
+            --teal-100: #ccfbf1;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--emerald-50), #fff, var(--teal-50));
+            min-height: 100vh;
+            color: var(--gray-900);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 48px 24px;
+        }
+
+        /* ===== HEADER ===== */
+        .header {
+            text-align: center;
+            margin-bottom: 48px;
+            animation: fadeInDown 0.6s ease-out;
+        }
+
+        .header-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: var(--emerald-100);
+            color: var(--emerald-700);
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .header-badge .pulse-dot {
+            width: 8px; height: 8px;
+            background: var(--emerald-500);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--gray-900);
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+        }
+
+        .header h1 span {
+            background: linear-gradient(135deg, var(--emerald-500), var(--teal-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        /* ===== SECTION TITLES ===== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .section-icon {
+            width: 48px; height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .section-subtitle {
+            font-size: 0.9rem;
+            color: var(--gray-500);
+            font-weight: 400;
+        }
+
+        /* ===== CORE THREE CARDS ===== */
+        .core-wrapper {
+            background: #fff;
+            border: 2px solid var(--gray-100);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease-out 0.1s both;
+            transition: all 0.2s;
+        }
+
+        .core-wrapper:hover {
+            border-color: var(--emerald-200);
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.08);
+        }
+
+        .core-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+
+        .core-card {
+            background: var(--gray-50);
+            border: 2px solid var(--gray-100);
+            border-radius: 20px;
+            padding: 28px 24px;
+            transition: all 0.2s;
+            position: relative;
+            cursor: default;
+        }
+
+        .core-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(16, 185, 129, 0.12);
+            border-color: var(--emerald-300);
+        }
+
+        .card-number {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--gray-300);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .card-icon-wrap {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .card-icon-wrap.primary {
+            background: var(--emerald-100);
+        }
+
+        .card-icon-wrap svg {
+            width: 28px; height: 28px;
+        }
+
+        .card-title-en {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+        }
+
+        .card-title-zh {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+            margin-bottom: 12px;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 14px;
+            padding: 5px 14px;
+            border-radius: 9999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .tag-core {
+            background: linear-gradient(135deg, var(--emerald-100), var(--teal-100));
+            color: var(--emerald-700);
+        }
+
+        .tag-safe {
+            background: var(--teal-100);
+            color: var(--teal-600);
+        }
+
+        .tag-warn {
+            background: #fef2f2;
+            color: #b91c1c;
+        }
+
+        .tag-new {
+            background: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        /* ===== EFFECT BAR ===== */
+        .effect-bar {
+            background: linear-gradient(135deg, var(--emerald-50), var(--teal-50));
+            border: 2px solid var(--emerald-200);
+            border-radius: 16px;
+            padding: 20px 28px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .effect-label {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .progress-track {
+            flex: 1;
+            height: 12px;
+            background: var(--emerald-100);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 6px;
+            background: linear-gradient(90deg, var(--emerald-500), var(--teal-500));
+            width: 0%;
+            animation: fillBar 2s ease-out 0.8s forwards;
+        }
+
+        @keyframes fillBar { to { width: 70%; } }
+
+        .effect-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--emerald-600), var(--teal-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            white-space: nowrap;
+        }
+
+        /* ===== CONNECTOR ===== */
+        .connector {
+            display: flex;
+            justify-content: center;
+            padding: 16px 0;
+        }
+
+        .connector-dots {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .connector-dots span {
+            width: 4px; height: 4px;
+            border-radius: 50%;
+            background: var(--emerald-300);
+        }
+
+        .connector-arrow {
+            color: var(--emerald-400);
+            font-size: 14px;
+            margin: 2px 0;
+        }
+
+        /* ===== BOTTOM GRID: 4 cards ===== */
+        .bottom-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 24px;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .bottom-card {
+            background: #fff;
+            border: 2px solid var(--gray-100);
+            border-radius: 20px;
+            padding: 28px 22px;
+            transition: all 0.2s;
+            cursor: default;
+            position: relative;
+        }
+
+        .bottom-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(16, 185, 129, 0.1);
+            border-color: var(--emerald-200);
+        }
+
+        .bottom-icon-wrap {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 14px;
+        }
+
+        .bottom-icon-wrap svg {
+            width: 24px; height: 24px;
+        }
+
+        .bottom-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--gray-900);
+        }
+
+        .bottom-subtitle {
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            margin-bottom: 10px;
+        }
+
+        .bottom-desc {
+            font-size: 0.84rem;
+            color: var(--gray-600);
+            line-height: 1.7;
+            margin-bottom: 8px;
+        }
+
+        .detail-list {
+            list-style: none;
+            margin-top: 8px;
+        }
+
+        .detail-list li {
+            font-size: 0.84rem;
+            color: var(--gray-600);
+            padding: 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .detail-list .bullet {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: var(--emerald-400);
+            flex-shrink: 0;
+        }
+
+        /* ===== BOOST BAR ===== */
+        .boost-bar {
+            background: #fff;
+            border: 2px solid var(--emerald-200);
+            border-radius: 20px;
+            padding: 24px 32px;
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            animation: fadeInUp 0.6s ease-out 0.6s both;
+            transition: all 0.2s;
+        }
+
+        .boost-bar:hover {
+            border-color: var(--emerald-400);
+            box-shadow: 0 20px 50px rgba(16, 185, 129, 0.12);
+        }
+
+        .boost-icon-wrap {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--emerald-500), var(--teal-500));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .boost-icon-wrap svg {
+            width: 28px; height: 28px;
+            stroke: #fff;
+        }
+
+        .boost-content { flex: 1; }
+
+        .boost-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--emerald-700);
+            margin-bottom: 2px;
+        }
+
+        .boost-desc {
+            font-size: 0.88rem;
+            color: var(--gray-500);
+        }
+
+        .boost-value {
+            font-size: 2.6rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--emerald-500), var(--teal-500));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .boost-unit {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* ===== PRIORITY NOTE ===== */
+        .priority-note {
+            text-align: center;
+            margin-top: 32px;
+            animation: fadeInUp 0.6s ease-out 0.8s both;
+        }
+
+        .priority-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--emerald-500), var(--teal-500));
+            color: #fff;
+            border-radius: 9999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.25);
+        }
+
+        .stars {
+            display: flex;
+            gap: 3px;
+        }
+
+        .star-icon {
+            width: 16px; height: 16px;
+            fill: #fbbf24;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--gray-400);
+            animation: fadeIn 0.6s ease-out 1s both;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1000px) {
+            .core-grid { grid-template-columns: 1fr; }
+            .bottom-grid { grid-template-columns: repeat(2, 1fr); }
+            .boost-bar { flex-direction: column; text-align: center; }
+            .header h1 { font-size: 2rem; }
+        }
+
+        @media (max-width: 600px) {
+            .bottom-grid { grid-template-columns: 1fr; }
+            .effect-bar { flex-direction: column; text-align: center; }
+        }
+
+        /* Card color accents */
+        .core-card.ecp { border-left: 4px solid var(--emerald-500); }
+        .core-card.oxygen { border-left: 4px solid var(--teal-500); }
+        .core-card.infrared { border-left: 4px solid #f59e0b; }
+
+        .bottom-card.stem { border-left: 4px solid #ef4444; }
+        .bottom-card.supplement { border-left: 4px solid var(--emerald-400); }
+        .bottom-card.exercise { border-left: 4px solid #0ea5e9; }
+        .bottom-card.eating { border-left: 4px solid var(--emerald-600); }
+
+        .icon-emerald { background: var(--emerald-100); }
+        .icon-teal { background: var(--teal-100); }
+        .icon-amber { background: #fef3c7; }
+        .icon-red { background: #fee2e2; }
+        .icon-blue { background: #dbeafe; }
+        .icon-green-deep { background: #d1fae5; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- HEADER -->
+    <div class="header">
+        <div class="header-badge">
+            <span class="pulse-dot"></span>
+            Anti-Aging Integrated System
+        </div>
+        <h1><span>七合一</span>構成與協同</h1>
+        <div class="subtitle">整合性抗衰老系統的構想與實踐藍圖</div>
+    </div>
+
+    <!-- ===== SECTION 1: CORE THREE (NON-INVASIVE) ===== -->
+    <div class="core-wrapper">
+        <div class="section-header">
+            <div class="section-icon icon-emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--emerald-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+            </div>
+            <div>
+                <div class="section-title">核心三項 — 非侵入性介入</div>
+                <div class="section-subtitle">安全、非核心性介入中最有效的組合</div>
+            </div>
+        </div>
+
+        <div class="core-grid">
+            <!-- ECP -->
+            <div class="core-card ecp">
+                <span class="card-number">01</span>
+                <div class="card-icon-wrap primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--emerald-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                    </svg>
+                </div>
+                <div class="card-title-en">ECP</div>
+                <div class="card-title-zh">體外反搏</div>
+                <div class="card-desc">非侵入性心血管輔助治療，透過外部加壓改善血液循環與心臟功能</div>
+                <div class="tag tag-core">核心驅動</div>
+            </div>
+
+            <!-- Oxygen -->
+            <div class="core-card oxygen">
+                <span class="card-number">02</span>
+                <div class="card-icon-wrap icon-teal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="var(--teal-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M8 12c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4"/>
+                    </svg>
+                </div>
+                <div class="card-title-en">O2 Therapy</div>
+                <div class="card-title-zh">高壓氧</div>
+                <div class="card-desc">幫助令血液、所有東西鮮紅色，走得更快，提升全身含氧量與組織修復能力</div>
+                <div class="tag tag-core">核心驅動</div>
+            </div>
+
+            <!-- Infrared -->
+            <div class="core-card infrared">
+                <span class="card-number">03</span>
+                <div class="card-icon-wrap icon-amber">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"/>
+                        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                    </svg>
+                </div>
+                <div class="card-title-en">Infrared</div>
+                <div class="card-title-zh">紅外線</div>
+                <div class="card-desc">幫助血氣循環與發炎管理，深層穿透促進細胞修復與代謝</div>
+                <div class="tag tag-safe">非侵入性</div>
+            </div>
+        </div>
+
+        <!-- Effect Bar -->
+        <div class="effect-bar">
+            <span class="effect-label">核心三項基本成效</span>
+            <div class="progress-track">
+                <div class="progress-fill"></div>
+            </div>
+            <span class="effect-value">50% — 70%</span>
+        </div>
+    </div>
+
+    <!-- CONNECTOR -->
+    <div class="connector">
+        <div class="connector-dots">
+            <span></span><span></span>
+            <div class="connector-arrow">&#9660;</div>
+            <span></span><span></span>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 2: BOTTOM 4 CARDS ===== -->
+    <div class="bottom-grid">
+        <!-- Stem Cell -->
+        <div class="bottom-card stem">
+            <span class="card-number">04</span>
+            <div class="bottom-icon-wrap icon-red">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"/>
+                </svg>
+            </div>
+            <div class="bottom-title">Stem Cell</div>
+            <div class="bottom-subtitle">幹細胞</div>
+            <div class="bottom-desc">具備強大的組織再生潛力，但屬於入侵性療法，目前存在較大爭議</div>
+            <div class="tag tag-warn">有爭議 / 入侵性</div>
+        </div>
+
+        <!-- Supplement -->
+        <div class="bottom-card supplement">
+            <span class="card-number">05</span>
+            <div class="bottom-icon-wrap icon-emerald">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--emerald-600)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+                    <line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/>
+                </svg>
+            </div>
+            <div class="bottom-title">Supplement</div>
+            <div class="bottom-subtitle">補充物</div>
+            <div class="bottom-desc">補足身體無法自產之所需營養素，維持最佳生理機能</div>
+            <ul class="detail-list">
+                <li><span class="bullet"></span>Omega-3 脂肪酸</li>
+                <li><span class="bullet"></span>蛋白粉</li>
+                <li><span class="bullet"></span>骨膠原</li>
+            </ul>
+        </div>
+
+        <!-- Exercise -->
+        <div class="bottom-card exercise">
+            <span class="card-number">06</span>
+            <div class="bottom-icon-wrap icon-blue">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8a2 2 0 1 1-4 0 2 2 0 0 1 4 0z"/>
+                    <path d="M6 16l3-8 4 4 3-6"/>
+                    <path d="M2 20h20"/>
+                </svg>
+            </div>
+            <div class="bottom-title">Exercise</div>
+            <div class="bottom-subtitle">運動</div>
+            <div class="bottom-desc">聚焦肌肉訓練，核心目標為防止肌肉流失</div>
+            <ul class="detail-list">
+                <li><span class="bullet"></span>肌肉訓練（阻力訓練）</li>
+                <li><span class="bullet"></span>蛋白粉補充</li>
+                <li><span class="bullet"></span>骨膠原攝取</li>
+            </ul>
+        </div>
+
+        <!-- Healthy Eating (NEW) -->
+        <div class="bottom-card eating">
+            <span class="card-number">07</span>
+            <div class="bottom-icon-wrap icon-green-deep">
+                <svg viewBox="0 0 24 24" fill="none" stroke="var(--emerald-700)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a5 5 0 0 1 5 5c0 2-1 3.5-2.5 4.5L12 22l-2.5-10.5C8 10.5 7 9 7 7a5 5 0 0 1 5-5z"/>
+                    <path d="M8 14s-2 1-2 3 2 3 2 3"/>
+                    <path d="M16 14s2 1 2 3-2 3-2 3"/>
+                </svg>
+            </div>
+            <div class="bottom-title">Healthy Diet</div>
+            <div class="bottom-subtitle">健康飲食</div>
+            <div class="bottom-desc">透過精準營養介入，從細胞層面支持抗衰老與組織修復機制</div>
+            <ul class="detail-list">
+                <li><span class="bullet"></span>抗氧化營養素攝取</li>
+                <li><span class="bullet"></span>巨量 / 微量營養素均衡</li>
+                <li><span class="bullet"></span>減少精製加工食品</li>
+                <li><span class="bullet"></span>充足水分與電解質補給</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- CONNECTOR -->
+    <div class="connector">
+        <div class="connector-dots">
+            <span></span><span></span>
+            <div class="connector-arrow">&#9660;</div>
+            <span></span><span></span>
+        </div>
+    </div>
+
+    <!-- ===== BOOST BAR ===== -->
+    <div class="boost-bar">
+        <div class="boost-icon-wrap">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+        </div>
+        <div class="boost-content">
+            <div class="boost-title">七合一完整啟動</div>
+            <div class="boost-desc">核心三項 + 幹細胞 + 補充物 + 運動 + 健康飲食，若勤力執行可突破基本效果上限</div>
+        </div>
+        <div class="boost-value">120<span class="boost-unit">%+</span></div>
+    </div>
+
+    <!-- PRIORITY NOTE -->
+    <div class="priority-note">
+        <div class="priority-badge">
+            <div class="stars">
+                <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            </div>
+            <span>最有效核心驅動：ECP + Oxygen（高壓氧）</span>
+            <div class="stars">
+                <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+                <svg class="star-icon" viewBox="0 0 24 24"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        七合一整合性抗衰老系統 — 構想與實踐藍圖
+    </div>
+</div>
+
+<script>
+    // Stagger card entrance
+    document.querySelectorAll('.core-card, .bottom-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 300 + i * 120);
+    });
+</script>
+
+</body>
+</html>
