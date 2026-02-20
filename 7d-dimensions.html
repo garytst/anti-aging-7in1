@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7D Anti-Aging System — Dimensions & Functions | 七維逆齡系統維度詳解</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.8);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-emerald: #10b981;
+            --accent-gold: #fbbf24;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-blue: #3b82f6;
+            --accent-orange: #fb923c;
+            --glow-cyan: rgba(34, 211, 238, 0.3);
+            --glow-emerald: rgba(16, 185, 129, 0.3);
+            --glow-gold: rgba(251, 191, 36, 0.3);
+            --glow-purple: rgba(167, 139, 250, 0.3);
+            --glow-red: rgba(248, 113, 113, 0.3);
+            --glow-blue: rgba(59, 130, 246, 0.3);
+            --glow-orange: rgba(251, 146, 60, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', 'Noto Sans TC', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 22, 40, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            padding: 0.8rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .nav-brand {
+            font-size: 1.1rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.75rem;
+            padding: 0.3rem 0.6rem;
+            border-radius: 6px;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+        .nav-links a:hover {
+            color: var(--accent-cyan);
+            background: rgba(34, 211, 238, 0.1);
+        }
+        .nav-back {
+            color: var(--accent-cyan) !important;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            font-weight: 600;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            background: radial-gradient(ellipse at center, rgba(34, 211, 238, 0.08) 0%, transparent 60%);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('images/hero-bg.png') center/cover no-repeat;
+            opacity: 0.15;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid var(--accent-cyan);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            color: var(--accent-cyan);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-emerald), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero h2 {
+            font-size: clamp(1rem, 2.5vw, 1.5rem);
+            font-weight: 400;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-dims {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        .hero-dim-tag {
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid;
+        }
+
+        /* ===== DIMENSION SECTIONS ===== */
+        .dim-section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .dim-section:nth-child(even) {
+            background: rgba(15, 31, 58, 0.3);
+        }
+        .dim-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .dim-number {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 900;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .dim-number::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 20px;
+            padding: 2px;
+            background: linear-gradient(135deg, currentColor, transparent);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+        .dim-header-text h2 {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+        }
+        .dim-header-text .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+        }
+
+        .dim-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: contain;
+            border-radius: 16px;
+            margin-bottom: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .dim-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .mechanism-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        .mechanism-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .mechanism-item {
+            margin-bottom: 1.2rem;
+            padding-left: 1rem;
+            border-left: 3px solid;
+        }
+        .mechanism-item h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        .mechanism-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .benefits-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        .benefits-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.02);
+        }
+        .benefit-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .benefit-text h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+        .benefit-text p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .evidence-box {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid;
+            background: rgba(255,255,255,0.02);
+        }
+        .evidence-box h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .evidence-box p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        .evidence-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .evidence-stat {
+            text-align: center;
+        }
+        .evidence-stat .val {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+        .evidence-stat .label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== SYNERGY SECTION ===== */
+        .synergy-section {
+            padding: 5rem 2rem;
+            text-align: center;
+            background: radial-gradient(ellipse at center, rgba(167, 139, 250, 0.08) 0%, transparent 60%);
+        }
+        .synergy-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), var(--accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+        .synergy-formula {
+            font-size: clamp(1.2rem, 2.5vw, 2rem);
+            color: var(--accent-gold);
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+        .synergy-chain {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 3rem;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .chain-node {
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            border: 1px solid;
+        }
+        .chain-arrow {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+        }
+        .synergy-image {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            display: block;
+            border-radius: 16px;
+        }
+        .synergy-metrics {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+        .synergy-metric {
+            text-align: center;
+        }
+        .synergy-metric .val {
+            font-size: 3rem;
+            font-weight: 900;
+        }
+        .synergy-metric .label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 0.3rem;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+        .footer a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .dim-content { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .dim-header { flex-direction: column; text-align: center; }
+            .evidence-stats { flex-direction: column; gap: 1rem; }
+            .synergy-metrics { flex-direction: column; gap: 1.5rem; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav">
+    <div class="nav-brand">7D ANTI-AGING SYSTEM</div>
+    <div class="nav-links">
+        <a href="#dim1">D1 EECP</a>
+        <a href="#dim2">D2 HBOT</a>
+        <a href="#dim3">D3 Infrared</a>
+        <a href="#dim4">D4 Stem Cells</a>
+        <a href="#dim5">D5 AI Health</a>
+        <a href="#dim6">D6 Nutrition</a>
+        <a href="#dim7">D7 Exercise</a>
+        <a href="index.html" class="nav-back">← Main Site</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-badge">SYSTEM 5.0 — COMPLETE DIMENSION GUIDE</div>
+    <h1>7D Anti-Aging System<br>七維逆齡系統</h1>
+    <h2>Complete Guide to All 7 Dimensions & Their Functions<br>七大維度功能完整詳解</h2>
+    <div class="hero-dims">
+        <span class="hero-dim-tag" style="color:var(--accent-emerald);border-color:var(--accent-emerald);">D1 EECP</span>
+        <span class="hero-dim-tag" style="color:var(--accent-cyan);border-color:var(--accent-cyan);">D2 HBOT</span>
+        <span class="hero-dim-tag" style="color:var(--accent-red);border-color:var(--accent-red);">D3 Infrared</span>
+        <span class="hero-dim-tag" style="color:var(--accent-purple);border-color:var(--accent-purple);">D4 Stem Cells</span>
+        <span class="hero-dim-tag" style="color:var(--accent-blue);border-color:var(--accent-blue);">D5 AI Health</span>
+        <span class="hero-dim-tag" style="color:var(--accent-emerald);border-color:var(--accent-emerald);">D6 Nutrition</span>
+        <span class="hero-dim-tag" style="color:var(--accent-gold);border-color:var(--accent-gold);">D7 Exercise</span>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 1: EECP ===== -->
+<section class="dim-section fade-in" id="dim1">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-emerald);background:rgba(16,185,129,0.1);">D1</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-emerald);">EECP 體外反搏<br><span style="font-size:0.6em;color:var(--text-secondary);">Enhanced External Counterpulsation — Macro Circulation Drive</span></h2>
+            <div class="subtitle">打通全身「高速公路」| The Foundation of the Anti-Aging Highway</div>
+        </div>
+    </div>
+    <img src="images/eecp-heart.png" alt="EECP Heart Circulation" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Scientific Mechanism 科學機制</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>Physical Pressure 物理加壓</h4>
+                <p>Sequential pneumatic compression during cardiac diastole pushes blood back to the heart, creating a powerful retrograde aortic flow that enhances coronary perfusion pressure by up to 93%.</p>
+                <p>在心臟舒張期，氣囊從小腿→大腿→臀部依次加壓，將血液推回心臟，形成強大的逆向主動脈血流。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>Shear Stress 剪切應力</h4>
+                <p>Accelerated blood flow creates powerful physiological signals on vessel walls, activating endothelial cells to produce beneficial substances. This mimics the effects of vigorous exercise without physical exertion.</p>
+                <p>加速的血流在血管壁上產生強大的剪切應力，激活內皮細胞產生有益物質，相當於「被動高強度運動」。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>NO Release 一氧化氮釋放</h4>
+                <p>Activates endothelial eNOS enzyme, releasing nitric oxide (NO) to dilate blood vessels system-wide. NO is the body's most powerful natural vasodilator, improving blood flow to every organ.</p>
+                <p>激活內皮eNOS酶，釋放一氧化氮（NO），全身性擴張血管。NO是人體最強大的天然血管擴張劑。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>Angiogenesis 血管新生</h4>
+                <p>Long-term stimulation promotes VEGF (Vascular Endothelial Growth Factor) release, building new collateral blood vessels to bypass blocked arteries — the body's natural bypass surgery.</p>
+                <p>長期刺激促進VEGF釋放，建立新的側支循環，繞過阻塞的動脈——身體的天然搭橋手術。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>💚 Clinical Benefits 臨床效益</h3>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">❤️</div>
+                <div class="benefit-text">
+                    <h4>Coronary Heart Disease Risk Minimized 冠心病風險降至最低</h4>
+                    <p>Significantly reduces the risk of coronary heart disease, blood clots, and sudden death through improved vascular health and collateral circulation.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">🔥</div>
+                <div class="benefit-text">
+                    <h4>Accelerated Metabolism & Weight Loss 加速代謝減重</h4>
+                    <p>Faster blood circulation system aids in achieving weight loss effects through improved metabolic efficiency.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">💪</div>
+                <div class="benefit-text">
+                    <h4>Improved Erectile Function 改善勃起功能</h4>
+                    <p>Enhanced blood flow and NO release significantly improve male erectile function — a key differentiator from superficial anti-aging technologies.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">😴</div>
+                <div class="benefit-text">
+                    <h4>Deep Sleep & Energy 深度睡眠與精力</h4>
+                    <p>Improved circulation leads to better oxygen delivery to the brain, enhancing sleep quality and daily energy levels.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">🏥</div>
+                <div class="benefit-text">
+                    <h4>Chronic Disease Management 慢性病管理</h4>
+                    <p>Improves various chronic diseases including hypertension, diabetes, and peripheral vascular disease.</p>
+                </div>
+            </div>
+            <div class="evidence-box" style="border-color:rgba(16,185,129,0.3);">
+                <h4 style="color:var(--accent-emerald);">📚 Key Reference</h4>
+                <p>Arora RR, et al. J Am Coll Cardiol. / Braverman DL. Int J Clin Med. — Clinically proven that EECP improves endothelial function through increased shear stress, promoting collateral circulation establishment.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 2: HBOT ===== -->
+<section class="dim-section fade-in" id="dim2">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-cyan);background:rgba(34,211,238,0.1);">D2</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-cyan);">HBOT 高壓氧<br><span style="font-size:0.6em;color:var(--text-secondary);">Hyperbaric Oxygen Therapy — Molecular Optimization</span></h2>
+            <div class="subtitle">首次證實非藥物干預實現生物逆齡 | The Molecular Environment Optimizer</div>
+        </div>
+    </div>
+    <img src="images/hbot-oxygen.png" alt="HBOT Oxygen Therapy" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Scientific Mechanism 科學機制</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-cyan);">
+                <h4>Hyperbaric Pure Oxygen 高壓純氧</h4>
+                <p>At 2 ATA pressure, blood dissolved oxygen increases approximately 20 times. This floods every cell with oxygen, enabling repair processes that are impossible under normal conditions.</p>
+                <p>在2個大氣壓下，血液溶解氧增加約20倍，讓每個細胞都充滿氧氣，啟動正常條件下無法進行的修復過程。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-cyan);">
+                <h4>Hyperoxic Paradox 高氧悖論</h4>
+                <p>Repeated cycles of hyperoxia and normoxia activate HIF-1α (Hypoxia-Inducible Factor), triggering the body's regenerative repair programs — the same pathways activated during wound healing.</p>
+                <p>反覆的高氧和常氧循環激活HIF-1α，觸發身體的再生修復程序——與傷口癒合時激活的相同通路。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-cyan);">
+                <h4>Signal Molecule Protection 保護信號分子</h4>
+                <p>Reduces oxidative stress and preserves NO (Nitric Oxide) activity from EECP. This creates a synergistic effect where HBOT protects the beneficial molecules generated by EECP.</p>
+                <p>減少氧化應激，保護EECP產生的NO活性。HBOT保護EECP產生的有益分子，形成協同效應。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-cyan);">
+                <h4>Stem Cell Mobilization 幹細胞動員</h4>
+                <p>Bone marrow stem cell release increases up to 8 times, flooding the bloodstream with repair cells that home to damaged tissues throughout the body.</p>
+                <p>骨髓幹細胞釋放增加高達8倍，大量修復細胞進入血液循環，歸巢到全身受損組織。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>💙 Key Evidence 關鍵證據</h3>
+            <div class="evidence-box" style="border-color:rgba(34,211,238,0.3);margin-top:0;">
+                <h4 style="color:var(--accent-cyan);">📚 AGING Journal · 2020</h4>
+                <p><strong>"Hyperbaric oxygen therapy increases telomere length and decreases immunosenescence in isolated blood cells"</strong></p>
+                <p>Hachmo Y, Efrati S, et al. Aging (Albany NY). 2020;12(22):22445-22456.</p>
+                <div class="evidence-stats">
+                    <div class="evidence-stat">
+                        <div class="val" style="color:var(--accent-cyan);">+20%</div>
+                        <div class="label">Telomere Length 端粒長度延長</div>
+                    </div>
+                    <div class="evidence-stat">
+                        <div class="val" style="color:var(--accent-red);">-37%</div>
+                        <div class="label">Senescent Cells 衰老細胞清除</div>
+                    </div>
+                </div>
+            </div>
+            <div style="margin-top:1.5rem;padding:1.2rem;background:rgba(34,211,238,0.05);border-radius:12px;border-left:4px solid var(--accent-cyan);">
+                <p style="font-style:italic;color:var(--text-primary);font-size:0.95rem;">「人類歷史上首次證明，僅通過非藥物干預（HBOT），就能在細胞層面顯著逆轉衰老的兩個關鍵標誌。」</p>
+                <p style="font-style:italic;color:var(--text-secondary);font-size:0.85rem;margin-top:0.5rem;">"First time in human history proving non-pharmacological intervention can reverse aging at the cellular level."</p>
+            </div>
+            <div style="margin-top:1.5rem;">
+                <h4 style="margin-bottom:0.8rem;">Detailed Telomere Results 端粒延長細節：</h4>
+                <div class="benefit-item">
+                    <div class="benefit-icon" style="background:rgba(34,211,238,0.15);color:var(--accent-cyan);">🧬</div>
+                    <div class="benefit-text">
+                        <h4>B Cells: +37.63%</h4>
+                        <p>B淋巴細胞端粒延長37.63%</p>
+                    </div>
+                </div>
+                <div class="benefit-item">
+                    <div class="benefit-icon" style="background:rgba(34,211,238,0.15);color:var(--accent-cyan);">🧬</div>
+                    <div class="benefit-text">
+                        <h4>T Helper Cells: +29.30%</h4>
+                        <p>T輔助細胞端粒延長29.30%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 3: INFRARED ===== -->
+<section class="dim-section fade-in" id="dim3">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-red);background:rgba(248,113,113,0.1);">D3</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-red);">Infrared 紅外線<br><span style="font-size:0.6em;color:var(--text-secondary);">Infrared Therapy — Microcirculation Enhancement</span></h2>
+            <div class="subtitle">完成「最後一公里」配送 | The Last-Mile Delivery System</div>
+        </div>
+    </div>
+    <img src="images/infrared-therapy.png" alt="Infrared Therapy" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Scientific Mechanism 科學機制</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-red);">
+                <h4>Photothermal Effect 光熱效應</h4>
+                <p>Thermal action from infrared light dilates capillaries, improving peripheral blood perfusion. This ensures that the oxygen-rich blood from EECP and HBOT reaches the smallest vessels.</p>
+                <p>紅外線的熱效應擴張毛細血管，改善外周血液灌注，確保EECP和HBOT產生的富氧血液到達最小的血管。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-red);">
+                <h4>Photobiomodulation (PBM) 光生物調節</h4>
+                <p>Near-infrared light (630-1000nm) is absorbed by mitochondrial Cytochrome C Oxidase (CCO), directly boosting ATP production by 30-50%. More ATP means more cellular energy for repair.</p>
+                <p>近紅外線被線粒體細胞色素C氧化酶（CCO）吸收，直接提升ATP產量30-50%。更多ATP意味著更多細胞修復能量。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-red);">
+                <h4>Local NO Release 局部NO釋放</h4>
+                <p>Infrared light photolyzes NO bound to CCO, releasing it locally to further dilate microvessels. This creates a targeted vasodilation effect at the tissue level.</p>
+                <p>紅外線光解CCO上結合的NO，局部釋放以進一步擴張微血管。在組織層面產生靶向血管擴張效果。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>❤️ Clinical Benefits 臨床效益</h3>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(248,113,113,0.15);color:var(--accent-red);">🩸</div>
+                <div class="benefit-text">
+                    <h4>Microcirculation Clearance 微循環疏通</h4>
+                    <p>Opens the "last mile" of blood delivery, ensuring nutrients and oxygen reach every cell in the body.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(248,113,113,0.15);color:var(--accent-red);">🔋</div>
+                <div class="benefit-text">
+                    <h4>Enhanced Cellular Energy 增強細胞能量</h4>
+                    <p>ATP production boost of 30-50% provides cells with the energy needed for repair and regeneration.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(248,113,113,0.15);color:var(--accent-red);">🧬</div>
+                <div class="benefit-text">
+                    <h4>Improved Stem Cell Homing 改善幹細胞歸巢</h4>
+                    <p>Better microcirculation means stem cells from D4 can reach damaged tissues more effectively.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(248,113,113,0.15);color:var(--accent-red);">🩹</div>
+                <div class="benefit-text">
+                    <h4>Tissue Repair & Regeneration 組織修復與再生</h4>
+                    <p>Accelerates wound healing, reduces inflammation, and promotes collagen synthesis for skin rejuvenation.</p>
+                </div>
+            </div>
+            <div class="evidence-box" style="border-color:rgba(248,113,113,0.3);">
+                <h4 style="color:var(--accent-red);">🔗 Synergy Role 協同角色</h4>
+                <p>Infrared completes the "last mile delivery" — EECP opens the highways, HBOT optimizes the cargo, and Infrared ensures delivery to every doorstep (cell).</p>
+                <p>紅外線完成「最後一公里配送」——EECP打通高速公路，HBOT優化貨物，紅外線確保送達每個門口（細胞）。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 4: STEM CELLS ===== -->
+<section class="dim-section fade-in" id="dim4">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-purple);background:rgba(167,139,250,0.1);">D4</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-purple);">Stem Cells 幹細胞<br><span style="font-size:0.6em;color:var(--text-secondary);">Stem Cell Therapy — Deep Regeneration Command</span></h2>
+            <div class="subtitle">再生的「總指揮」| Not Just Repair, But Complete Regeneration</div>
+        </div>
+    </div>
+    <img src="images/stem-cell-dna.png" alt="Stem Cell DNA" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Scientific Mechanism 科學機制</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-purple);">
+                <h4>Paracrine Effect 旁分泌效應</h4>
+                <p>Stem cells secrete VEGF, HGF, and IGF-1 growth factors that activate surrounding cells' self-repair mechanisms. This "commander" effect means one stem cell can rejuvenate thousands of neighboring cells.</p>
+                <p>幹細胞分泌VEGF、HGF、IGF-1等生長因子，激活周圍細胞的自我修復機制。一個幹細胞可以讓數千個鄰近細胞重新煥發活力。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-purple);">
+                <h4>Exosomes 外泌體</h4>
+                <p>Nano-vesicles (30-150nm) carrying mRNA and miRNA that "reprogram" damaged cells. These tiny messengers cross the blood-brain barrier and reach tissues that stem cells themselves cannot.</p>
+                <p>攜帶mRNA和miRNA的納米囊泡（30-150nm），能「重新編程」受損細胞。這些微小信使可穿越血腦屏障，到達幹細胞本身無法到達的組織。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-purple);">
+                <h4>Immune Modulation 免疫調節</h4>
+                <p>Suppresses excessive inflammation by promoting regulatory T cell (Treg) generation, improving the tissue microenvironment. This creates optimal conditions for regeneration.</p>
+                <p>通過促進調節性T細胞（Treg）生成來抑制過度炎症，改善組織微環境，為再生創造最佳條件。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>💜 Clinical Benefits 臨床效益</h3>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(167,139,250,0.15);color:var(--accent-purple);">🧬</div>
+                <div class="benefit-text">
+                    <h4>Deep Tissue Repair 深度組織修復</h4>
+                    <p>Repairs damaged organs, tissues, and cells at the fundamental level through paracrine signaling and exosome delivery.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(167,139,250,0.15);color:var(--accent-purple);">🎯</div>
+                <div class="benefit-text">
+                    <h4>Maximized Homing Rate 最大化歸巢率</h4>
+                    <p>Combined with D1-D3 (EECP+HBOT+Infrared), stem cell homing rate is dramatically improved as circulation pathways are fully optimized.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(167,139,250,0.15);color:var(--accent-purple);">💉</div>
+                <div class="benefit-text">
+                    <h4>Annual Injection Protocol 年度注射方案</h4>
+                    <p>1-2 times per year intravenous stem cell injections, supplemented by continuous D1-D3 therapy to maintain optimal regenerative environment.</p>
+                </div>
+            </div>
+            <div class="evidence-box" style="border-color:rgba(167,139,250,0.3);">
+                <h4 style="color:var(--accent-purple);">🔗 Synergy Role 協同角色</h4>
+                <p>Stem cells are the "commander" of regeneration. D1-D3 prepare the battlefield (open highways, optimize oxygen, clear microcirculation), and D4 sends in the elite repair troops.</p>
+                <p>幹細胞是再生的「總指揮」。D1-D3準備戰場（打通高速公路、優化氧氣、疏通微循環），D4派出精銳修復部隊。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 5: AI HEALTH ===== -->
+<section class="dim-section fade-in" id="dim5">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-blue);background:rgba(59,130,246,0.1);">D5</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-blue);">AI Health 智能健康管理<br><span style="font-size:0.6em;color:var(--text-secondary);">AI Smart Health Management — Data-Driven Tracking</span></h2>
+            <div class="subtitle">全程數據化追蹤 | Making Health Management as Natural as Breathing</div>
+        </div>
+    </div>
+    <img src="images/ai-health-brain.png" alt="AI Health Brain" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Core Functions 核心功能</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-blue);">
+                <h4>Real-time Health Monitoring 即時健康監控</h4>
+                <p>AI continuously tracks HRV (Heart Rate Variability), blood pressure, blood glucose, blood oxygen, telomere length, and other biomarkers in real-time, creating a comprehensive health profile.</p>
+                <p>AI持續追蹤HRV、血壓、血糖、血氧、端粒長度等生物標記，建立全面的健康檔案。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-blue);">
+                <h4>Dynamic Protocol Adjustment 動態方案調整</h4>
+                <p>Automatically optimizes treatment intensity, frequency, and combination based on real-time data changes. If your HRV drops, AI adjusts your exercise intensity. If inflammation markers rise, it modifies nutrition protocols.</p>
+                <p>根據實時數據變化自動優化治療強度、頻率和組合。HRV下降時調整運動強度，炎症指標上升時修改營養方案。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-blue);">
+                <h4>Biological Age Assessment 生物年齡評估</h4>
+                <p>Regular calculation of biological age using multiple biomarkers to quantify anti-aging effects. Track your progress from "chronological age" to "biological age" with precision.</p>
+                <p>使用多種生物標記定期計算生物年齡，量化抗衰老效果。精確追蹤從「實際年齡」到「生物年齡」的進展。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-blue);">
+                <h4>Early Warning System 預警系統</h4>
+                <p>Detects health risks early through pattern recognition and anomaly detection, enabling proactive intervention before problems become serious.</p>
+                <p>通過模式識別和異常檢測提前發現健康風險，在問題嚴重之前進行主動干預。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>💙 Key Features 核心特色</h3>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(59,130,246,0.15);color:var(--accent-blue);">📊</div>
+                <div class="benefit-text">
+                    <h4>Full Data Tracking 全程數據追蹤</h4>
+                    <p>Every treatment session, every biomarker change, every lifestyle factor — all recorded and analyzed.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(59,130,246,0.15);color:var(--accent-blue);">🎯</div>
+                <div class="benefit-text">
+                    <h4>Personalized Protocols 個性化方案</h4>
+                    <p>No two people age the same way. AI creates and continuously refines your unique anti-aging protocol.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(59,130,246,0.15);color:var(--accent-blue);">📈</div>
+                <div class="benefit-text">
+                    <h4>Visualized Results 可視化結果</h4>
+                    <p>Transform abstract "health" into concrete, measurable data. See your biological age decrease in real-time.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(59,130,246,0.15);color:var(--accent-blue);">🔔</div>
+                <div class="benefit-text">
+                    <h4>Smart Alerts 智能提醒</h4>
+                    <p>Gentle reminders and proactive alerts that make health management effortless — "Daily One Hour, Easy & Relaxing."</p>
+                </div>
+            </div>
+            <div class="evidence-box" style="border-color:rgba(59,130,246,0.3);">
+                <h4 style="color:var(--accent-blue);">🔗 Synergy Role 協同角色</h4>
+                <p>AI is the "brain" of the 7D system — it monitors the effects of D1-D4, optimizes D6-D7, and ensures the entire system works in perfect harmony.</p>
+                <p>AI是7D系統的「大腦」——監控D1-D4的效果，優化D6-D7，確保整個系統完美協調運作。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 6: NUTRITION ===== -->
+<section class="dim-section fade-in" id="dim6">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-emerald);background:rgba(16,185,129,0.1);">D6</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-emerald);">Nutrition 營養科學<br><span style="font-size:0.6em;color:var(--text-secondary);">Nutritional Science — Cell Fuel Optimization</span></h2>
+            <div class="subtitle">細胞燃料優化 | Not Dieting, But Providing Optimal Fuel for Your Cells</div>
+        </div>
+    </div>
+    <img src="images/nutrition-science.png" alt="Nutrition Science" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Scientific Approach 科學方法</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>Antioxidant Nutrients 抗氧化營養素</h4>
+                <p>Strategic supplementation of Vitamins C, D, E, K and Omega-3 fatty acids to reduce free radical damage. These nutrients protect the cellular repair work done by D1-D4.</p>
+                <p>策略性補充維生素C、D、E、K和Omega-3脂肪酸，減少自由基損傷。這些營養素保護D1-D4完成的細胞修復工作。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>Telomere-Protecting Foods 端粒保護食物</h4>
+                <p>Blueberries, leafy greens, nuts, and seeds rich in telomerase activators. These foods support the telomere lengthening effects achieved by HBOT.</p>
+                <p>藍莓、綠葉蔬菜、堅果和種子富含端粒酶激活劑。這些食物支持HBOT實現的端粒延長效果。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>Gut Microbiome 腸道微生物組</h4>
+                <p>Probiotics and prebiotics optimize the gut-immune axis. A healthy gut microbiome is essential for proper immune function and nutrient absorption.</p>
+                <p>益生菌和益生元優化腸道-免疫軸。健康的腸道微生物組對正常免疫功能和營養吸收至關重要。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-emerald);">
+                <h4>AI Diet Analysis AI飲食分析</h4>
+                <p>Respects personal taste and cultural preferences. AI micro-adjusts your existing diet rather than forcing meal plans. No dieting required — just smarter eating.</p>
+                <p>尊重個人口味和文化偏好。AI微調你現有的飲食，而不是強制餐單。不需要節食——只需更聰明地吃。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>💚 Key Features 核心特色</h3>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">🚫</div>
+                <div class="benefit-text">
+                    <h4>No Forced Dieting 不用節食</h4>
+                    <p>We believe in sustainable nutrition, not restrictive diets. Enjoy your food while optimizing cellular health.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">😋</div>
+                <div class="benefit-text">
+                    <h4>Respects Personal Taste 尊重個人口味</h4>
+                    <p>AI analyzes your existing habits and suggests micro-adjustments that fit your lifestyle and preferences.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">🔋</div>
+                <div class="benefit-text">
+                    <h4>Cellular Nutrition Optimization 細胞營養優化</h4>
+                    <p>Provides the exact nutrients your cells need for repair, regeneration, and protection against oxidative stress.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(16,185,129,0.15);color:var(--accent-emerald);">🛡️</div>
+                <div class="benefit-text">
+                    <h4>Antioxidant Protection 抗氧化保護</h4>
+                    <p>Creates a protective shield against free radicals, preserving the anti-aging gains from D1-D4 treatments.</p>
+                </div>
+            </div>
+            <div class="evidence-box" style="border-color:rgba(16,185,129,0.3);">
+                <h4 style="color:var(--accent-emerald);">🔗 Synergy Role 協同角色</h4>
+                <p>Nutrition is the "fuel" of the 7D system — it provides the raw materials for D1-D4 to work with and protects the results they achieve. Without proper nutrition, even the best therapies lose effectiveness.</p>
+                <p>營養是7D系統的「燃料」——為D1-D4提供原材料並保護其成果。沒有適當的營養，即使最好的療法也會失去效果。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DIMENSION 7: EXERCISE ===== -->
+<section class="dim-section fade-in" id="dim7">
+    <div class="dim-header">
+        <div class="dim-number" style="color:var(--accent-gold);background:rgba(251,191,36,0.1);">D7</div>
+        <div class="dim-header-text">
+            <h2 style="color:var(--accent-gold);">Exercise 運動科學<br><span style="font-size:0.6em;color:var(--text-secondary);">Exercise Science — Muscle Defense Engineering</span></h2>
+            <div class="subtitle">肌肉防護工程 | Muscles Are the Body's Largest Endocrine Organ</div>
+        </div>
+    </div>
+    <img src="images/exercise-muscle.png" alt="Exercise Muscle Science" class="dim-image">
+    <div class="dim-content">
+        <div class="mechanism-card">
+            <h3>🔬 Scientific Mechanism 科學機制</h3>
+            <div class="mechanism-item" style="border-color:var(--accent-gold);">
+                <h4>IL-6 Systemic Anti-inflammation IL-6系統性抗炎</h4>
+                <p>Exercise-induced IL-6 suppresses TNF-α pro-inflammatory factors, reducing chronic low-grade inflammation — the root cause of aging and most chronic diseases.</p>
+                <p>運動誘導的IL-6抑制TNF-α促炎因子，減少慢性低度炎症——衰老和大多數慢性疾病的根本原因。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-gold);">
+                <h4>Irisin 鳶尾素</h4>
+                <p>Converts white fat to calorie-burning brown fat, boosting basal metabolic rate. Irisin is released during exercise and acts as a natural fat-burning switch.</p>
+                <p>將白色脂肪轉化為燃燒卡路里的棕色脂肪，提高基礎代謝率。鳶尾素在運動時釋放，充當天然的脂肪燃燒開關。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-gold);">
+                <h4>BDNF Brain Protection BDNF大腦保護</h4>
+                <p>Promotes hippocampal neuron regeneration, enhancing memory and cognitive function. BDNF is often called "fertilizer for the brain" — it literally grows new brain cells.</p>
+                <p>促進海馬體神經元再生，增強記憶和認知功能。BDNF被稱為「大腦的肥料」——它真的能長出新的腦細胞。</p>
+            </div>
+            <div class="mechanism-item" style="border-color:var(--accent-gold);">
+                <h4>Micro-Exercise Design 微鍛煉設計</h4>
+                <p>Just 15 minutes daily. AI optimizes exercise intensity based on real-time HRV and fatigue levels. Scientific prevention of sarcopenia (age-related muscle loss) without risk of injury.</p>
+                <p>每日僅需15分鐘。AI根據實時HRV和疲勞度優化運動強度。科學預防肌少症，避免運動傷害。</p>
+            </div>
+        </div>
+        <div class="benefits-card">
+            <h3>💛 Myokines — The Body's Self-Produced Anti-Aging Drugs<br>肌動蛋白——身體自產的抗衰老藥物</h3>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(251,191,36,0.15);color:var(--accent-gold);">⚔️</div>
+                <div class="benefit-text">
+                    <h4>IL-6 — Anti-inflammatory Warrior 抗炎戰士</h4>
+                    <p>Suppresses chronic inflammation, the silent killer behind aging, heart disease, diabetes, and cancer.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(251,191,36,0.15);color:var(--accent-gold);">🔥</div>
+                <div class="benefit-text">
+                    <h4>Irisin — Fat-Burning Switch 脂肪燃燒開關</h4>
+                    <p>Converts white fat to brown fat, increasing metabolic rate and supporting healthy body composition.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <div class="benefit-icon" style="background:rgba(251,191,36,0.15);color:var(--accent-gold);">🧠</div>
+                <div class="benefit-text">
+                    <h4>BDNF — Brain Guardian 大腦守護者</h4>
+                    <p>Promotes neurogenesis, enhances memory, and protects against neurodegenerative diseases like Alzheimer's.</p>
+                </div>
+            </div>
+            <div class="evidence-box" style="border-color:rgba(251,191,36,0.3);">
+                <h4 style="color:var(--accent-gold);">🔗 Synergy Role 協同角色</h4>
+                <p>Exercise is the "amplifier" of the 7D system — it generates myokines that enhance the effects of all other dimensions, while building the muscle mass needed to maintain a youthful metabolism.</p>
+                <p>運動是7D系統的「放大器」——產生增強所有其他維度效果的肌動蛋白，同時建立維持年輕代謝所需的肌肉量。</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== 7D SYNERGY ===== -->
+<section class="synergy-section fade-in">
+    <h2>1+1+1+1+1+1+1 > 7</h2>
+    <div class="synergy-formula">七維協同效應 — The Power of 7D Synergy</div>
+    <div class="synergy-chain">
+        <span class="chain-node" style="color:var(--accent-emerald);border-color:var(--accent-emerald);">D1 EECP</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node" style="color:var(--accent-cyan);border-color:var(--accent-cyan);">D2 HBOT</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node" style="color:var(--accent-red);border-color:var(--accent-red);">D3 Infrared</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node" style="color:var(--accent-purple);border-color:var(--accent-purple);">D4 Stem Cells</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node" style="color:var(--accent-blue);border-color:var(--accent-blue);">D5 AI Health</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node" style="color:var(--accent-emerald);border-color:var(--accent-emerald);">D6 Nutrition</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-node" style="color:var(--accent-gold);border-color:var(--accent-gold);">D7 Exercise</span>
+    </div>
+    <img src="images/synergy-heptagon.png" alt="7D Synergy Heptagon" class="synergy-image">
+    <div class="synergy-metrics">
+        <div class="synergy-metric">
+            <div class="val" style="color:var(--accent-cyan);">+20%</div>
+            <div class="label">Telomere Length 端粒延長</div>
+        </div>
+        <div class="synergy-metric">
+            <div class="val" style="color:var(--accent-red);">-37%</div>
+            <div class="label">Senescent Cells 衰老細胞清除</div>
+        </div>
+        <div class="synergy-metric">
+            <div class="val" style="color:var(--accent-gold);">5-10 yrs</div>
+            <div class="label">Bio-Age Reversal 生物年齡逆轉</div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <p>Anti-Aging System 7D 5.0 — 七維逆齡系統</p>
+    <p style="margin-top:0.5rem;">從心出發 · 由內到外 | Start from the Heart, Inside Out</p>
+    <p style="margin-top:1rem;"><a href="index.html">← Back to Main Site 返回主頁</a></p>
+    <p style="margin-top:1rem;font-size:0.75rem;">References: Hachmo Y, Efrati S, et al. Aging (2020) · Arora RR, et al. JACC · Braverman DL. Int J Clin Med.</p>
+</footer>
+
+<!-- SCROLL ANIMATION -->
+<script>
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Smooth scroll for nav links
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+</script>
+
+</body>
+</html>
