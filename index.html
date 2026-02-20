@@ -52,6 +52,59 @@
 
         .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
 
+        /* ===== SECTION IMAGES ===== */
+        .section-image {
+            width: 100%;
+            border-radius: 20px;
+            margin: 24px 0 32px;
+            border: 1px solid rgba(56,189,248,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(34,211,238,0.05);
+            transition: all 0.4s ease;
+        }
+        .section-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5), 0 0 60px rgba(34,211,238,0.1);
+            border-color: rgba(56,189,248,0.3);
+        }
+        .hero-image {
+            width: 100%;
+            max-width: 900px;
+            margin: 32px auto 0;
+            display: block;
+            border-radius: 24px;
+            border: 1px solid rgba(56,189,248,0.2);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(34,211,238,0.08);
+        }
+        .image-caption {
+            text-align: center;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 8px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+        .dim-card-image {
+            width: 100%;
+            border-radius: 12px;
+            margin: 16px 0 12px;
+            border: 1px solid rgba(56,189,248,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        .full-width-image {
+            width: 100%;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(56,189,248,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+        }
+        .synergy-image {
+            width: 100%;
+            max-width: 600px;
+            margin: 24px auto 0;
+            display: block;
+            border-radius: 16px;
+        }
+
         /* ===== HERO ===== */
         .hero {
             text-align: center;
@@ -371,8 +424,9 @@
             <div class="hero-badge"><span class="dot"></span>SYSTEM 2.0 UPGRADE</div>
             <h1><span class="gradient">Anti-Aging System</span></h1>
             <div class="subtitle-zh">四維逆齡系統</div>
-            <div class="subtitle-en">EECP × HBOT × Infrared × Stem Cells</div>
-            <div class="tagline">從心出發 · 由內到外 &nbsp;|&nbsp; Start from the Heart · Book a Med-Free Life</div>
+            <div class="subtitle-en">EECP × HBOT × Infrared × Stem Cells</div>            <div class="hero .tagline">從心出發 · 由內到外 &nbsp;|&nbsp; Start from the Heart, Inside Out</div>
+            <img src="images/hero-synergy.png" alt="4D Anti-Aging Synergy Mechanism" class="hero-image">
+            <div class="image-caption">4-DIMENSIONAL ANTI-AGING SYNERGY MECHANISM</div></div>
         </section>
 
         <!-- KEY METRICS -->
@@ -439,7 +493,8 @@
                 <div class="dim-card eecp">
                     <div class="dim-num">第一維度 DIMENSION 1</div>
                     <h3>EECP 宏觀循環驅動</h3>
-                    <div class="dim-sub">打通全身「高速公路」，為逆齡工程奠定基礎</div>
+                    <div class="dim-sub">打通全身「高速公路」，為逆齡工程奚定基礎</div>
+                    <img src="images/eecp-heart.png" alt="EECP Heart Circulation" class="dim-card-image">
                     <div class="dim-mech">
                         <h4>科學機制 MECHANISM</h4>
                         <ul>
@@ -460,8 +515,9 @@
                 <!-- HBOT -->
                 <div class="dim-card hbot">
                     <div class="dim-num">第二維度 DIMENSION 2</div>
-                    <h3>HBOT / 氫氧機 分子環境優化</h3>
+                    <h3>HBOT 分子環境優化</h3>
                     <div class="dim-sub">首次在人類中證實：非藥物干預實現生物逆齡</div>
+                    <img src="images/hbot-oxygen.png" alt="HBOT Oxygen Therapy" class="dim-card-image">
                     <div class="dim-mech">
                         <h4>科學機制 MECHANISM</h4>
                         <ul>
@@ -483,6 +539,7 @@
                     <div class="dim-num">第三維度 DIMENSION 3</div>
                     <h3>紅外線 微循環疏通</h3>
                     <div class="dim-sub">完成「最後一公里」配送，激活細胞能量工廠</div>
+                    <img src="images/infrared-therapy.png" alt="Infrared Therapy" class="dim-card-image">
                     <div class="dim-mech">
                         <h4>科學機制 MECHANISM</h4>
                         <ul>
@@ -503,6 +560,7 @@
                     <div class="dim-num">第四維度 DIMENSION 4</div>
                     <h3>幹細胞 深度再生修復</h3>
                     <div class="dim-sub">不僅是「修補匠」，更是再生的「總指揮」</div>
+                    <img src="images/stem-cell-dna.png" alt="Stem Cell Deep Regeneration" class="dim-card-image">
                     <div class="dim-mech">
                         <h4>科學機制 MECHANISM</h4>
                         <ul>
@@ -531,6 +589,7 @@
                 <span class="gt"> > 4</span>
             </div>
             <div class="synergy-result">協同效應 · 真正逆齡 &nbsp;|&nbsp; Synergistic Effect · True Rejuvenation</div>
+            <img src="images/synergy-diamond.png" alt="4D Synergy Diamond" class="synergy-image">
         </div>
 
         <!-- TREATMENT PROTOCOL -->
@@ -542,6 +601,7 @@
                     <div class="section-subtitle">基於細胞更新週期的分階段長期健康管理方案</div>
                 </div>
             </div>
+            <img src="images/treatment-protocol.png" alt="Integrated Regenerative Protocol Design" class="section-image">
             <div class="timeline">
                 <div class="timeline-card">
                     <div class="tl-phase">Phase 1 · 啟動期</div>
@@ -603,6 +663,7 @@
                     <div class="section-subtitle">數據驅動的長期健康規劃，讓願景可測量、可執行</div>
                 </div>
             </div>
+            <img src="images/timeline-roadmap.png" alt="10-Year Anti-Aging Roadmap" class="section-image">
             <div class="roadmap">
                 <div class="roadmap-card">
                     <div class="rm-year">YEAR 1</div>
@@ -725,6 +786,7 @@
                     <div class="section-subtitle">全方位生活管理 · 無痛融入日常 · Daily One Hour, Easy & Relaxing</div>
                 </div>
             </div>
+            <img src="images/ai-dashboard.png" alt="AI Health Guardian Dashboard" class="section-image">
             <div class="ai-grid">
                 <div class="ai-card">
                     <div class="ai-icon">🥗</div>
@@ -759,6 +821,7 @@
                     <div class="section-subtitle">肌動蛋白 (Myokines) — 身體自產的抗衰老藥物</div>
                 </div>
             </div>
+            <img src="images/muscle-myokine.png" alt="The Body as a Pharmacy: Myokine Signaling" class="section-image">
             <div class="pillars-grid">
                 <div class="pillar-card" style="border-left: 3px solid var(--accent-blue);">
                     <div class="pillar-icon">🔥</div>
