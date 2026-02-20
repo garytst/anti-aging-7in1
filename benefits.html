@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7D Benefits | 七維逆齡效益 | Anti-Aging System 5.0</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.7);
+            --border-card: rgba(56, 189, 248, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.35);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-teal: #14b8a6;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-orange: #fb923c;
+            --accent-gold: #fbbf24;
+            --accent-pink: #f472b6;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: radial-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+
+        /* ===== CONTAINER ===== */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, rgba(34,211,238,0.15), rgba(167,139,250,0.15));
+            border: 1px solid rgba(34,211,238,0.3);
+            border-radius: 50px; padding: 8px 24px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
+            color: var(--accent-cyan); margin-bottom: 24px;
+        }
+        .hero-badge .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-emerald); animation: pulse 2s infinite; }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900; letter-spacing: -1px;
+            background: linear-gradient(135deg, #22d3ee, #a78bfa, #f472b6, #fbbf24);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite;
+            margin-bottom: 12px;
+        }
+        .hero h2 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            font-weight: 300; color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .hero-image {
+            width: 100%; max-width: 1000px; margin: 0 auto;
+            border-radius: 20px;
+            border: 1px solid rgba(56,189,248,0.2);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 60px rgba(34,211,238,0.08);
+        }
+
+        /* ===== KEY METRICS BANNER ===== */
+        .metrics-banner {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; padding: 48px 0;
+        }
+        .metric-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px; padding: 28px 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+        .metric-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .metric-value {
+            font-size: 2.5rem; font-weight: 900;
+            margin-bottom: 4px;
+        }
+        .metric-label {
+            font-size: 0.85rem; color: var(--text-secondary);
+            font-weight: 500;
+        }
+        .metric-sublabel {
+            font-size: 0.75rem; color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* ===== SECTION STYLES ===== */
+        .section {
+            padding: 64px 0;
+            border-top: 1px solid rgba(56,189,248,0.08);
+        }
+        .section-header {
+            text-align: center; margin-bottom: 48px;
+        }
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 3px;
+            text-transform: uppercase; margin-bottom: 12px;
+            padding: 4px 16px; border-radius: 4px;
+        }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800; margin-bottom: 12px;
+        }
+        .section-subtitle {
+            font-size: 1.05rem; color: var(--text-secondary);
+            max-width: 700px; margin: 0 auto;
+        }
+        .section-image {
+            width: 100%; border-radius: 20px;
+            margin: 24px 0 32px;
+            border: 1px solid rgba(56,189,248,0.15);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px rgba(34,211,238,0.05);
+            transition: all 0.4s ease;
+        }
+        .section-image:hover {
+            transform: scale(1.01);
+            box-shadow: 0 25px 70px rgba(0,0,0,0.5), 0 0 60px rgba(34,211,238,0.1);
+        }
+
+        /* ===== BENEFIT CATEGORY CARDS ===== */
+        .benefit-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+        .benefit-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 20px; padding: 32px;
+            transition: all 0.4s ease;
+        }
+        .benefit-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+        }
+        .benefit-card-icon {
+            font-size: 2.5rem; margin-bottom: 16px;
+        }
+        .benefit-card h3 {
+            font-size: 1.3rem; font-weight: 700; margin-bottom: 4px;
+        }
+        .benefit-card .card-zh {
+            font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;
+        }
+        .benefit-card p {
+            font-size: 0.92rem; color: var(--text-secondary); line-height: 1.8;
+        }
+        .benefit-list {
+            list-style: none; padding: 0; margin-top: 16px;
+        }
+        .benefit-list li {
+            padding: 8px 0; font-size: 0.9rem; color: var(--text-secondary);
+            border-bottom: 1px solid rgba(56,189,248,0.06);
+            display: flex; align-items: flex-start; gap: 10px;
+        }
+        .benefit-list li:last-child { border-bottom: none; }
+        .benefit-list .check {
+            color: var(--accent-emerald); font-weight: 700; flex-shrink: 0;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative; padding: 40px 0;
+        }
+        .timeline::before {
+            content: ''; position: absolute; left: 50%; top: 0; bottom: 0;
+            width: 3px; background: linear-gradient(to bottom, var(--accent-cyan), var(--accent-purple), var(--accent-gold));
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            position: relative; width: 45%; padding: 24px;
+            background: var(--bg-card); border: 1px solid var(--border-card);
+            border-radius: 16px; margin-bottom: 32px;
+            transition: all 0.4s ease;
+        }
+        .timeline-item:hover {
+            border-color: var(--border-hover);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        .timeline-item:nth-child(odd) { margin-left: 5%; }
+        .timeline-item:nth-child(even) { margin-left: 50%; }
+        .timeline-item::before {
+            content: ''; position: absolute; top: 30px;
+            width: 16px; height: 16px; border-radius: 50%;
+            border: 3px solid var(--accent-cyan);
+            background: var(--bg-primary);
+        }
+        .timeline-item:nth-child(odd)::before { right: -8%; }
+        .timeline-item:nth-child(even)::before { left: -8%; }
+        .timeline-phase {
+            font-size: 0.75rem; font-weight: 700; letter-spacing: 2px;
+            text-transform: uppercase; margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 1.2rem; font-weight: 700; margin-bottom: 8px;
+        }
+        .timeline-desc {
+            font-size: 0.88rem; color: var(--text-secondary); line-height: 1.8;
+        }
+
+        /* ===== EVIDENCE TABLE ===== */
+        .evidence-table {
+            width: 100%; border-collapse: collapse;
+            margin: 24px 0;
+        }
+        .evidence-table th {
+            background: rgba(34,211,238,0.1);
+            color: var(--accent-cyan);
+            font-size: 0.8rem; font-weight: 700;
+            letter-spacing: 1px; text-transform: uppercase;
+            padding: 14px 16px; text-align: left;
+            border-bottom: 2px solid rgba(34,211,238,0.2);
+        }
+        .evidence-table td {
+            padding: 14px 16px; font-size: 0.88rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(56,189,248,0.06);
+        }
+        .evidence-table tr:hover td {
+            background: rgba(34,211,238,0.03);
+        }
+
+        /* ===== CASE STUDY ===== */
+        .case-study {
+            background: linear-gradient(135deg, rgba(34,211,238,0.05), rgba(167,139,250,0.05));
+            border: 1px solid var(--border-card);
+            border-radius: 24px; padding: 40px;
+            margin: 32px 0;
+        }
+        .case-header {
+            display: flex; align-items: center; gap: 20px; margin-bottom: 24px;
+        }
+        .case-avatar {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; font-weight: 800; color: white;
+        }
+        .case-info h3 { font-size: 1.2rem; font-weight: 700; }
+        .case-info p { font-size: 0.85rem; color: var(--text-muted); }
+        .case-metrics {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px; margin-top: 24px;
+        }
+        .case-metric {
+            background: rgba(10, 22, 40, 0.6);
+            border: 1px solid var(--border-card);
+            border-radius: 12px; padding: 16px; text-align: center;
+        }
+        .case-metric .value {
+            font-size: 1.5rem; font-weight: 800;
+        }
+        .case-metric .label {
+            font-size: 0.78rem; color: var(--text-muted);
+        }
+
+        /* ===== CTA ===== */
+        .cta-section {
+            text-align: center; padding: 80px 0;
+        }
+        .cta-section h2 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 800; margin-bottom: 12px;
+        }
+        .cta-section p {
+            font-size: 1.05rem; color: var(--text-secondary);
+            margin-bottom: 32px;
+        }
+        .cta-btn {
+            display: inline-block; padding: 16px 48px;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white; font-size: 1rem; font-weight: 700;
+            border-radius: 50px; text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 40px rgba(34,211,238,0.3);
+            transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(34,211,238,0.4);
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center; padding: 40px 0;
+            border-top: 1px solid rgba(56,189,248,0.08);
+            font-size: 0.8rem; color: var(--text-muted);
+        }
+        .footer a { color: var(--accent-cyan); text-decoration: none; }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .timeline::before { left: 20px; }
+            .timeline-item { width: 85%; margin-left: 50px !important; }
+            .timeline-item::before { left: -38px !important; right: auto !important; }
+            .benefit-grid { grid-template-columns: 1fr; }
+            .nav-links { display: none; }
+            .case-study { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-links">
+                <a href="index.html">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html" class="active">BENEFITS 效益</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge"><span class="dot"></span>7D ANTI-AGING BENEFITS</div>
+            <h1>七維逆齡效益總覽</h1>
+            <h2>7-Dimensional Anti-Aging Benefits Overview</h2>
+            <img src="images/benefits-hero.png" alt="7D Anti-Aging Benefits" class="hero-image">
+        </section>
+
+        <!-- KEY METRICS BANNER -->
+        <section class="metrics-banner">
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-cyan);">+20%</div>
+                <div class="metric-label">端粒長度增加</div>
+                <div class="metric-sublabel">Telomere Length Increase</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-red);">-37%</div>
+                <div class="metric-label">衰老細胞清除</div>
+                <div class="metric-sublabel">Senescent Cells Cleared</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-purple);">8×</div>
+                <div class="metric-label">幹細胞動員倍增</div>
+                <div class="metric-sublabel">Stem Cell Mobilization</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-gold);">5-10</div>
+                <div class="metric-label">生物年齡逆轉（年）</div>
+                <div class="metric-sublabel">Bio-Age Reversal (Years)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value" style="color: var(--accent-emerald);">0</div>
+                <div class="metric-label">藥物依賴目標</div>
+                <div class="metric-sublabel">Medication-Free Target</div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 1: CARDIOVASCULAR ===== -->
+        <section class="section" id="cardiovascular">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-cyan); background: rgba(34,211,238,0.1);">CARDIOVASCULAR 心血管</div>
+                <h2 class="section-title" style="color: var(--accent-cyan);">心血管系統全面優化</h2>
+                <p class="section-subtitle">Comprehensive Cardiovascular System Optimization — 從心出發，由內到外</p>
+            </div>
+            <img src="images/benefits-cardiovascular.png" alt="Cardiovascular Benefits" class="section-image">
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🫀</div>
+                    <h3>Coronary Risk Minimized</h3>
+                    <div class="card-zh">冠心病風險降至最低</div>
+                    <p>EECP 透過物理加壓產生剪切應力（Shear Stress），促進一氧化氮（NO）釋放，擴張血管並促進血管新生（Angiogenesis），顯著降低冠心病、血栓及猝死風險。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> 促進側枝循環建立，形成天然搭橋</li>
+                        <li><span class="check">✓</span> 降低血管阻力，改善心肌供血</li>
+                        <li><span class="check">✓</span> 減少心絞痛發作頻率</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🩸</div>
+                    <h3>Blood Clot Prevention</h3>
+                    <div class="card-zh">血栓風險大幅降低</div>
+                    <p>七維系統通過 EECP 加速血液循環、HBOT 改善血液流變學、紅外線促進微循環，三維協同有效預防血栓形成，降低中風和深靜脈血栓風險。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> 加速血液流速，防止血液淤滯</li>
+                        <li><span class="check">✓</span> 改善血管內皮功能</li>
+                        <li><span class="check">✓</span> 降低血液粘稠度</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">💓</div>
+                    <h3>Blood Pressure Optimized</h3>
+                    <div class="card-zh">血壓血脂全面優化</div>
+                    <p>EECP 產生的 NO 具有強效血管舒張作用，配合氫氧呼吸機保護 NO 活性，形成「循環優化鐵三角」，使血壓血脂血氧趨於健康水平。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> 血壓趨於正常範圍</li>
+                        <li><span class="check">✓</span> 血脂指標改善</li>
+                        <li><span class="check">✓</span> 血氧飽和度提升</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">♂️</div>
+                    <h3>Male Function Enhancement</h3>
+                    <div class="card-zh">男性勃起功能改善</div>
+                    <p>EECP 改善全身血液循環，特別是盆腔區域的血流灌注，結合 NO 的血管舒張效果，有效改善男性勃起功能障礙（ED），這是區別於其他抗衰老技術的獨特優勢。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> 改善盆腔血液循環</li>
+                        <li><span class="check">✓</span> 增強 NO 介導的血管舒張</li>
+                        <li><span class="check">✓</span> 非藥物自然改善方案</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: CELLULAR REJUVENATION ===== -->
+        <section class="section" id="cellular">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-purple); background: rgba(167,139,250,0.1);">CELLULAR 細胞再生</div>
+                <h2 class="section-title" style="color: var(--accent-purple);">細胞層面深度逆齡</h2>
+                <p class="section-subtitle">Deep Cellular Rejuvenation — 從端粒延長到衰老細胞清除</p>
+            </div>
+            <img src="images/benefits-cellular.png" alt="Cellular Rejuvenation Benefits" class="section-image">
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🧬</div>
+                    <h3>Telomere Lengthening +20%</h3>
+                    <div class="card-zh">端粒延長 +20% 以上</div>
+                    <p>HBOT 高壓氧療法首次在人類中證實：非藥物干預可實現端粒延長。B 細胞端粒增加 37.63%，T 輔助細胞端粒增加 29.30%，這是生物逆齡的核心指標。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> B 細胞端粒 +37.63%</li>
+                        <li><span class="check">✓</span> T 輔助細胞端粒 +29.30%</li>
+                        <li><span class="check">✓</span> 首次人類非藥物端粒延長證據</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">💀</div>
+                    <h3>Senescent Cell Clearance -37%</h3>
+                    <div class="card-zh">衰老「殭屍細胞」清除 -37%</div>
+                    <p>HBOT 通過高氧/常氧循環激活 HIF-1α 通路，有效清除分泌毒素的衰老「殭屍細胞」（Senescent Cells），減少組織炎症和功能退化。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> 清除 SASP 分泌型衰老細胞</li>
+                        <li><span class="check">✓</span> 降低慢性炎症水平</li>
+                        <li><span class="check">✓</span> 恢復組織微環境健康</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🔬</div>
+                    <h3>Stem Cell Mobilization 8×</h3>
+                    <div class="card-zh">幹細胞動員量增加 8 倍</div>
+                    <p>HBOT 能使骨髓幹細胞釋放量增加 8 倍，動員 CD34+ 造血幹細胞。配合 EECP 打通「高速配送通道」和紅外線開啟「微循環大門」，極大化幹細胞歸巢率。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> CD34+ 造血幹細胞大量動員</li>
+                        <li><span class="check">✓</span> 歸巢效率從 &lt;5% 大幅提升</li>
+                        <li><span class="check">✓</span> 旁分泌效應釋放 VEGF/HGF/IGF-1</li>
+                    </ul>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🛡️</div>
+                    <h3>Immune System Rejuvenation</h3>
+                    <div class="card-zh">免疫系統年輕化</div>
+                    <p>端粒延長直接改善免疫細胞功能，衰老細胞清除減少免疫抑制，幹細胞外泌體（Exosomes）進行免疫調節，三重機制實現免疫系統全面年輕化。</p>
+                    <ul class="benefit-list">
+                        <li><span class="check">✓</span> 免疫細胞功能增強</li>
+                        <li><span class="check">✓</span> 外泌體免疫調節</li>
+                        <li><span class="check">✓</span> 抗感染能力提升</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: LIFESTYLE TRANSFORMATION ===== -->
+        <section class="section" id="lifestyle">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-gold); background: rgba(251,191,36,0.1);">LIFESTYLE 生活品質</div>
+                <h2 class="section-title" style="color: var(--accent-gold);">生活品質全面提升</h2>
+                <p class="section-subtitle">Complete Lifestyle Transformation — 無藥退休 · 健康到老</p>
+            </div>
+            <img src="images/benefits-lifestyle.png" alt="Lifestyle Transformation Benefits" class="section-image">
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">😴</div>
+                    <h3>Deep Sleep Enhancement</h3>
+                    <div class="card-zh">深層睡眠質素大幅改善</div>
+                    <p>EECP 改善腦部血液循環，HBOT 提升腦部氧氣供應，紅外線促進褪黑素分泌，三維協同顯著改善深層睡眠質素，讓身體在夜間進行更高效的修復。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🔥</div>
+                    <h3>Weight Loss & Metabolism</h3>
+                    <div class="card-zh">加速代謝・有助減肥</div>
+                    <p>EECP 加速全身血液循環系統，提高基礎代謝率。運動科學維度中的肌動蛋白 Irisin 促進白色脂肪棕色化，IL-6 調節脂肪代謝，實現自然健康的體重管理。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🧠</div>
+                    <h3>Cognitive Enhancement</h3>
+                    <div class="card-zh">認知功能大幅提升</div>
+                    <p>HBOT 改善腦部氧合，運動產生的 BDNF（腦源性神經營養因子）促進神經可塑性和新神經元生成，AI 智能管家持續監測認知指標，實現大腦持續年輕化。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">💪</div>
+                    <h3>Muscle Strength & Protection</h3>
+                    <div class="card-zh">肌肉量增加・力量提升</div>
+                    <p>運動科學維度每日 15 分鐘微鍛鍊，結合 AI 智能調整（HRV/疲勞度實時優化），有效增加肌肉量、降低體脂率、提升握力，預防肌少症。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">⚡</div>
+                    <h3>Energy & Vitality Boost</h3>
+                    <div class="card-zh">精力充沛・活力倍增</div>
+                    <p>紅外線激活細胞能量工廠（線粒體），促進 ATP 合成。配合 HBOT 提升血氧和營養科學優化細胞燃料，讓身體從細胞層面獲得源源不斷的能量。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">💊</div>
+                    <h3>Medication-Free Living</h3>
+                    <div class="card-zh">無藥退休 · 無需依賴任何藥物</div>
+                    <p>七維系統的終極目標：5 年內將藥物依賴降至零。通過全面改善三高及慢性疾病，從根本上恢復身體自我調節能力，實現真正的「無藥退休・健康到老」。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: PROGRESSIVE TIMELINE ===== -->
+        <section class="section" id="timeline">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-emerald); background: rgba(16,185,129,0.1);">TIMELINE 時間軸</div>
+                <h2 class="section-title" style="color: var(--accent-emerald);">效益遞進時間軸</h2>
+                <p class="section-subtitle">Progressive Benefits Timeline — 從第一天到第十年的逆齡旅程</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-phase" style="color: var(--accent-cyan);">Phase 1 · 1-3 Months</div>
+                    <div class="timeline-title">功能優化期 Functional Optimization</div>
+                    <div class="timeline-desc">
+                        體感年輕 5 歲。精力、睡眠、認知大幅提升。血壓血脂血氧趨於健康水平。炎症水平顯著下降。身體開始感受到明顯的活力回歸。
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase" style="color: var(--accent-purple);">Phase 2 · 6-24 Months</div>
+                    <div class="timeline-title">結構重塑期 Structural Remodeling</div>
+                    <div class="timeline-desc">
+                        生理年齡倒退 10-15 年。端粒延長 +20%。衰老細胞清除 -37%。血管網絡全面重塑。肌肉量增加，體脂率下降。身體結構發生根本性改變。
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-phase" style="color: var(--accent-gold);">Phase 3 · 3-5+ Years</div>
+                    <div class="timeline-title">穩態重置期 Homeostasis Reset</div>
+                    <div class="timeline-desc">
+                        衰老軌跡徹底改變。鎖定年輕狀態。重大疾病風險極大降低。實現無藥退休目標。身體進入全新的健康穩態，持續維持逆齡效果。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: 10-YEAR ROADMAP ===== -->
+        <section class="section" id="roadmap">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-orange); background: rgba(251,146,60,0.1);">ROADMAP 路線圖</div>
+                <h2 class="section-title" style="color: var(--accent-orange);">十年無藥退休路線圖</h2>
+                <p class="section-subtitle">10-Year Medication-Free Retirement Roadmap</p>
+            </div>
+            <div class="metrics-banner" style="padding: 24px 0;">
+                <div class="metric-card" style="border-color: rgba(34,211,238,0.3);">
+                    <div class="metric-value" style="color: var(--accent-cyan);">Year 1</div>
+                    <div class="metric-label" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-cyan);">-2 歲</div>
+                    <div class="metric-sublabel">啟動逆齡引擎<br>Bio-Age Reversal Begins</div>
+                </div>
+                <div class="metric-card" style="border-color: rgba(59,130,246,0.3);">
+                    <div class="metric-value" style="color: var(--accent-blue);">Year 3</div>
+                    <div class="metric-label" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-blue);">-5 歲</div>
+                    <div class="metric-sublabel">深度修復完成<br>Deep Repair Achieved</div>
+                </div>
+                <div class="metric-card" style="border-color: rgba(167,139,250,0.3);">
+                    <div class="metric-value" style="color: var(--accent-purple);">Year 5</div>
+                    <div class="metric-label" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-purple);">-7 歲</div>
+                    <div class="metric-sublabel">穩態重置達成<br>Homeostasis Reset</div>
+                </div>
+                <div class="metric-card" style="border-color: rgba(251,191,36,0.3);">
+                    <div class="metric-value" style="color: var(--accent-gold);">Year 10</div>
+                    <div class="metric-label" style="font-size: 1.5rem; font-weight: 800; color: var(--accent-gold);">-10 歲</div>
+                    <div class="metric-sublabel">無藥退休實現<br>Medication-Free Living</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: CASE STUDY ===== -->
+        <section class="section" id="case">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-pink); background: rgba(244,114,182,0.1);">CASE STUDY 案例</div>
+                <h2 class="section-title" style="color: var(--accent-pink);">真實案例分享</h2>
+                <p class="section-subtitle">Real Case Study — 數據驅動的逆齡成果</p>
+            </div>
+            <div class="case-study">
+                <div class="case-header">
+                    <div class="case-avatar">D</div>
+                    <div class="case-info">
+                        <h3>David · 52 歲金融高管</h3>
+                        <p>52-year-old Financial Executive · 7D System Protocol</p>
+                    </div>
+                </div>
+                <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.8; margin-bottom: 20px;">
+                    David 是一位 52 歲的金融高管，長期高壓工作導致體能下降、睡眠質素差、體脂偏高。加入七維逆齡系統後，通過每日 EECP + HBOT + 紅外線治療配合 AI 智能肌肉防護課程，短期內取得顯著改善。
+                </p>
+                <div class="case-metrics">
+                    <div class="case-metric">
+                        <div class="value" style="color: var(--accent-emerald);">+1.2 kg</div>
+                        <div class="label">肌肉量增加<br>Muscle Mass Gain</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="value" style="color: var(--accent-red);">-3.5%</div>
+                        <div class="label">體脂率下降<br>Body Fat Reduction</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="value" style="color: var(--accent-cyan);">+4.0 kg</div>
+                        <div class="label">握力提升<br>Grip Strength Increase</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="value" style="color: var(--accent-purple);">+35%</div>
+                        <div class="label">深層睡眠改善<br>Deep Sleep Improvement</div>
+                    </div>
+                    <div class="case-metric">
+                        <div class="value" style="color: var(--accent-gold);">-5 歲</div>
+                        <div class="label">體感年齡逆轉<br>Perceived Age Reversal</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 7: SCIENTIFIC EVIDENCE ===== -->
+        <section class="section" id="evidence">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-teal); background: rgba(20,184,166,0.1);">EVIDENCE 科學證據</div>
+                <h2 class="section-title" style="color: var(--accent-teal);">權威科學證據支持</h2>
+                <p class="section-subtitle">Peer-Reviewed Scientific Evidence — 所有效益均有學術論文支持</p>
+            </div>
+            <table class="evidence-table">
+                <thead>
+                    <tr>
+                        <th>Benefit 效益</th>
+                        <th>Evidence 證據</th>
+                        <th>Source 來源</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="color: var(--accent-cyan);">端粒延長 +20%</td>
+                        <td>HBOT 60 次療程後，B 細胞端粒 +37.63%，T 輔助細胞 +29.30%</td>
+                        <td>Hachmo Y, et al. <em>Aging (Albany NY)</em>. 2020;12(22):22445-22456.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-red);">衰老細胞清除 -37%</td>
+                        <td>HBOT 顯著降低衰老細胞比例，減少 SASP 炎症因子</td>
+                        <td>Hachmo Y, et al. <em>Aging (Albany NY)</em>. 2020.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-emerald);">EECP 血管新生</td>
+                        <td>EECP 促進 NO 釋放和 VEGF 表達，改善血管內皮功能</td>
+                        <td>Braith RW, et al. <em>Circulation: Heart Failure</em>. 2010;3(6):755-762.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-blue);">EECP 血管新生</td>
+                        <td>EECP 改善血管新生，促進側枝循環建立</td>
+                        <td>Ambari AM, et al. <em>Frontiers in Cardiovascular Medicine</em>. 2021;8:761112.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-purple);">幹細胞抗衰老</td>
+                        <td>幹細胞療法在抗衰老領域的系統性回顧</td>
+                        <td>El Assaad N, et al. <em>World J Exp Med</em>. 2024;14(3):97233.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: var(--accent-gold);">HBOT 健康老化</td>
+                        <td>HBOT 通過氧化還原調節促進健康老化</td>
+                        <td>Fu Q, et al. <em>Redox Biology</em>. 2022;53:102352.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- ===== SECTION 8: CHRONIC DISEASE IMPROVEMENT ===== -->
+        <section class="section" id="chronic">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent-emerald); background: rgba(16,185,129,0.1);">CHRONIC DISEASE 慢性疾病</div>
+                <h2 class="section-title" style="color: var(--accent-emerald);">慢性疾病全面改善</h2>
+                <p class="section-subtitle">Comprehensive Chronic Disease Improvement — 從根本上恢復身體自我調節能力</p>
+            </div>
+            <div class="benefit-grid">
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">📊</div>
+                    <h3>Hypertension 高血壓</h3>
+                    <div class="card-zh">三高全面改善</div>
+                    <p>EECP 的 NO 釋放效應直接擴張血管，降低外周阻力。配合營養科學優化飲食結構，運動科學增強心肺功能，三維協同使血壓、血脂、血糖趨於正常。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🦴</div>
+                    <h3>Sarcopenia Prevention 肌少症預防</h3>
+                    <div class="card-zh">肌肉防護工程</div>
+                    <p>運動科學維度每日 15 分鐘微鍛鍊，產生 IL-6（抗炎）、Irisin（脂肪燃燒）、BDNF（大腦保護）三大肌動蛋白，有效預防年齡相關的肌肉流失。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🧪</div>
+                    <h3>Inflammation Reduction 炎症降低</h3>
+                    <div class="card-zh">慢性炎症水平大幅下降</div>
+                    <p>HBOT 清除衰老細胞減少 SASP 炎症因子，氫氧呼吸機選擇性清除羥自由基（·OH），紅外線促進局部組織修復，多維度降低全身慢性炎症水平。</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-card-icon">🫁</div>
+                    <h3>Respiratory & Metabolic 呼吸代謝</h3>
+                    <div class="card-zh">呼吸與代謝系統優化</div>
+                    <p>HBOT 大幅提升血氧濃度（血液溶解氧增加約 20 倍），紅外線激活線粒體促進 ATP 合成，營養科學優化細胞燃料供應，全面提升身體代謝效率。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA ===== -->
+        <section class="cta-section">
+            <h2>開始你的七維逆齡旅程</h2>
+            <p>Start Your 7D Anti-Aging Journey Today</p>
+            <a href="index.html" class="cta-btn">← BACK TO MAIN SITE 返回主頁</a>
+            <div style="margin-top: 16px;">
+                <a href="7d-dimensions.html" class="cta-btn" style="background: linear-gradient(135deg, var(--accent-purple), var(--accent-pink));">VIEW 7D DIMENSIONS 查看七維詳解 →</a>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Anti-Aging System 7D 5.0 | 七維逆齡系統</p>
+            <p style="margin-top: 8px;">
+                <a href="index.html">Main Site</a> · 
+                <a href="7d-dimensions.html">7D Dimensions</a> · 
+                <a href="benefits.html">Benefits</a>
+            </p>
+            <p style="margin-top: 12px;">© 2026 Anti-Aging System 7D 5.0. All data sourced from peer-reviewed publications.</p>
+        </footer>
+
+    </div>
+</body>
+</html>
