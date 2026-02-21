@@ -9,6 +9,30 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+
         :root {
             --bg-primary: #0a1628;
             --bg-secondary: #0f1f3a;
@@ -575,6 +599,7 @@
             .stem-steps { grid-template-columns: 1fr 1fr; }
             .stem-step-arrow { display: none; }
             .enriched-metrics { flex-direction: column; }
+            .nav-links { display: none; }
         }
 
         /* ===== FOOTER ===== */
@@ -618,6 +643,18 @@
 </head>
 <body>
     <div class="bg-grid"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html">BENEFITS 效益</a>
+            </div>
+        </div>
+    </nav>
 
     <!-- HERO -->
     <section class="hero">
