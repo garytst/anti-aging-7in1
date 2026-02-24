@@ -474,28 +474,44 @@
         }
         .cta-time {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            padding: 24px 48px;
+            padding: 32px 48px;
             border-radius: 16px;
             background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(16,185,129,0.1));
             border: 2px solid rgba(251,191,36,0.4);
             margin: 32px auto;
-            max-width: 520px;
+            max-width: 480px;
+            text-align: center;
         }
-        .cta-time-number {
-            font-size: 3.5rem;
+        .cta-time-line1 {
+            font-size: 1.8rem;
             font-weight: 900;
             color: var(--accent-gold);
-            text-shadow: 0 0 30px rgba(251,191,36,0.3);
-            line-height: 1;
+            text-shadow: 0 0 20px rgba(251,191,36,0.3);
+            letter-spacing: 0.15em;
         }
-        .cta-time-text {
-            text-align: left;
+        .cta-time-line2 {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-shadow: 0 0 20px rgba(251,191,36,0.3);
+            letter-spacing: 0.15em;
+            margin-top: 4px;
         }
-        .cta-time-text .zh { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
-        .cta-time-text .en { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
+        .cta-time-en {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-top: 12px;
+        }
+        .cta-time-tagline {
+            font-size: 0.8rem;
+            color: var(--accent-emerald);
+            margin-top: 6px;
+            font-style: italic;
+            letter-spacing: 0.1em;
+        }
         .cta-slogan {
             font-size: 2.2rem;
             font-weight: 900;
@@ -762,25 +778,14 @@
             .cta-heading { font-size: 1.4rem !important; }
             .cta-subtitle { font-size: 0.88rem !important; margin-bottom: 20px !important; }
             .cta-time {
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 4px !important;
                 padding: 24px 20px !important;
                 margin: 24px auto !important;
-                max-width: 300px !important;
-                text-align: center !important;
+                max-width: 320px !important;
             }
-            .cta-time-number {
-                font-size: 3rem !important;
-                text-align: center !important;
-                width: 100% !important;
-            }
-            .cta-time-text {
-                text-align: center !important;
-                width: 100% !important;
-            }
-            .cta-time-text .zh { font-size: 1rem !important; }
-            .cta-time-text .en { font-size: 0.75rem !important; line-height: 1.4 !important; }
+            .cta-time-line1 { font-size: 1.4rem !important; letter-spacing: 0.1em !important; }
+            .cta-time-line2 { font-size: 1.4rem !important; letter-spacing: 0.1em !important; }
+            .cta-time-en { font-size: 0.78rem !important; margin-top: 10px !important; }
+            .cta-time-tagline { font-size: 0.7rem !important; }
             .cta-slogan { font-size: 1.5rem !important; margin-top: 24px !important; }
             .cta-slogan-en { font-size: 0.9rem !important; }
             .cta-badges {
@@ -839,9 +844,10 @@
             .dim-icons-grid { grid-template-columns: repeat(4, 1fr) !important; }
             .cta-slogan { font-size: 1.2rem !important; }
             .cta-slogan-en { font-size: 0.8rem !important; }
-            .cta-time-number { font-size: 2.5rem !important; }
-            .cta-time { max-width: 280px !important; padding: 24px 20px !important; }
-            .cta-time-text .zh { font-size: 0.9rem !important; }
+            .cta-time { max-width: 280px !important; padding: 20px 16px !important; }
+            .cta-time-line1 { font-size: 1.2rem !important; }
+            .cta-time-line2 { font-size: 1.2rem !important; }
+            .cta-time-en { font-size: 0.7rem !important; }
             .cta-badges { grid-template-columns: 1fr 1fr !important; max-width: 290px !important; gap: 8px !important; }
             .cta-badge { padding: 8px 8px !important; font-size: 0.7rem !important; }
             .testimonial-highlight { font-size: 1.3rem !important; }
@@ -1483,11 +1489,10 @@
             </p>
 
             <div class="cta-time">
-                <div class="cta-time-number">1-2</div>
-                <div class="cta-time-text">
-                    <div class="zh">小時輕鬆療程 / 每日</div>
-                    <div class="en">Hours of Relaxing Therapy Per Day — That's All It Takes</div>
-                </div>
+                <div class="cta-time-line1">每天一至兩小時</div>
+                <div class="cta-time-line2">輕鬆養生療程</div>
+                <div class="cta-time-en">1-2 Hours of Relaxing Therapy Per Day</div>
+                <div class="cta-time-tagline">— That's All It Takes —</div>
             </div>
 
             <div class="cta-slogan">
