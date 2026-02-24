@@ -536,14 +536,143 @@
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .nav-links { display: none; }
+            .container { padding: 0 16px; }
+
+            /* Hero */
+            .page-hero { padding: 100px 16px 50px !important; min-height: 70vh !important; }
+            .page-hero h1 { font-size: 2.2rem !important; letter-spacing: 1px; }
+            .page-hero .subtitle { font-size: 1rem !important; }
+            .page-hero .desc { font-size: 0.85rem !important; }
+
+            /* Section titles */
+            .section { padding: 40px 0; }
+            .section-title { font-size: 1.5rem !important; }
+            .section-subtitle { font-size: 0.82rem !important; }
+            .section-header { margin-bottom: 30px; }
+
+            /* Philosophy card - STACK vertically on mobile */
+            .philosophy-card {
+                display: block !important;
+                padding: 24px !important;
+                text-align: center !important;
+            }
+            .philosophy-card > div:first-child {
+                margin-bottom: 20px;
+            }
+            .philosophy-card img {
+                width: 120px !important;
+                height: 120px !important;
+            }
+            .philosophy-quote {
+                font-size: 1.05rem !important;
+                line-height: 1.6 !important;
+            }
+            .philosophy-source { font-size: 0.82rem !important; }
+            .philosophy-explain {
+                font-size: 0.88rem !important;
+                line-height: 1.7 !important;
+                text-align: left !important;
+            }
+
+            /* Testimonials */
             .testimonial-grid { grid-template-columns: 1fr; }
+            .testimonial-card { padding: 24px !important; }
+            .testimonial-title { font-size: 1.1rem !important; }
+            .testimonial-highlight { font-size: 1.8rem !important; }
+            .testimonial-quote { font-size: 0.9rem !important; padding: 12px 14px !important; }
+
+            /* Comparison */
             .comparison-container { grid-template-columns: 1fr; }
-            .vitality-grid { grid-template-columns: 1fr; }
-            .support-grid { grid-template-columns: repeat(2, 1fr); }
+            .comparison-side { padding: 24px !important; }
+            .comparison-side h3 { font-size: 1rem !important; }
+
+            /* Vitality grid */
+            .vitality-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+            .vitality-card { padding: 16px !important; }
+            .vitality-icon { font-size: 1.8rem !important; }
+            .vitality-value { font-size: 1.2rem !important; }
+
+            /* Support grid */
+            .support-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+            .support-card { padding: 18px 12px !important; }
+            .support-icon { font-size: 1.8rem !important; }
+            .support-title { font-size: 0.82rem !important; }
+            .support-desc { font-size: 0.72rem !important; }
+
+            /* Timeline */
             .timeline::before { left: 20px; }
             .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; }
-            .timeline-content { width: calc(100% - 50px); margin-left: 50px; }
+            .timeline-content { width: calc(100% - 50px); margin-left: 50px; padding: 20px !important; }
             .timeline-dot { left: 20px; }
+            .timeline-title { font-size: 1rem !important; }
+            .timeline-desc { font-size: 0.8rem !important; }
+
+            /* CTA */
+            .final-cta { padding: 50px 16px !important; }
+            .cta-time { padding: 14px 20px !important; gap: 12px !important; flex-wrap: wrap; justify-content: center; }
+            .cta-time-number { font-size: 2rem !important; }
+            .cta-time-text .zh { font-size: 1rem !important; }
+            .cta-slogan { font-size: 1.4rem !important; }
+
+            /* Hero stats row */
+            .page-hero [style*="display:flex"][style*="gap:40px"] {
+                gap: 16px !important;
+            }
+            .page-hero [style*="font-size:2.5rem"] {
+                font-size: 1.8rem !important;
+            }
+
+            /* Philosophy card - override inline grid */
+            .mobile-stack {
+                display: block !important;
+                grid-template-columns: none !important;
+            }
+
+            /* Bridge grid - stack on mobile */
+            .bridge-grid {
+                grid-template-columns: 1fr !important;
+                gap: 16px !important;
+            }
+
+            /* AI report grid */
+            .ai-report-grid {
+                grid-template-columns: 1fr 1fr !important;
+                gap: 10px !important;
+            }
+
+            /* 7D icons grid */
+            .dim-icons-grid {
+                grid-template-columns: repeat(4, 1fr) !important;
+                gap: 6px !important;
+            }
+
+            /* Xi Jinping and Bryan Johnson quote boxes */
+            .section > div[style*="padding:30px"] {
+                padding: 18px !important;
+            }
+            .section > div[style*="padding:30px"] [style*="font-size:1.2rem"] {
+                font-size: 1rem !important;
+            }
+            .section > div[style*="padding:30px"] [style*="font-size:1.6rem"] {
+                font-size: 1.2rem !important;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 480px) {
+            .page-hero h1 { font-size: 1.6rem !important; }
+            .page-hero .subtitle { font-size: 0.85rem !important; }
+            .philosophy-quote { font-size: 0.88rem !important; }
+            .philosophy-explain { font-size: 0.82rem !important; }
+            .section-title { font-size: 1.2rem !important; }
+            .support-grid { grid-template-columns: 1fr 1fr !important; }
+            .vitality-grid { grid-template-columns: 1fr 1fr !important; }
+            .dim-icons-grid { grid-template-columns: repeat(4, 1fr) !important; }
+            .cta-slogan { font-size: 1.1rem !important; }
+            .cta-time-number { font-size: 1.6rem !important; }
+            .testimonial-highlight { font-size: 1.5rem !important; }
+            .ai-report-grid [style*="font-size:2.2rem"] { font-size: 1.5rem !important; }
+            .bridge-grid > div { padding: 18px !important; }
         }
     </style>
 </head>
@@ -626,7 +755,7 @@
                 <p class="section-subtitle">The Starting Point: Huangdi Neijing (Yellow Emperor's Classic of Medicine)</p>
             </div>
 
-            <div class="philosophy-card" style="display:grid; grid-template-columns:180px 1fr; gap:30px; align-items:start;">
+            <div class="philosophy-card mobile-stack" style="display:grid; grid-template-columns:180px 1fr; gap:30px; align-items:start;">
                 <div style="text-align:center;">
                     <img src="images/huangdi-neijing-classic.jpg" style="width:160px; height:160px; object-fit:cover; border-radius:12px; border:2px solid rgba(251,191,36,0.3); box-shadow:0 0 30px rgba(251,191,36,0.1);" alt="黃帝內經">
                     <div style="font-size:0.7rem; color:var(--text-muted); margin-top:8px;">《黃帝內經》古典</div>
@@ -726,7 +855,7 @@
             </div>
 
             <!-- Ancient vs Modern Bridge -->
-            <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; margin-top:40px;">
+            <div class="bridge-grid" style="display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; margin-top:40px;">
                 <div style="background:var(--bg-card); border:1px solid rgba(251,191,36,0.2); border-radius:16px; padding:28px; text-align:center;">
                     <img src="images/neijing-scroll.jpg" style="width:100%; height:120px; object-fit:cover; object-position:top; border-radius:10px; margin-bottom:12px; opacity:0.7;" alt="">
                     <div style="font-size:0.75rem; font-weight:700; color:var(--accent-gold); letter-spacing:2px; margin-bottom:8px;">古代智慧</div>
@@ -908,7 +1037,7 @@
                             <span style="font-size:1rem;">🤖</span>
                             <span style="font-size:0.75rem; font-weight:700; color:var(--accent-cyan); letter-spacing:1px;">AI HEALTH ANALYSIS REPORT</span>
                         </div>
-                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                        <div class="ai-report-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
                             <div style="text-align:center; padding:16px; background:rgba(248,113,113,0.08); border-radius:10px; border:1px solid rgba(248,113,113,0.15);">
                                 <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">實際年齡 Chronological Age</div>
                                 <div style="font-size:2.2rem; font-weight:900; color:var(--accent-red);">60+</div>
@@ -1127,7 +1256,7 @@
                 <p class="section-subtitle">The Culmination: 7D Anti-Aging System</p>
             </div>
 
-            <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:40px;">
+            <div class="dim-icons-grid" style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:40px;">
                 <div style="text-align:center; padding:20px 8px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:12px;">
                     <div style="font-size:1.5rem;">💚</div>
                     <div style="font-size:0.65rem; font-weight:700; color:var(--accent-emerald); margin-top:6px;">D1</div>
