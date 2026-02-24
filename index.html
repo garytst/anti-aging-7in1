@@ -615,6 +615,14 @@
         @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.5); } }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeSlideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes drawLine { from { stroke-dashoffset: 1200; } to { stroke-dashoffset: 0; } }
+        @keyframes dotPulse { 0%, 100% { r: 6; opacity: 1; } 50% { r: 9; opacity: 0.7; } }
+        @keyframes areaFade { from { opacity: 0; } to { opacity: 1; } }
+        .animate-line-green { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: drawLine 2.5s ease-out 0.3s forwards; }
+        .animate-line-red { stroke-dasharray: 1200; stroke-dashoffset: 1200; animation: drawLine 2.5s ease-out 0.6s forwards; }
+        .animate-dot { opacity: 0; animation: dotPulse 2s ease-in-out infinite, fadeSlideUp 0.5s ease-out forwards; }
+        .animate-area { opacity: 0; animation: areaFade 1s ease-out 2s forwards; }
 
         .fade-in { animation: fadeInUp 0.6s ease-out both; }
         .fade-in-1 { animation-delay: 0.1s; }
@@ -1099,6 +1107,71 @@
         </div>
     </div>
 </div>
+
+<!-- EECP ANTI-CANCER CONCLUSION -->
+<div style="margin: 30px 0; padding: 28px; background: linear-gradient(135deg, rgba(239,68,68,0.06), rgba(251,191,36,0.04)); border: 1px solid rgba(239,68,68,0.25); border-radius: 14px; position: relative; overflow: hidden; grid-column: 1 / -1;">
+    <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981);"></div>
+    
+    <!-- Header -->
+    <div style="text-align: center; margin-bottom: 20px;">
+        <span style="display: inline-block; padding: 4px 14px; background: rgba(239,68,68,0.12); border: 1px solid rgba(239,68,68,0.3); border-radius: 16px; font-size: 0.7rem; color: #ef4444; letter-spacing: 2px;">🛡️ ANTI-CANCER POTENTIAL 抗癌潛力</span>
+        <h3 style="font-size: 1.4rem; color: #e2e8f0; margin-top: 10px; margin-bottom: 4px;">核心結論 | Core Conclusion</h3>
+        <p style="font-size: 0.85rem; color: #94a3b8; max-width: 700px; margin: 0 auto; line-height: 1.6;">EECP 對預防癌症具有極大的潛在幫助。雖然目前尚無直接的臨床試驗，但大量機制研究的證據強烈支持這一假說。EECP 透過模擬劇烈運動的系統性益處，能同時針對腫瘤發生的五大基礎途徑。</p>
+    </div>
+
+    <!-- 5 Anti-Cancer Mechanisms -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+        <div style="background: rgba(239,68,68,0.06); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(239,68,68,0.15); border-radius: 50%; font-size: 0.8rem; color: #ef4444; font-weight: 800;">1</span>
+                <h4 style="color: #ef4444; font-size: 0.85rem; margin: 0;">強效抗炎</h4>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">TNF-α 降低 <strong style="color:#fbbf24;">16%</strong>、hsCRP 降低 <strong style="color:#fbbf24;">32%</strong>。慢性炎症是癌症的「溫床」，EECP 從源頭切斷炎症-癌症通路。</p>
+            <div style="margin-top: 8px; font-size: 0.6rem; color: #64748b;">Circulation, 2010</div>
+        </div>
+        <div style="background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.2); border-radius: 10px; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(251,191,36,0.15); border-radius: 50%; font-size: 0.8rem; color: #fbbf24; font-weight: 800;">2</span>
+                <h4 style="color: #fbbf24; font-size: 0.85rem; margin: 0;">直接破壞循環腫瘤細胞</h4>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">高剪切力在 <strong style="color:#fbbf24;">4小時內</strong> 殺死 <strong style="color:#ef4444;">＞90%</strong> 乳癌細胞。EECP 產生的血流剪切應力直接物理性破壞血液中的腫瘤細胞。</p>
+            <div style="margin-top: 8px; font-size: 0.6rem; color: #64748b;">Biomechanics Research</div>
+        </div>
+        <div style="background: rgba(16,185,129,0.06); border: 1px solid rgba(16,185,129,0.2); border-radius: 10px; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(16,185,129,0.15); border-radius: 50%; font-size: 0.8rem; color: #10b981; font-weight: 800;">3</span>
+                <h4 style="color: #10b981; font-size: 0.85rem; margin: 0;">全面增強抗腫瘤免疫力</h4>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">提升 <strong style="color:#10b981;">NK 細胞</strong>活性、改善 NLR 比率、正常化腫瘤血管。免疫系統是人體最強的抗癌防線，EECP 全面激活這道防線。</p>
+            <div style="margin-top: 8px; font-size: 0.6rem; color: #64748b;">Immunology Research</div>
+        </div>
+    </div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+        <div style="background: rgba(34,211,238,0.06); border: 1px solid rgba(34,211,238,0.2); border-radius: 10px; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(34,211,238,0.15); border-radius: 50%; font-size: 0.8rem; color: #22d3ee; font-weight: 800;">4</span>
+                <h4 style="color: #22d3ee; font-size: 0.85rem; margin: 0;">降低氧化壓力</h4>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">8-異前列腺素降低 <strong style="color:#22d3ee;">21%</strong>，減少 DNA 損傷。氧化壓力是基因突變的主要推手，EECP 有效降低這一風險因子。</p>
+            <div style="margin-top: 8px; font-size: 0.6rem; color: #64748b;">Oxidative Stress Research</div>
+        </div>
+        <div style="background: rgba(167,139,250,0.06); border: 1px solid rgba(167,139,250,0.2); border-radius: 10px; padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <span style="display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: rgba(167,139,250,0.15); border-radius: 50%; font-size: 0.8rem; color: #a78bfa; font-weight: 800;">5</span>
+                <h4 style="color: #a78bfa; font-size: 0.85rem; margin: 0;">改善新陳代謝</h4>
+            </div>
+            <p style="color: #94a3b8; font-size: 0.75rem; line-height: 1.5; margin: 0;">降低胰島素阻抗、減少 AGEs 糖化終產物。代謝症候群使癌症風險增加 <strong style="color:#a78bfa;">25-250%</strong>，EECP 從代謝根源降低癌症風險。</p>
+            <div style="margin-top: 8px; font-size: 0.6rem; color: #64748b;">Metabolic Syndrome & Cancer Research</div>
+        </div>
+    </div>
+
+    <!-- Summary Bar -->
+    <div style="background: linear-gradient(135deg, rgba(239,68,68,0.08), rgba(251,191,36,0.06)); border: 1px solid rgba(239,68,68,0.2); border-radius: 10px; padding: 14px; text-align: center;">
+        <div style="color: #fbbf24; font-size: 0.85rem; font-style: italic; line-height: 1.6;">「EECP 不只是心血管治療 — 它是一個全身性的抗癌預防系統。透過同時針對炎症、免疫、氧化、代謝和物理破壞五大途徑，為身體建立多層次的癌症防禦網。」</div>
+        <div style="color: #64748b; font-size: 0.65rem; margin-top: 6px;">— EECP Anti-Cancer Mechanism Analysis (Based on Mechanistic Research Evidence)</div>
+    </div>
+</div>
+
 <!-- mHBOT -->
                 <div class="dim-card mhbot">
                     <div class="dim-num">第二維度 DIMENSION 2</div>
@@ -1318,40 +1391,118 @@
             </div>
         </section>
 
-        <!-- 10-YEAR ROADMAP -->
+        <!-- 10-YEAR ROADMAP - ANIMATED -->
         <section class="section fade-in fade-in-3">
             <div class="section-header">
                 <div class="section-icon" style="background:var(--glow-purple);">🎯</div>
                 <div>
-                    <div class="section-title">十年無藥退休路線圖 10-Year Med-Free Roadmap</div>
-                    <div class="section-subtitle">數據驅動的長期健康規劃，讓願景可測量、可執行</div>
+                    <div class="section-title">長期目標追蹤：無藥退休路線圖</div>
+                    <div class="section-subtitle">數據驅動的十年健康規劃，讓願景可測量、可執行</div>
                 </div>
             </div>
-            <img src="images/timeline-roadmap.png" alt="10-Year Anti-Aging Roadmap" class="section-image">
-            <div class="roadmap">
-                <div class="roadmap-card">
-                    <div class="rm-year">YEAR 1</div>
-                    <div class="rm-age">-2歲</div>
-                    <div class="rm-title">系統啟動</div>
-                    <div class="rm-desc">建立基礎代謝引擎<br>睡眠改善，精力恢復</div>
-                </div>
-                <div class="roadmap-card">
-                    <div class="rm-year">YEAR 3</div>
-                    <div class="rm-age">-5歲</div>
-                    <div class="rm-title">代謝重置</div>
-                    <div class="rm-desc">慢性病藥物減少 50%<br>血管彈性顯著提升</div>
-                </div>
-                <div class="roadmap-card">
-                    <div class="rm-year">YEAR 5</div>
-                    <div class="rm-age">-7歲</div>
-                    <div class="rm-title">深度逆齡</div>
-                    <div class="rm-desc">達成「無藥生活」<br>端粒長度顯著延長</div>
-                </div>
-                <div class="roadmap-card">
-                    <div class="rm-year">YEAR 10</div>
-                    <div class="rm-age">-10歲</div>
-                    <div class="rm-title">終身活力</div>
-                    <div class="rm-desc">巔峰機能維持<br>遠離重大疾病風險</div>
+
+            <!-- Animated Graph -->
+            <div style="position: relative; background: rgba(10,22,40,0.6); border: 1px solid rgba(34,211,238,0.15); border-radius: 14px; padding: 30px 30px 20px; margin-bottom: 24px; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, #a78bfa, #22d3ee, #10b981);"></div>
+                
+                <!-- SVG Animated Chart -->
+                <svg id="roadmapChart" viewBox="0 0 900 380" style="width: 100%; height: auto;">
+                    <!-- Grid lines -->
+                    <defs>
+                        <linearGradient id="greenLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#10b981;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:1" />
+                        </linearGradient>
+                        <linearGradient id="redLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#ef4444;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#ef4444;stop-opacity:0.4" />
+                        </linearGradient>
+                        <filter id="glow">
+                            <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                            <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Y-axis labels -->
+                    <text x="35" y="55" fill="#64748b" font-size="10" text-anchor="end" font-family="Inter">年輕</text>
+                    <text x="35" y="195" fill="#64748b" font-size="10" text-anchor="end" font-family="Inter">基線</text>
+                    <text x="35" y="335" fill="#64748b" font-size="10" text-anchor="end" font-family="Inter">衰老</text>
+                    
+                    <!-- X-axis labels -->
+                    <text x="100" y="370" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="Inter">Year 1</text>
+                    <text x="310" y="370" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="Inter">Year 3</text>
+                    <text x="520" y="370" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="Inter">Year 5</text>
+                    <text x="800" y="370" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="Inter">Year 10</text>
+                    
+                    <!-- Horizontal grid -->
+                    <line x1="50" y1="50" x2="860" y2="50" stroke="rgba(148,163,184,0.08)" stroke-width="1"/>
+                    <line x1="50" y1="120" x2="860" y2="120" stroke="rgba(148,163,184,0.08)" stroke-width="1"/>
+                    <line x1="50" y1="190" x2="860" y2="190" stroke="rgba(148,163,184,0.12)" stroke-width="1" stroke-dasharray="6,4"/>
+                    <line x1="50" y1="260" x2="860" y2="260" stroke="rgba(148,163,184,0.08)" stroke-width="1"/>
+                    <line x1="50" y1="330" x2="860" y2="330" stroke="rgba(148,163,184,0.08)" stroke-width="1"/>
+                    
+                    <!-- Vertical grid -->
+                    <line x1="100" y1="40" x2="100" y2="350" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+                    <line x1="310" y1="40" x2="310" y2="350" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+                    <line x1="520" y1="40" x2="520" y2="350" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+                    <line x1="800" y1="40" x2="800" y2="350" stroke="rgba(148,163,184,0.06)" stroke-width="1"/>
+                    
+                    <!-- RED dashed line - Normal Aging (declining) -->
+                    <path d="M 60,175 Q 200,185 310,210 Q 450,240 520,260 Q 650,290 800,330" 
+                          fill="none" stroke="url(#redLine)" stroke-width="3" stroke-dasharray="12,6" 
+                          class="animate-line-red" filter="url(#glow)"/>
+                    
+                    <!-- GREEN solid line - 7D Anti-Aging (improving) -->
+                    <path d="M 60,175 Q 80,170 100,155 Q 180,130 310,110 Q 400,95 520,80 Q 650,68 800,55" 
+                          fill="none" stroke="url(#greenLine)" stroke-width="3.5" 
+                          class="animate-line-green" filter="url(#glow)"/>
+                    
+                    <!-- Glow area under green line -->
+                    <path d="M 60,175 Q 80,170 100,155 Q 180,130 310,110 Q 400,95 520,80 Q 650,68 800,55 L 800,190 L 60,190 Z" 
+                          fill="rgba(16,185,129,0.06)" class="animate-area"/>
+                    
+                    <!-- Milestone dots on green line -->
+                    <circle cx="100" cy="155" r="6" fill="#0a1628" stroke="#10b981" stroke-width="2.5" class="animate-dot" style="animation-delay: 0.5s;"/>
+                    <circle cx="310" cy="110" r="6" fill="#0a1628" stroke="#22d3ee" stroke-width="2.5" class="animate-dot" style="animation-delay: 1s;"/>
+                    <circle cx="520" cy="80" r="6" fill="#0a1628" stroke="#fbbf24" stroke-width="2.5" class="animate-dot" style="animation-delay: 1.5s;"/>
+                    <circle cx="800" cy="55" r="6" fill="#0a1628" stroke="#a78bfa" stroke-width="2.5" class="animate-dot" style="animation-delay: 2s;"/>
+                    
+                    <!-- Labels -->
+                    <text x="50" y="20" fill="#94a3b8" font-size="11" font-family="Inter" font-weight="600">生物年齡 (Biological Age)</text>
+                    
+                    <!-- Legend -->
+                    <line x1="620" y1="15" x2="650" y2="15" stroke="#10b981" stroke-width="3"/>
+                    <text x="655" y="19" fill="#10b981" font-size="10" font-family="Inter">7D 逆齡系統</text>
+                    <line x1="750" y1="15" x2="780" y2="15" stroke="#ef4444" stroke-width="2" stroke-dasharray="6,4"/>
+                    <text x="785" y="19" fill="#ef4444" font-size="10" font-family="Inter">自然衰老</text>
+                </svg>
+                
+                <!-- Milestone Cards overlaid -->
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 16px;">
+                    <div class="rm-animated-card" style="background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.3); border-radius: 10px; padding: 14px; text-align: center; animation: fadeSlideUp 0.8s ease-out 0.5s both;">
+                        <div style="font-size: 0.7rem; color: #10b981; font-weight: 700; letter-spacing: 2px;">YEAR 1</div>
+                        <div style="font-size: 0.75rem; color: #10b981; font-weight: 600; margin-top: 2px;">系統啟動</div>
+                        <div style="font-size: 1.8rem; font-weight: 900; color: #fbbf24; margin: 4px 0;">-2歲</div>
+                        <div style="font-size: 0.7rem; color: #94a3b8; line-height: 1.4;">睡眠改善，精力恢復<br>建立基礎代謝引擎</div>
+                    </div>
+                    <div class="rm-animated-card" style="background: rgba(34,211,238,0.08); border: 1px solid rgba(34,211,238,0.3); border-radius: 10px; padding: 14px; text-align: center; animation: fadeSlideUp 0.8s ease-out 1s both;">
+                        <div style="font-size: 0.7rem; color: #22d3ee; font-weight: 700; letter-spacing: 2px;">YEAR 3</div>
+                        <div style="font-size: 0.75rem; color: #22d3ee; font-weight: 600; margin-top: 2px;">代謝重置</div>
+                        <div style="font-size: 1.8rem; font-weight: 900; color: #fbbf24; margin: 4px 0;">-5歲</div>
+                        <div style="font-size: 0.7rem; color: #94a3b8; line-height: 1.4;">慢性病藥物減少 50%<br>血管彈性顯著提升</div>
+                    </div>
+                    <div class="rm-animated-card" style="background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.3); border-radius: 10px; padding: 14px; text-align: center; animation: fadeSlideUp 0.8s ease-out 1.5s both;">
+                        <div style="font-size: 0.7rem; color: #fbbf24; font-weight: 700; letter-spacing: 2px;">YEAR 5</div>
+                        <div style="font-size: 0.75rem; color: #fbbf24; font-weight: 600; margin-top: 2px;">深度逆齡</div>
+                        <div style="font-size: 1.8rem; font-weight: 900; color: #fbbf24; margin: 4px 0;">-7歲</div>
+                        <div style="font-size: 0.7rem; color: #94a3b8; line-height: 1.4;">達成<span style="color:#10b981; font-weight:700;">「無藥生活」</span><br>端粒長度顯著延長</div>
+                    </div>
+                    <div class="rm-animated-card" style="background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.3); border-radius: 10px; padding: 14px; text-align: center; animation: fadeSlideUp 0.8s ease-out 2s both;">
+                        <div style="font-size: 0.7rem; color: #a78bfa; font-weight: 700; letter-spacing: 2px;">YEAR 10</div>
+                        <div style="font-size: 0.75rem; color: #a78bfa; font-weight: 600; margin-top: 2px;">終身活力</div>
+                        <div style="font-size: 1.8rem; font-weight: 900; color: #fbbf24; margin: 4px 0;">-10歲</div>
+                        <div style="font-size: 0.7rem; color: #94a3b8; line-height: 1.4;">維持巔峰機能<br>遠離重大疾病風險</div>
+                    </div>
                 </div>
             </div>
         </section>
