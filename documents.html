@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documents 研究文件 | 七維逆齡系統 5.0</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.7);
+            --border-card: rgba(56, 189, 248, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.35);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-teal: #14b8a6;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-orange: #fb923c;
+            --accent-gold: #fbbf24;
+            --accent-pink: #f472b6;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: radial-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-card);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+
+        /* ===== CONTAINER ===== */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 120px 0 48px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: linear-gradient(135deg, rgba(34,211,238,0.15), rgba(167,139,250,0.15));
+            border: 1px solid rgba(34,211,238,0.3);
+            border-radius: 50px; padding: 8px 24px;
+            font-size: 0.8rem; font-weight: 600; letter-spacing: 2px;
+            color: var(--accent-cyan); margin-bottom: 24px;
+        }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #22d3ee, #a78bfa, #fbbf24);
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite;
+            margin-bottom: 12px;
+        }
+        .hero h2 {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-weight: 300; color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+        .hero-stats {
+            display: flex; justify-content: center; gap: 40px;
+            margin-top: 24px; flex-wrap: wrap;
+        }
+        .hero-stat {
+            text-align: center;
+        }
+        .hero-stat .num {
+            font-size: 2rem; font-weight: 900;
+        }
+        .hero-stat .label {
+            font-size: 0.8rem; color: var(--text-secondary);
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* ===== CATEGORY TABS ===== */
+        .category-tabs {
+            display: flex; justify-content: center; gap: 12px;
+            margin-bottom: 40px; flex-wrap: wrap;
+        }
+        .cat-tab {
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.82rem; font-weight: 600;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid rgba(56,189,248,0.15);
+            background: transparent;
+            color: var(--text-secondary);
+        }
+        .cat-tab:hover, .cat-tab.active {
+            background: rgba(34,211,238,0.15);
+            border-color: rgba(34,211,238,0.4);
+            color: var(--accent-cyan);
+        }
+
+        /* ===== DOCUMENT GRID ===== */
+        .doc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+            margin-bottom: 48px;
+        }
+
+        /* ===== DOCUMENT CARD ===== */
+        .doc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        .doc-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 30px rgba(34,211,238,0.05);
+        }
+        .doc-card-header {
+            display: flex; align-items: flex-start; gap: 16px;
+            margin-bottom: 16px;
+        }
+        .doc-icon {
+            width: 52px; height: 52px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .doc-card-info { flex: 1; }
+        .doc-card-info h3 {
+            font-size: 1.05rem; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            line-height: 1.4;
+        }
+        .doc-card-info .doc-en {
+            font-size: 0.78rem; color: var(--text-muted);
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .doc-meta {
+            display: flex; align-items: center; gap: 12px;
+            flex-wrap: wrap;
+        }
+        .doc-tag {
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .doc-size {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .doc-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            flex: 1;
+            margin-bottom: 20px;
+        }
+        .doc-actions {
+            display: flex; gap: 10px;
+            margin-top: auto;
+        }
+        .doc-btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 0.82rem; font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+        }
+        .doc-btn-primary {
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+            color: white;
+        }
+        .doc-btn-primary:hover {
+            box-shadow: 0 8px 25px rgba(34,211,238,0.3);
+            transform: translateY(-1px);
+        }
+        .doc-btn-secondary {
+            background: rgba(34,211,238,0.08);
+            border: 1px solid rgba(34,211,238,0.2);
+            color: var(--accent-cyan);
+        }
+        .doc-btn-secondary:hover {
+            background: rgba(34,211,238,0.15);
+            border-color: rgba(34,211,238,0.4);
+        }
+
+        /* ===== SECTION DIVIDER ===== */
+        .section-divider {
+            text-align: center;
+            margin: 48px 0 32px;
+            position: relative;
+        }
+        .section-divider::before {
+            content: '';
+            position: absolute;
+            left: 0; right: 0; top: 50%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(56,189,248,0.2), transparent);
+        }
+        .section-divider span {
+            position: relative;
+            background: var(--bg-primary);
+            padding: 0 24px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center; padding: 40px 0;
+            border-top: 1px solid rgba(56,189,248,0.08);
+            font-size: 0.8rem; color: var(--text-muted);
+        }
+        .footer a { color: var(--accent-cyan); text-decoration: none; }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed; bottom: 30px; right: 30px;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: rgba(10, 22, 40, 0.9);
+            border: 1px solid rgba(34,211,238,0.2);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 99;
+            font-size: 1.2rem; color: var(--text-secondary);
+            transition: all 0.3s;
+        }
+        .back-to-top:hover {
+            border-color: var(--accent-cyan);
+            color: var(--accent-cyan);
+        }
+
+        /* ===== MOBILE HAMBURGER ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 24px; height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+                gap: 12px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1rem; padding: 8px 0; }
+            .container { padding: 0 16px; }
+            .hero { padding: 100px 0 32px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero h2 { font-size: 1rem; }
+            .hero-stats { gap: 20px; }
+            .hero-stat .num { font-size: 1.5rem; }
+            .doc-grid { grid-template-columns: 1fr; gap: 16px; }
+            .doc-card { padding: 20px; }
+            .doc-card-header { gap: 12px; }
+            .doc-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+            .doc-card-info h3 { font-size: 0.95rem; }
+            .doc-actions { flex-direction: column; }
+            .doc-btn { justify-content: center; }
+            .category-tabs { gap: 8px; }
+            .cat-tab { padding: 6px 14px; font-size: 0.75rem; }
+        }
+        @media (max-width: 380px) {
+            .hero h1 { font-size: 1.5rem; }
+            .hero-stats { flex-direction: column; gap: 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html">BENEFITS 效益</a>
+                <a href="founder.html">FOUNDER 始創人</a>
+                <a href="documents.html" class="active">DOCS 文件</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge">📚 RESEARCH DOCUMENTS 研究文件庫</div>
+            <h1>研究文件下載中心</h1>
+            <h2>Research Documents Download Center</h2>
+            <p style="color: var(--text-secondary); max-width: 700px; margin: 0 auto; font-size: 0.95rem;">
+                所有七維逆齡系統相關的研究報告、臨床試驗設計、養生計劃及專業分析文件，均可在此下載。<br>
+                All research reports, clinical trial designs, wellness programs, and professional analysis documents are available for download.
+            </p>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="num" style="color: var(--accent-cyan);">10</div>
+                    <div class="label">研究文件 Documents</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num" style="color: var(--accent-gold);">5+</div>
+                    <div class="label">研究領域 Research Areas</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="num" style="color: var(--accent-emerald);">PDF</div>
+                    <div class="label">可下載格式 Format</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CATEGORY TABS -->
+        <div class="category-tabs">
+            <div class="cat-tab active" onclick="filterDocs('all')">全部 ALL</div>
+            <div class="cat-tab" onclick="filterDocs('eecp')">EECP 體外反搏</div>
+            <div class="cat-tab" onclick="filterDocs('stem')">幹細胞 Stem Cell</div>
+            <div class="cat-tab" onclick="filterDocs('plan')">研究計劃 Plans</div>
+            <div class="cat-tab" onclick="filterDocs('health')">健康指南 Health</div>
+        </div>
+
+        <!-- ===== EECP RESEARCH SECTION ===== -->
+        <div class="section-divider">
+            <span style="color: var(--accent-emerald);">💚 EECP 體外反搏研究 EECP RESEARCH</span>
+        </div>
+
+        <div class="doc-grid">
+            <!-- Doc 1: EECP 臨床試驗設計 -->
+            <div class="doc-card" data-cat="eecp">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);">
+                        📊
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>EECP 臨床試驗設計分析報告</h3>
+                        <div class="doc-en">EECP Clinical Trial Design Analysis Report</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(16,185,129,0.12); color: #10b981;">EECP</span>
+                            <span class="doc-tag" style="background: rgba(34,211,238,0.12); color: #22d3ee;">臨床試驗</span>
+                            <span class="doc-size">2.1 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    詳細分析 EECP 體外反搏治療的臨床試驗設計框架，包括研究方法學、對照組設置、療效評估指標及統計分析方案。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/EECP_臨床試驗設計分析報告_1.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/EECP_臨床試驗設計分析報告_1.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+
+            <!-- Doc 2: 長期 EECP 逆齡效果 -->
+            <div class="doc-card" data-cat="eecp">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.25);">
+                        🔬
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>長期 EECP 治療「逆齡」效果之邏輯推斷分析報告</h3>
+                        <div class="doc-en">Logical Inference Analysis on the "Age Reversal" Effect of Long-Term EECP Therapy</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(16,185,129,0.12); color: #10b981;">EECP</span>
+                            <span class="doc-tag" style="background: rgba(251,191,36,0.12); color: #fbbf24;">逆齡分析</span>
+                            <span class="doc-size">0.9 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    基於真實案例數據，系統性推斷長期 EECP 治療對生物年齡逆轉的效果，結合 V'O₂ max、心肺功能等指標進行邏輯分析。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/長期_EECP_治療「逆齡」效果之邏輯推斷分析報告.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/長期_EECP_治療「逆齡」效果之邏輯推斷分析報告.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+
+            <!-- Doc 3: EECP + 氫氧呼吸機 -->
+            <div class="doc-card" data-cat="eecp">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(34,211,238,0.12); border: 1px solid rgba(34,211,238,0.25);">
+                        🫁
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>EECP + 氫氧呼吸機抗衰老研究設計</h3>
+                        <div class="doc-en">EECP + Hydrogen-Oxygen Inhalation Anti-Aging Research Design</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(16,185,129,0.12); color: #10b981;">EECP</span>
+                            <span class="doc-tag" style="background: rgba(34,211,238,0.12); color: #22d3ee;">氫氧療法</span>
+                            <span class="doc-size">5.6 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    探討 EECP 體外反搏結合氫氧呼吸機的協同抗衰老效應，設計雙重干預的臨床研究方案。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/EECP_+_氫氧呼吸機抗衰老研究設計.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/EECP_+_氫氧呼吸機抗衰老研究設計.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== STEM CELL & IMMUNOTHERAPY SECTION ===== -->
+        <div class="section-divider">
+            <span style="color: var(--accent-purple);">🧬 幹細胞與免疫療法 STEM CELL & IMMUNOTHERAPY</span>
+        </div>
+
+        <div class="doc-grid">
+            <!-- Doc 4: 五維一體 NK/CIK -->
+            <div class="doc-card" data-cat="stem">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.25);">
+                        🧬
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>「五維一體」終極方案：整合 NK/CIK 免疫療法的年期效應推斷報告</h3>
+                        <div class="doc-en">Ultimate "5-in-1" Protocol: NK/CIK Immunotherapy Annual Effect Inference Report (Updated)</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(167,139,250,0.12); color: #a78bfa;">免疫療法</span>
+                            <span class="doc-tag" style="background: rgba(248,113,113,0.12); color: #f87171;">NK/CIK</span>
+                            <span class="doc-size">1.0 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    整合 NK 細胞和 CIK 細胞免疫療法的五維一體終極方案，推斷各年期的療效累積效應，為抗衰老和抗腫瘤提供系統性分析。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/「五維一體」終極方案：整合_NK_CIK_免疫療法的年期效應推斷報告（更新版）.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/「五維一體」終極方案：整合_NK_CIK_免疫療法的年期效應推斷報告（更新版）.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+
+            <!-- Doc 5: NK 細胞培養基 -->
+            <div class="doc-card" data-cat="stem">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.25);">
+                        🔬
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>NK 細胞培養基研究</h3>
+                        <div class="doc-en">NK Cell Culture Medium Research</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(167,139,250,0.12); color: #a78bfa;">NK 細胞</span>
+                            <span class="doc-tag" style="background: rgba(16,185,129,0.12); color: #10b981;">培養技術</span>
+                            <span class="doc-size">0.8 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    研究 NK 自然殺手細胞的培養基配方和培養條件優化，為免疫細胞療法提供基礎技術支持。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/一种NK细胞培养基.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/一种NK细胞培养基.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+
+            <!-- Doc 6: DC/CIK 多肽 -->
+            <div class="doc-card" data-cat="stem">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(244,114,182,0.12); border: 1px solid rgba(244,114,182,0.25);">
+                        💉
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>誘導 DC/CIK 細胞的多肽及其在腫瘤細胞治療中的應用</h3>
+                        <div class="doc-en">Peptides for Inducing DC/CIK Cells and Their Application in Tumor Cell Therapy</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(244,114,182,0.12); color: #f472b6;">DC/CIK</span>
+                            <span class="doc-tag" style="background: rgba(248,113,113,0.12); color: #f87171;">抗腫瘤</span>
+                            <span class="doc-size">0.5 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    探討特定多肽在誘導樹突狀細胞（DC）和細胞因子誘導殺傷細胞（CIK）中的作用，及其在腫瘤免疫治療中的臨床應用前景。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/诱导DC_CIK细胞的多肽及其在肿瘤细胞治疗中的应用.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/诱导DC_CIK细胞的多肽及其在肿瘤细胞治疗中的应用.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== RESEARCH PLANS SECTION ===== -->
+        <div class="section-divider">
+            <span style="color: var(--accent-gold);">📋 研究計劃與招募 RESEARCH PLANS & RECRUITMENT</span>
+        </div>
+
+        <div class="doc-grid">
+            <!-- Doc 7: Anti-Aging Plan -->
+            <div class="doc-card" data-cat="plan">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(251,191,36,0.12); border: 1px solid rgba(251,191,36,0.25);">
+                        📝
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>Anti-Aging 抗衰老總體計劃</h3>
+                        <div class="doc-en">Anti-Aging Master Plan</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(251,191,36,0.12); color: #fbbf24;">總體計劃</span>
+                            <span class="doc-size">11.1 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    七維逆齡系統的總體規劃文件，涵蓋系統架構、實施路線圖、資源配置及預期成果。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/Anti_Aging Plan.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/Anti_Aging Plan.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+
+            <!-- Doc 8: 抗衰老養生研究計劃 -->
+            <div class="doc-card" data-cat="plan">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(251,146,60,0.12); border: 1px solid rgba(251,146,60,0.25);">
+                        🗂️
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>抗衰老養生研究計劃</h3>
+                        <div class="doc-en">Anti-Aging Wellness Research Program</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(251,146,60,0.12); color: #fb923c;">研究計劃</span>
+                            <span class="doc-tag" style="background: rgba(251,191,36,0.12); color: #fbbf24;">養生</span>
+                            <span class="doc-size">1.0 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    詳細的抗衰老養生研究計劃書，包含研究目標、方法論、時間線及預期里程碑。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/抗衰老養生研究計劃___Anti-Aging_Wellness_Research_Program.p.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/抗衰老養生研究計劃___Anti-Aging_Wellness_Research_Program.p.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+
+            <!-- Doc 9: 參與者招募框架 -->
+            <div class="doc-card" data-cat="plan">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(59,130,246,0.12); border: 1px solid rgba(59,130,246,0.25);">
+                        👥
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>抗衰老研究參與者招募框架</h3>
+                        <div class="doc-en">Anti-Aging Research Participant Recruitment Framework</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(59,130,246,0.12); color: #3b82f6;">招募</span>
+                            <span class="doc-tag" style="background: rgba(251,146,60,0.12); color: #fb923c;">框架</span>
+                            <span class="doc-size">0.8 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    制定抗衰老研究的參與者招募標準、篩選流程、知情同意書模板及倫理審查要求。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/抗衰老研究參與者招募框架___Anti-Aging_Research_Participant_Rec.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/抗衰老研究參與者招募框架___Anti-Aging_Research_Participant_Rec.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== HEALTH GUIDE SECTION ===== -->
+        <div class="section-divider">
+            <span style="color: var(--accent-cyan);">❤️ 健康指南 HEALTH GUIDES</span>
+        </div>
+
+        <div class="doc-grid">
+            <!-- Doc 10: 心跳脈搏指南 -->
+            <div class="doc-card" data-cat="health">
+                <div class="doc-card-header">
+                    <div class="doc-icon" style="background: rgba(248,113,113,0.12); border: 1px solid rgba(248,113,113,0.25);">
+                        ❤️
+                    </div>
+                    <div class="doc-card-info">
+                        <h3>心跳脈搏與年齡健康指南</h3>
+                        <div class="doc-en">Heart Rate, Pulse & Age Health Guide</div>
+                        <div class="doc-meta">
+                            <span class="doc-tag" style="background: rgba(248,113,113,0.12); color: #f87171;">心血管</span>
+                            <span class="doc-tag" style="background: rgba(34,211,238,0.12); color: #22d3ee;">健康指南</span>
+                            <span class="doc-size">0.9 MB</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="doc-desc">
+                    全面解析心跳脈搏與年齡的關係，提供不同年齡段的健康心率參考範圍及日常監測建議。
+                </div>
+                <div class="doc-actions">
+                    <a href="docs/心跳脈搏與年齡健康指南.pdf" download class="doc-btn doc-btn-primary">⬇ 下載 Download</a>
+                    <a href="docs/心跳脈搏與年齡健康指南.pdf" target="_blank" class="doc-btn doc-btn-secondary">👁 預覽 Preview</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- DISCLAIMER -->
+        <div style="margin: 48px 0 32px; padding: 20px 24px; background: rgba(251,191,36,0.05); border: 1px solid rgba(251,191,36,0.15); border-radius: 12px; text-align: center;">
+            <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.7;">
+                📌 <strong style="color: var(--accent-gold);">免責聲明 Disclaimer：</strong>以上文件僅供研究和教育用途，不構成醫療建議。如有健康疑問，請諮詢專業醫生。<br>
+                The above documents are for research and educational purposes only and do not constitute medical advice. Please consult a professional physician for health concerns.
+            </p>
+        </div>
+
+    </div><!-- end container -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>七維逆齡系統 7D Anti-Aging System 5.0 | Research Documents Library</p>
+        <p style="margin-top: 8px;">古今智慧融合 · 親身實證驗證 · 醫學權威背書 · AI 數據支持</p>
+    </footer>
+
+    <!-- BACK TO TOP -->
+    <div class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'});">↑</div>
+
+    <!-- FILTER SCRIPT -->
+    <script>
+        function filterDocs(cat) {
+            // Update active tab
+            document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter cards
+            document.querySelectorAll('.doc-card').forEach(card => {
+                if (cat === 'all' || card.dataset.cat === cat) {
+                    card.style.display = '';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show/hide section dividers
+            document.querySelectorAll('.section-divider').forEach(div => {
+                if (cat === 'all') {
+                    div.style.display = '';
+                } else {
+                    div.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

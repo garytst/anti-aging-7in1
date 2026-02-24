@@ -381,15 +381,66 @@
             .timeline::before { left: 20px; }
             .timeline-item { width: 85%; margin-left: 50px !important; }
             .timeline-item::before { left: -38px !important; right: auto !important; }
-            .benefit-grid { grid-template-columns: 1fr; }
+            .benefit-grid { grid-template-columns: 1fr !important; }
             .case-study { padding: 24px; }
             .container { padding: 0 16px; }
             .hero h1 { font-size: 2rem; }
             .metrics-banner { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            
+            /* ===== THREE SHIELDS: Force 1-column on mobile ===== */
+            .benefit-grid[style*="repeat(3"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* ===== EECP CLINICAL PROOF: Stack all grids ===== */
+            .eecp-proof-compact [style*="grid-template-columns: 1fr 1.2fr"],
+            .eecp-proof-compact [style*="grid-template-columns: 1fr 1fr 1fr"],
+            .eecp-proof-compact [style*="grid-template-columns: 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            .eecp-proof-compact { padding: 20px 16px 16px !important; }
+            .eecp-proof-compact h3 { font-size: 1.2rem !important; }
+            
+            /* ===== ANTI-CANCER: Stack grids ===== */
+            div[style*="grid-template-columns: 1fr 1fr 1fr"] {
+                grid-template-columns: 1fr !important;
+            }
+            div[style*="grid-template-columns: 1fr 1fr;"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* ===== EECP AUTHORITY: 4-column to 2-column ===== */
+            div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            /* ===== Clinical Data Stats: 5-column to 2-column + 1 ===== */
+            div[style*="grid-template-columns: repeat(5, 1fr)"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            /* ===== Conclusion 3-column to 1-column ===== */
+            div[style*="grid-template-columns: 1fr 1fr 1fr"][style*="margin-bottom: 12px"] {
+                grid-template-columns: 1fr !important;
+            }
+            
+            /* General section padding */
+            .section { padding: 40px 0; }
+            .section-title { font-size: 1.5rem !important; }
+            .section-subtitle { font-size: 0.9rem !important; }
+            .benefit-card { padding: 24px 20px; }
+            .evidence-table th, .evidence-table td { padding: 10px 8px; font-size: 0.78rem; }
         }
         @media (max-width: 480px) {
             .metrics-banner { grid-template-columns: 1fr; }
             .hero h1 { font-size: 1.6rem; }
+            
+            /* Extra small: all multi-column grids become single column */
+            div[style*="grid-template-columns: repeat(4, 1fr)"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
+            div[style*="grid-template-columns: repeat(5, 1fr)"] {
+                grid-template-columns: 1fr 1fr !important;
+            }
         }
     </style>
 </head>
@@ -408,6 +459,7 @@
                 <a href="7d-dimensions.html">7D DIMENSIONS</a>
                 <a href="benefits.html" class="active">BENEFITS 效益</a>
                 <a href="founder.html">FOUNDER 始創人</a>
+                <a href="documents.html">DOCS 文件</a>
             </div>
         </div>
     </nav>
