@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>始創人研究歷程 | Founder's Journey | 七維逆齡系統 5.0</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.7);
+            --bg-card-hover: rgba(20, 40, 75, 0.8);
+            --border-card: rgba(56, 189, 248, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.35);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-teal: #14b8a6;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-orange: #fb923c;
+            --accent-gold: #fbbf24;
+            --accent-pink: #f472b6;
+            --glow-cyan: rgba(34, 211, 238, 0.15);
+            --glow-emerald: rgba(16, 185, 129, 0.15);
+            --glow-purple: rgba(167, 139, 250, 0.15);
+            --glow-red: rgba(248, 113, 113, 0.15);
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: radial-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+        /* ===== HERO ===== */
+        .page-hero {
+            padding: 140px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 50% 30%, rgba(251,191,36,0.08) 0%, transparent 60%),
+                        radial-gradient(ellipse at 20% 80%, rgba(34,211,238,0.06) 0%, transparent 50%),
+                        radial-gradient(ellipse at 80% 80%, rgba(167,139,250,0.06) 0%, transparent 50%);
+            z-index: 0;
+        }
+        .page-hero > * { position: relative; z-index: 1; }
+        .hero-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: float 4s ease-in-out infinite;
+        }
+        .page-hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            margin-bottom: 16px;
+            letter-spacing: 3px;
+        }
+        .page-hero h1 .gradient {
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange), var(--accent-red), var(--accent-gold));
+            background-size: 300% 300%;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            animation: gradientShift 6s ease infinite;
+        }
+        .page-hero .subtitle {
+            font-size: 1.3rem; color: var(--accent-gold); font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .page-hero .desc {
+            font-size: 1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto;
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            padding: 60px 0;
+            position: relative;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        .section-badge {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+        .section-subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* ===== PHILOSOPHY CARD ===== */
+        .philosophy-card {
+            background: linear-gradient(135deg, rgba(251,191,36,0.08), rgba(248,113,113,0.05));
+            border: 1px solid rgba(251,191,36,0.25);
+            border-radius: 20px;
+            padding: 48px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .philosophy-card::before {
+            content: '';
+            position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(251,191,36,0.05) 0%, transparent 50%);
+            animation: rotateGlow 20s linear infinite;
+        }
+        .philosophy-card > * { position: relative; z-index: 1; }
+        .philosophy-quote {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+        .philosophy-source {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        .philosophy-explain {
+            margin-top: 24px;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+            line-height: 1.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0; bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-gold), var(--accent-cyan), var(--accent-emerald), var(--accent-purple));
+            border-radius: 3px;
+        }
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .timeline-item:nth-child(odd) { flex-direction: row; }
+        .timeline-item:nth-child(even) { flex-direction: row-reverse; }
+        .timeline-content {
+            width: 45%;
+            padding: 28px;
+            border-radius: 16px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            transition: all 0.4s;
+            animation: fadeInUp 0.8s ease-out both;
+        }
+        .timeline-content:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px; height: 20px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 3px solid var(--bg-primary);
+            box-shadow: 0 0 20px rgba(251,191,36,0.5);
+            z-index: 2;
+        }
+        .timeline-year {
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .timeline-desc {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* ===== TESTIMONIAL CARDS ===== */
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+        }
+        .testimonial-card {
+            border-radius: 20px;
+            padding: 36px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+        .testimonial-card.case-a {
+            background: linear-gradient(135deg, rgba(167,139,250,0.1), rgba(167,139,250,0.03));
+            border: 1px solid rgba(167,139,250,0.3);
+        }
+        .testimonial-card.case-b {
+            background: linear-gradient(135deg, rgba(16,185,129,0.1), rgba(16,185,129,0.03));
+            border: 1px solid rgba(16,185,129,0.3);
+        }
+        .testimonial-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+        }
+        .testimonial-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            padding: 4px 14px;
+            border-radius: 9999px;
+            display: inline-block;
+            margin-bottom: 16px;
+        }
+        .testimonial-card.case-a .testimonial-label {
+            background: rgba(167,139,250,0.15);
+            color: var(--accent-purple);
+        }
+        .testimonial-card.case-b .testimonial-label {
+            background: rgba(16,185,129,0.15);
+            color: var(--accent-emerald);
+        }
+        .testimonial-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+        }
+        .testimonial-highlight {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin: 20px 0;
+            line-height: 1.2;
+        }
+        .testimonial-card.case-a .testimonial-highlight { color: var(--accent-purple); }
+        .testimonial-card.case-b .testimonial-highlight { color: var(--accent-emerald); }
+        .testimonial-list {
+            list-style: none;
+            padding: 0;
+        }
+        .testimonial-list li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            line-height: 1.7;
+        }
+        .testimonial-list li:last-child { border-bottom: none; }
+        .testimonial-quote {
+            margin-top: 20px;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            font-style: italic;
+            text-align: center;
+        }
+        .testimonial-card.case-a .testimonial-quote {
+            background: rgba(167,139,250,0.08);
+            border: 1px solid rgba(167,139,250,0.2);
+            color: var(--accent-purple);
+        }
+        .testimonial-card.case-b .testimonial-quote {
+            background: rgba(16,185,129,0.08);
+            border: 1px solid rgba(16,185,129,0.2);
+            color: var(--accent-emerald);
+        }
+
+        /* ===== COMPARISON CHART ===== */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border-card);
+        }
+        .comparison-side {
+            padding: 36px;
+        }
+        .comparison-side.before {
+            background: linear-gradient(135deg, rgba(248,113,113,0.08), rgba(248,113,113,0.02));
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+        .comparison-side.after {
+            background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(16,185,129,0.02));
+        }
+        .comparison-side h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        .comparison-side.before h3 { color: var(--accent-red); }
+        .comparison-side.after h3 { color: var(--accent-emerald); }
+        .comparison-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        .comparison-item:last-child { border-bottom: none; }
+        .comparison-icon { font-size: 1.2rem; }
+
+        /* ===== VITALITY BARS ===== */
+        .vitality-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .vitality-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .vitality-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+        }
+        .vitality-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .vitality-label { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; }
+        .vitality-value { font-size: 1.5rem; font-weight: 800; }
+        .vitality-bar {
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255,255,255,0.1);
+            margin-top: 12px;
+            overflow: hidden;
+        }
+        .vitality-fill {
+            height: 100%;
+            border-radius: 3px;
+            animation: fillBar 2s ease-out both;
+        }
+        @keyframes fillBar {
+            from { width: 0; }
+        }
+
+        /* ===== MEDICAL SUPPORT ===== */
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .support-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .support-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+        .support-icon { font-size: 2.5rem; margin-bottom: 12px; }
+        .support-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+        .support-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* ===== FINAL CTA ===== */
+        .final-cta {
+            text-align: center;
+            padding: 80px 24px;
+            position: relative;
+        }
+        .final-cta::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: radial-gradient(ellipse at center, rgba(251,191,36,0.1) 0%, transparent 60%);
+        }
+        .final-cta > * { position: relative; z-index: 1; }
+        .cta-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 16px;
+            padding: 20px 40px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(16,185,129,0.1));
+            border: 2px solid rgba(251,191,36,0.4);
+            margin: 32px 0;
+        }
+        .cta-time-number {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+        }
+        .cta-time-text {
+            text-align: left;
+        }
+        .cta-time-text .zh { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
+        .cta-time-text .en { font-size: 0.85rem; color: var(--text-secondary); }
+        .cta-slogan {
+            font-size: 2.2rem;
+            font-weight: 900;
+            margin-top: 32px;
+            line-height: 1.5;
+        }
+        .cta-slogan .gold { color: var(--accent-gold); }
+        .cta-slogan .cyan { color: var(--accent-cyan); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(56,189,248,0.1);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.5); }
+        }
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes drawLine {
+            from { stroke-dashoffset: 1000; }
+            to { stroke-dashoffset: 0; }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .testimonial-grid { grid-template-columns: 1fr; }
+            .comparison-container { grid-template-columns: 1fr; }
+            .vitality-grid { grid-template-columns: 1fr; }
+            .support-grid { grid-template-columns: repeat(2, 1fr); }
+            .timeline::before { left: 20px; }
+            .timeline-item, .timeline-item:nth-child(even) { flex-direction: row; }
+            .timeline-content { width: calc(100% - 50px); margin-left: 50px; }
+            .timeline-dot { left: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-links">
+                <a href="index.html">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html">BENEFITS 效益</a>
+                <a href="founder.html" class="active">FOUNDER 始創人</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="page-hero">
+        <div class="hero-icon">🔬</div>
+        <h1><span class="gradient">始創人研究歷程</span></h1>
+        <div class="subtitle">Founder's Research Journey</div>
+        <p class="desc">數年用心研究 · 親身見證奇蹟 · 醫學權威認證 · 古今智慧融合</p>
+    </div>
+
+    <div class="container">
+
+        <!-- ===== SECTION 1: 黃帝內經 Philosophy ===== -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background:rgba(251,191,36,0.15); color:var(--accent-gold);">古今智慧 ANCIENT WISDOM</div>
+                <h2 class="section-title" style="color: var(--accent-gold);">研究的起點：黃帝內經</h2>
+                <p class="section-subtitle">The Starting Point: Huangdi Neijing (Yellow Emperor's Classic of Medicine)</p>
+            </div>
+
+            <div class="philosophy-card">
+                <div style="font-size:3rem; margin-bottom:16px;">📜</div>
+                <div class="philosophy-quote">
+                    「心主血脈，脈道以通，血氣乃行」<br>
+                    「經脈者，所以能決死生，處百病，調虛實，不可不通」
+                </div>
+                <div class="philosophy-source">—— 《黃帝內經·靈樞》，約公元前 2600 年</div>
+                <div class="philosophy-explain">
+                    兩千多年前，古人已經深刻認識到：<strong style="color:var(--accent-gold);">心脈暢順，百病戒除</strong>。
+                    心臟是生命的核心引擎，血管經脈是全身的「高速公路」。當血液循環暢通無阻，
+                    氧氣與營養能充分輸送到每一個細胞，身體自然能夠自我修復、自我再生。
+                    <br><br>
+                    這正是七維逆齡系統的核心哲學基礎 —— <strong style="color:var(--accent-cyan);">以 EECP 體外反搏打通全身血管「高速公路」</strong>，
+                    結合現代幹細胞科技、微高壓氧、遠紅外線，實現古人夢寐以求的「長生不老」。
+                </div>
+            </div>
+
+            <!-- Ancient vs Modern Bridge -->
+            <div style="display:grid; grid-template-columns:1fr auto 1fr; gap:24px; align-items:center; margin-top:40px;">
+                <div style="background:var(--bg-card); border:1px solid rgba(251,191,36,0.2); border-radius:16px; padding:28px; text-align:center;">
+                    <div style="font-size:2rem; margin-bottom:8px;">🏛️</div>
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--accent-gold); letter-spacing:2px; margin-bottom:8px;">古代智慧</div>
+                    <div style="font-size:1rem; font-weight:700; margin-bottom:8px;">黃帝內經</div>
+                    <div style="font-size:0.82rem; color:var(--text-secondary); line-height:1.7;">
+                        心主血脈<br>經脈決生死<br>氣血暢通百病除
+                    </div>
+                </div>
+                <div style="text-align:center;">
+                    <div style="font-size:2rem; color:var(--accent-gold); animation: pulse 2s infinite;">⚡</div>
+                    <div style="font-size:0.7rem; color:var(--text-muted); margin-top:4px;">融合</div>
+                </div>
+                <div style="background:var(--bg-card); border:1px solid rgba(34,211,238,0.2); border-radius:16px; padding:28px; text-align:center;">
+                    <div style="font-size:2rem; margin-bottom:8px;">🔬</div>
+                    <div style="font-size:0.75rem; font-weight:700; color:var(--accent-cyan); letter-spacing:2px; margin-bottom:8px;">現代科技</div>
+                    <div style="font-size:1rem; font-weight:700; margin-bottom:8px;">七維逆齡系統</div>
+                    <div style="font-size:0.82rem; color:var(--text-secondary); line-height:1.7;">
+                        EECP 體外反搏<br>幹細胞再生<br>AI 精準管理
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 2: RESEARCH TIMELINE ===== -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background:rgba(34,211,238,0.15); color:var(--accent-cyan);">研究歷程 RESEARCH JOURNEY</div>
+                <h2 class="section-title" style="color: var(--accent-cyan);">數年用心研究之路</h2>
+                <p class="section-subtitle">Years of Dedicated Research & Personal Experimentation</p>
+            </div>
+
+            <div class="timeline">
+                <!-- Item 1 -->
+                <div class="timeline-item" style="animation-delay: 0.1s;">
+                    <div class="timeline-content">
+                        <div class="timeline-year" style="color:var(--accent-gold);">第一階段 PHASE 1</div>
+                        <div class="timeline-title">發現與啟蒙</div>
+                        <div class="timeline-desc">
+                            深入研讀《黃帝內經》，發現古人對「心脈暢順」的深刻認知。同時接觸到 EECP 體外反搏治療技術，
+                            驚覺這項源自哈佛大學的現代技術，竟與兩千年前的中醫理論不謀而合 —— 
+                            <strong style="color:var(--accent-gold);">打通血脈，就是健康之本</strong>。
+                        </div>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="timeline-item" style="animation-delay: 0.3s;">
+                    <div class="timeline-content">
+                        <div class="timeline-year" style="color:var(--accent-cyan);">第二階段 PHASE 2</div>
+                        <div class="timeline-title">親身實踐與見證</div>
+                        <div class="timeline-desc">
+                            開始親身體驗 EECP 治療，同時深入研究幹細胞注射技術。在這個過程中，
+                            親眼見證了兩個震撼性的真實案例，徹底堅定了研究方向。
+                            <strong style="color:var(--accent-cyan);">數據不會說謊，身體的改變是最好的證明。</strong>
+                        </div>
+                    </div>
+                    <div class="timeline-dot" style="background:var(--accent-cyan); box-shadow:0 0 20px rgba(34,211,238,0.5);"></div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="timeline-item" style="animation-delay: 0.5s;">
+                    <div class="timeline-content">
+                        <div class="timeline-year" style="color:var(--accent-emerald);">第三階段 PHASE 3</div>
+                        <div class="timeline-title">贊助研發 · 臨床驗證</div>
+                        <div class="timeline-desc">
+                            投入資源贊助研發臨床試驗，與多名醫生和醫學教授合作，
+                            系統性地驗證 EECP + 幹細胞 + 微高壓氧 + 遠紅外線的協同效應。
+                            <strong style="color:var(--accent-emerald);">得到醫學界專業人士的全力支持與見證。</strong>
+                        </div>
+                    </div>
+                    <div class="timeline-dot" style="background:var(--accent-emerald); box-shadow:0 0 20px rgba(16,185,129,0.5);"></div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="timeline-item" style="animation-delay: 0.7s;">
+                    <div class="timeline-content">
+                        <div class="timeline-year" style="color:var(--accent-purple);">第四階段 PHASE 4</div>
+                        <div class="timeline-title">系統成型 · 七維逆齡</div>
+                        <div class="timeline-desc">
+                            整合所有研究成果，結合古代中醫智慧與現代科技，
+                            正式建立「七維逆齡系統 7D Anti-Aging System」。
+                            <strong style="color:var(--accent-purple);">只需每日 1-2 小時，就能達到活得精彩、繼續任性的目標！</strong>
+                        </div>
+                    </div>
+                    <div class="timeline-dot" style="background:var(--accent-purple); box-shadow:0 0 20px rgba(167,139,250,0.5);"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 3: TWO TESTIMONIALS ===== -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background:rgba(16,185,129,0.15); color:var(--accent-emerald);">親身見證 REAL TESTIMONIALS</div>
+                <h2 class="section-title" style="color: var(--accent-emerald);">兩大震撼真實案例</h2>
+                <p class="section-subtitle">Two Extraordinary Real-Life Cases That Changed Everything</p>
+            </div>
+
+            <div class="testimonial-grid">
+                <!-- CASE A: 90+ Year Old -->
+                <div class="testimonial-card case-a">
+                    <div class="testimonial-icon">🧬</div>
+                    <div class="testimonial-label">見證案例 A · STEM CELL MIRACLE</div>
+                    <div class="testimonial-title">90 多歲長者的逆齡奇蹟</div>
+                    <div class="testimonial-highlight">何只逆齡 20 年！</div>
+
+                    <!-- Before/After Comparison -->
+                    <div class="comparison-container" style="margin:20px 0;">
+                        <div class="comparison-side before">
+                            <h3>❌ 70 歲時（注射前）</h3>
+                            <div class="comparison-item"><span class="comparison-icon">😰</span> 身體機能明顯衰退</div>
+                            <div class="comparison-item"><span class="comparison-icon">🚶</span> 行動遲緩，精力不足</div>
+                            <div class="comparison-item"><span class="comparison-icon">😴</span> 日常活動受限</div>
+                            <div class="comparison-item"><span class="comparison-icon">📉</span> 生活質素持續下降</div>
+                        </div>
+                        <div class="comparison-side after">
+                            <h3>✅ 90 多歲（注射後至今）</h3>
+                            <div class="comparison-item"><span class="comparison-icon">🏃</span> 健步如飛，活力充沛</div>
+                            <div class="comparison-item"><span class="comparison-icon">🚗</span> 每天駕駛中港跨境車</div>
+                            <div class="comparison-item"><span class="comparison-icon">⛳</span> 每星期打高爾夫球四次</div>
+                            <div class="comparison-item"><span class="comparison-icon">🍽️</span> 每週三四晚外出晚飯按摩</div>
+                            <div class="comparison-item"><span class="comparison-icon">🗺️</span> 每個週末駕車到處旅遊</div>
+                        </div>
+                    </div>
+
+                    <!-- Vitality Bars -->
+                    <div style="margin-top:20px;">
+                        <div style="font-size:0.8rem; font-weight:700; color:var(--accent-purple); letter-spacing:1px; margin-bottom:12px;">現時活力指數 VITALITY INDEX (90+ 歲)</div>
+                        <div style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>🏃 體能活力</span><span style="color:var(--accent-purple); font-weight:700;">95%</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:95%; background:linear-gradient(90deg, var(--accent-purple), var(--accent-pink));"></div></div>
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>🚗 駕駛能力</span><span style="color:var(--accent-purple); font-weight:700;">100%</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:100%; background:linear-gradient(90deg, var(--accent-purple), var(--accent-cyan));"></div></div>
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>⛳ 運動頻率</span><span style="color:var(--accent-purple); font-weight:700;">90%</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:90%; background:linear-gradient(90deg, var(--accent-emerald), var(--accent-cyan));"></div></div>
+                        </div>
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>😊 生活品質</span><span style="color:var(--accent-purple); font-weight:700;">98%</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:98%; background:linear-gradient(90deg, var(--accent-gold), var(--accent-orange));"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-quote">
+                        「比 70 歲的自己更年輕、更有活力 —— 非常寫意！」
+                    </div>
+                </div>
+
+                <!-- CASE B: Listed Company Chairman -->
+                <div class="testimonial-card case-b">
+                    <div class="testimonial-icon">💚</div>
+                    <div class="testimonial-label">見證案例 B · EECP REVERSAL</div>
+                    <div class="testimonial-title">上市公司主席的逆齡實證</div>
+                    <div class="testimonial-highlight">AI 數據確認：逆齡 20 年！</div>
+
+                    <div style="background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:12px; padding:24px; margin:20px 0;">
+                        <div style="font-size:0.75rem; font-weight:700; color:var(--accent-emerald); letter-spacing:1px; margin-bottom:12px;">EECP 長期養生歷程</div>
+                        <div style="font-size:0.88rem; color:var(--text-secondary); line-height:1.9;">
+                            這位 60 多歲的上市公司主席，長時間持續使用 EECP 體外反搏治療作為日常養生方式。
+                            經過親身全面性身體檢查，在醫生和始創人親眼目睹下，
+                            <strong style="color:var(--accent-emerald);">AI 分析他的全面體檢數據報告，結論是：生物年齡比實際年齡年輕 20 年！</strong>
+                        </div>
+                    </div>
+
+                    <!-- AI Report Visualization -->
+                    <div style="background:var(--bg-secondary); border-radius:12px; padding:24px; margin:16px 0;">
+                        <div style="display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+                            <span style="font-size:1rem;">🤖</span>
+                            <span style="font-size:0.75rem; font-weight:700; color:var(--accent-cyan); letter-spacing:1px;">AI HEALTH ANALYSIS REPORT</span>
+                        </div>
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+                            <div style="text-align:center; padding:16px; background:rgba(248,113,113,0.08); border-radius:10px; border:1px solid rgba(248,113,113,0.15);">
+                                <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">實際年齡 Chronological Age</div>
+                                <div style="font-size:2.2rem; font-weight:900; color:var(--accent-red);">60+</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">歲 years old</div>
+                            </div>
+                            <div style="text-align:center; padding:16px; background:rgba(16,185,129,0.08); border-radius:10px; border:1px solid rgba(16,185,129,0.15);">
+                                <div style="font-size:0.7rem; color:var(--text-muted); margin-bottom:4px;">生物年齡 Biological Age</div>
+                                <div style="font-size:2.2rem; font-weight:900; color:var(--accent-emerald);">40+</div>
+                                <div style="font-size:0.75rem; color:var(--text-muted);">歲 years old</div>
+                            </div>
+                        </div>
+                        <div style="text-align:center; margin-top:16px; padding:12px; background:rgba(251,191,36,0.08); border-radius:8px; border:1px solid rgba(251,191,36,0.15);">
+                            <span style="font-size:0.85rem; font-weight:700; color:var(--accent-gold);">🏆 逆齡差距：-20 歲 | Reversal Gap: -20 Years</span>
+                        </div>
+                    </div>
+
+                    <!-- Health Metrics -->
+                    <div style="margin-top:16px;">
+                        <div style="font-size:0.8rem; font-weight:700; color:var(--accent-emerald); letter-spacing:1px; margin-bottom:12px;">全面體檢指標 COMPREHENSIVE METRICS</div>
+                        <div style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>❤️ 心血管功能</span><span style="color:var(--accent-emerald); font-weight:700;">優秀</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:92%; background:linear-gradient(90deg, var(--accent-emerald), var(--accent-teal));"></div></div>
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>🧠 認知功能</span><span style="color:var(--accent-emerald); font-weight:700;">優秀</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:88%; background:linear-gradient(90deg, var(--accent-cyan), var(--accent-blue));"></div></div>
+                        </div>
+                        <div style="margin-bottom:10px;">
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>🔬 細胞活力</span><span style="color:var(--accent-emerald); font-weight:700;">優秀</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:90%; background:linear-gradient(90deg, var(--accent-purple), var(--accent-pink));"></div></div>
+                        </div>
+                        <div>
+                            <div style="display:flex; justify-content:space-between; font-size:0.78rem; color:var(--text-secondary); margin-bottom:4px;">
+                                <span>💪 體能狀態</span><span style="color:var(--accent-emerald); font-weight:700;">優秀</span>
+                            </div>
+                            <div class="vitality-bar"><div class="vitality-fill" style="width:85%; background:linear-gradient(90deg, var(--accent-gold), var(--accent-orange));"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-quote">
+                        「EECP 讓我的身體年輕了 20 年 —— 這是 AI 數據的客觀結論！」
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 4: ANIMATED AGE COMPARISON CHART ===== -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background:rgba(59,130,246,0.15); color:var(--accent-blue);">數據圖表 DATA VISUALIZATION</div>
+                <h2 class="section-title" style="color: var(--accent-blue);">見證者生物年齡 vs 實際年齡</h2>
+                <p class="section-subtitle">Biological Age vs Chronological Age — Real Case Comparison</p>
+            </div>
+
+            <div style="background:var(--bg-card); border:1px solid var(--border-card); border-radius:20px; padding:36px; overflow:hidden;">
+                <svg viewBox="0 0 800 400" style="width:100%; height:auto;">
+                    <!-- Grid Lines -->
+                    <defs>
+                        <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#22d3ee;stop-opacity:0.8" />
+                        </linearGradient>
+                        <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:0.8" />
+                            <stop offset="100%" style="stop-color:#f472b6;stop-opacity:0.8" />
+                        </linearGradient>
+                        <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#f87171;stop-opacity:0.6" />
+                            <stop offset="100%" style="stop-color:#f87171;stop-opacity:0.6" />
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Background grid -->
+                    <line x1="80" y1="50" x2="80" y2="350" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+                    <line x1="80" y1="350" x2="760" y2="350" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                    <line x1="80" y1="275" x2="760" y2="275" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="80" y1="200" x2="760" y2="200" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="80" y1="125" x2="760" y2="125" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="5,5"/>
+                    <line x1="80" y1="50" x2="760" y2="50" stroke="rgba(255,255,255,0.03)" stroke-width="1" stroke-dasharray="5,5"/>
+
+                    <!-- Y-axis labels -->
+                    <text x="70" y="355" fill="#64748b" font-size="11" text-anchor="end">30歲</text>
+                    <text x="70" y="280" fill="#64748b" font-size="11" text-anchor="end">45歲</text>
+                    <text x="70" y="205" fill="#64748b" font-size="11" text-anchor="end">60歲</text>
+                    <text x="70" y="130" fill="#64748b" font-size="11" text-anchor="end">75歲</text>
+                    <text x="70" y="55" fill="#64748b" font-size="11" text-anchor="end">90歲</text>
+                    <text x="30" y="200" fill="#94a3b8" font-size="10" text-anchor="middle" transform="rotate(-90,30,200)">年齡 Age</text>
+
+                    <!-- X-axis labels -->
+                    <text x="120" y="375" fill="#64748b" font-size="11" text-anchor="middle">開始前</text>
+                    <text x="290" y="375" fill="#64748b" font-size="11" text-anchor="middle">Year 1</text>
+                    <text x="460" y="375" fill="#64748b" font-size="11" text-anchor="middle">Year 5</text>
+                    <text x="630" y="375" fill="#64748b" font-size="11" text-anchor="middle">Year 10</text>
+                    <text x="740" y="375" fill="#64748b" font-size="11" text-anchor="middle">Year 20</text>
+
+                    <!-- Normal aging line (red dashed) -->
+                    <path d="M120,200 L290,168 L460,118 L630,68 L740,50" 
+                          fill="none" stroke="url(#redGrad)" stroke-width="2.5" stroke-dasharray="8,6"
+                          style="stroke-dashoffset:1000; animation: drawLine 3s ease-out 0.5s forwards;">
+                    </path>
+                    <text x="745" y="45" fill="#f87171" font-size="10" font-weight="600">自然衰老</text>
+
+                    <!-- Case A: 90+ year old (purple) - Bio age goes DOWN -->
+                    <path d="M120,125 L290,175 L460,250 L630,300 L740,320" 
+                          fill="none" stroke="url(#purpleGrad)" stroke-width="3"
+                          style="stroke-dasharray:1000; stroke-dashoffset:1000; animation: drawLine 3s ease-out 1s forwards;">
+                    </path>
+                    <!-- Case A dots -->
+                    <circle cx="120" cy="125" r="6" fill="#a78bfa" style="animation: countUp 0.5s ease-out 1.2s both;">
+                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="460" cy="250" r="6" fill="#a78bfa" style="animation: countUp 0.5s ease-out 2s both;">
+                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="740" cy="320" r="6" fill="#a78bfa" style="animation: countUp 0.5s ease-out 2.8s both;">
+                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+
+                    <!-- Case A labels -->
+                    <text x="125" y="115" fill="#a78bfa" font-size="10" font-weight="700">70歲 衰退</text>
+                    <text x="465" y="240" fill="#a78bfa" font-size="10" font-weight="700">注射幹細胞後</text>
+                    <text x="680" y="340" fill="#a78bfa" font-size="11" font-weight="700">90+歲</text>
+                    <text x="680" y="352" fill="#f472b6" font-size="9" font-weight="600">健步如飛！</text>
+
+                    <!-- Case B: Chairman (green) - Bio age goes DOWN -->
+                    <path d="M120,200 L290,230 L460,275 L630,310 L740,330" 
+                          fill="none" stroke="url(#greenGrad)" stroke-width="3"
+                          style="stroke-dasharray:1000; stroke-dashoffset:1000; animation: drawLine 3s ease-out 1.5s forwards;">
+                    </path>
+                    <!-- Case B dots -->
+                    <circle cx="120" cy="200" r="6" fill="#10b981" style="animation: countUp 0.5s ease-out 1.7s both;">
+                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+                    <circle cx="630" cy="310" r="6" fill="#10b981" style="animation: countUp 0.5s ease-out 2.5s both;">
+                        <animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite"/>
+                    </circle>
+
+                    <!-- Case B labels -->
+                    <text x="125" y="215" fill="#10b981" font-size="10" font-weight="700">60歲 開始EECP</text>
+                    <text x="570" y="305" fill="#10b981" font-size="11" font-weight="700">AI確認：逆齡20年</text>
+
+                    <!-- Legend -->
+                    <rect x="200" y="15" width="400" height="28" rx="14" fill="rgba(15,31,58,0.8)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+                    <line x1="220" y1="29" x2="250" y2="29" stroke="#f87171" stroke-width="2" stroke-dasharray="5,3"/>
+                    <text x="255" y="33" fill="#f87171" font-size="10">自然衰老</text>
+                    <line x1="330" y1="29" x2="360" y2="29" stroke="#a78bfa" stroke-width="2.5"/>
+                    <text x="365" y="33" fill="#a78bfa" font-size="10">案例A 幹細胞</text>
+                    <line x1="460" y1="29" x2="490" y2="29" stroke="#10b981" stroke-width="2.5"/>
+                    <text x="495" y="33" fill="#10b981" font-size="10">案例B EECP</text>
+                </svg>
+                <div style="text-align:center; margin-top:12px; font-size:0.78rem; color:var(--text-muted);">
+                    * 圖表基於真實見證案例繪製，Y軸為生物年齡（越低越年輕）| Based on real testimonial cases
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 5: MEDICAL SUPPORT ===== -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background:rgba(167,139,250,0.15); color:var(--accent-purple);">醫學支持 MEDICAL ENDORSEMENT</div>
+                <h2 class="section-title" style="color: var(--accent-purple);">贊助研發臨床 · 醫學權威支持</h2>
+                <p class="section-subtitle">Sponsored Clinical R&D · Endorsed by Medical Professionals</p>
+            </div>
+
+            <div style="background:linear-gradient(135deg, rgba(167,139,250,0.08), rgba(59,130,246,0.05)); border:1px solid rgba(167,139,250,0.2); border-radius:20px; padding:36px; margin-bottom:32px;">
+                <div style="font-size:1.05rem; color:var(--text-primary); line-height:2; text-align:center; max-width:800px; margin:0 auto;">
+                    始創人不僅親身體驗，更<strong style="color:var(--accent-purple);">投入資源贊助研發臨床試驗</strong>，
+                    與醫學界建立深度合作關係。經過數年的系統性研究，
+                    得到<strong style="color:var(--accent-gold);">多名醫生及醫學教授</strong>的專業支持，
+                    從科學角度驗證了七維逆齡系統的每一個環節。
+                    <br><br>
+                    <span style="color:var(--accent-cyan);">「這不是空談理論 —— 這是有醫學數據、有臨床見證、有專家背書的實證系統。」</span>
+                </div>
+            </div>
+
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">👨‍⚕️</div>
+                    <div class="support-title" style="color:var(--accent-emerald);">心臟科專科醫生</div>
+                    <div class="support-desc">確認 EECP 體外反搏的臨床效果，支持作為長期養生方案</div>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">🔬</div>
+                    <div class="support-title" style="color:var(--accent-purple);">醫學教授團隊</div>
+                    <div class="support-desc">多名教授從學術角度驗證七維協同效應的科學基礎</div>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">🧬</div>
+                    <div class="support-title" style="color:var(--accent-cyan);">幹細胞研究專家</div>
+                    <div class="support-desc">確認幹細胞注射配合 EECP 可大幅提升存活率和療效</div>
+                </div>
+                <div class="support-card">
+                    <div class="support-icon">🤖</div>
+                    <div class="support-title" style="color:var(--accent-blue);">AI 健康數據分析</div>
+                    <div class="support-desc">透過 AI 分析全面體檢數據，客觀量化逆齡效果</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SECTION 6: THE SYSTEM ===== -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-badge" style="background:rgba(251,191,36,0.15); color:var(--accent-gold);">最終成果 THE RESULT</div>
+                <h2 class="section-title" style="color: var(--accent-gold);">研究結論：七維逆齡系統</h2>
+                <p class="section-subtitle">The Culmination: 7D Anti-Aging System</p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(7,1fr); gap:8px; margin-bottom:40px;">
+                <div style="text-align:center; padding:20px 8px; background:rgba(16,185,129,0.08); border:1px solid rgba(16,185,129,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">💚</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-emerald); margin-top:6px;">D1</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">EECP</div>
+                </div>
+                <div style="text-align:center; padding:20px 8px; background:rgba(34,211,238,0.08); border:1px solid rgba(34,211,238,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">🫁</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-cyan); margin-top:6px;">D2</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">mHBOT</div>
+                </div>
+                <div style="text-align:center; padding:20px 8px; background:rgba(248,113,113,0.08); border:1px solid rgba(248,113,113,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">🔴</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-red); margin-top:6px;">D3</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">紅外線</div>
+                </div>
+                <div style="text-align:center; padding:20px 8px; background:rgba(167,139,250,0.08); border:1px solid rgba(167,139,250,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">🧬</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-purple); margin-top:6px;">D4</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">幹細胞</div>
+                </div>
+                <div style="text-align:center; padding:20px 8px; background:rgba(59,130,246,0.08); border:1px solid rgba(59,130,246,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">🤖</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-blue); margin-top:6px;">D5</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">AI</div>
+                </div>
+                <div style="text-align:center; padding:20px 8px; background:rgba(251,191,36,0.08); border:1px solid rgba(251,191,36,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">🥗</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-gold); margin-top:6px;">D6</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">營養</div>
+                </div>
+                <div style="text-align:center; padding:20px 8px; background:rgba(251,146,60,0.08); border:1px solid rgba(251,146,60,0.2); border-radius:12px;">
+                    <div style="font-size:1.5rem;">💪</div>
+                    <div style="font-size:0.65rem; font-weight:700; color:var(--accent-orange); margin-top:6px;">D7</div>
+                    <div style="font-size:0.6rem; color:var(--text-muted);">運動</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FINAL CTA ===== -->
+        <div class="final-cta">
+            <div style="font-size:3rem; margin-bottom:16px; animation: float 4s ease-in-out infinite;">✨</div>
+            <h2 style="font-size:1.8rem; font-weight:800; color:var(--text-primary); margin-bottom:8px;">研究結論 The Conclusion</h2>
+            <p style="font-size:1rem; color:var(--text-secondary); max-width:600px; margin:0 auto 24px;">
+                經過數年親身見證研究，贊助研發臨床，得到多名醫生及醫學教授支持
+            </p>
+
+            <div class="cta-time">
+                <div class="cta-time-number">1-2</div>
+                <div class="cta-time-text">
+                    <div class="zh">小時 / 每日</div>
+                    <div class="en">Hours Per Day — That's All It Takes</div>
+                </div>
+            </div>
+
+            <div class="cta-slogan">
+                <span class="gold">活得精彩</span> · <span class="cyan">繼續任性</span>
+                <br>
+                <span style="font-size:1.2rem; color:var(--text-secondary); font-weight:400;">Live Brilliantly · Stay Unstoppable</span>
+            </div>
+
+            <div style="margin-top:40px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
+                <div style="padding:12px 28px; border-radius:12px; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.3);">
+                    <span style="font-size:0.85rem; color:var(--accent-gold); font-weight:600;">🏛️ 古今智慧融合</span>
+                </div>
+                <div style="padding:12px 28px; border-radius:12px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3);">
+                    <span style="font-size:0.85rem; color:var(--accent-emerald); font-weight:600;">🔬 親身實證驗證</span>
+                </div>
+                <div style="padding:12px 28px; border-radius:12px; background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3);">
+                    <span style="font-size:0.85rem; color:var(--accent-purple); font-weight:600;">👨‍⚕️ 醫學權威背書</span>
+                </div>
+                <div style="padding:12px 28px; border-radius:12px; background:rgba(34,211,238,0.1); border:1px solid rgba(34,211,238,0.3);">
+                    <span style="font-size:0.85rem; color:var(--accent-cyan); font-weight:600;">🤖 AI 數據支持</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>七維逆齡系統 7D Anti-Aging System 5.0 | Founder's Research Journey</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">古今智慧融合 · 親身實證驗證 · 醫學權威背書 · AI 數據支持</p>
+    </footer>
+
+</body>
+</html>
