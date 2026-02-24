@@ -460,26 +460,42 @@
             background: radial-gradient(ellipse at center, rgba(251,191,36,0.1) 0%, transparent 60%);
         }
         .final-cta > * { position: relative; z-index: 1; }
+        .cta-heading {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .cta-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 24px;
+        }
         .cta-time {
-            display: inline-flex;
+            display: flex;
             align-items: center;
-            gap: 16px;
-            padding: 20px 40px;
+            justify-content: center;
+            gap: 20px;
+            padding: 24px 48px;
             border-radius: 16px;
             background: linear-gradient(135deg, rgba(251,191,36,0.15), rgba(16,185,129,0.1));
             border: 2px solid rgba(251,191,36,0.4);
-            margin: 32px 0;
+            margin: 32px auto;
+            max-width: 520px;
         }
         .cta-time-number {
-            font-size: 3rem;
+            font-size: 3.5rem;
             font-weight: 900;
             color: var(--accent-gold);
+            text-shadow: 0 0 30px rgba(251,191,36,0.3);
+            line-height: 1;
         }
         .cta-time-text {
             text-align: left;
         }
         .cta-time-text .zh { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
-        .cta-time-text .en { font-size: 0.85rem; color: var(--text-secondary); }
+        .cta-time-text .en { font-size: 0.85rem; color: var(--text-secondary); margin-top: 4px; }
         .cta-slogan {
             font-size: 2.2rem;
             font-weight: 900;
@@ -488,6 +504,29 @@
         }
         .cta-slogan .gold { color: var(--accent-gold); }
         .cta-slogan .cyan { color: var(--accent-cyan); }
+        .cta-slogan-en {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-top: 8px;
+        }
+        .cta-badges {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cta-badge {
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .cta-badge-gold { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3); color: var(--accent-gold); }
+        .cta-badge-green { background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3); color: var(--accent-emerald); }
+        .cta-badge-purple { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.3); color: var(--accent-purple); }
+        .cta-badge-cyan { background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.3); color: var(--accent-cyan); }
 
         /* ===== FOOTER ===== */
         .footer {
@@ -719,13 +758,39 @@
             .timeline-year { font-size: 0.72rem !important; }
 
             /* CTA */
-            .final-cta { padding: 40px 16px !important; }
-            .cta-time { padding: 12px 16px !important; gap: 10px !important; flex-wrap: wrap; justify-content: center; }
-            .cta-time-number { font-size: 1.8rem !important; }
-            .cta-time-text .zh { font-size: 0.9rem !important; }
-            .cta-time-text .en { font-size: 0.72rem !important; }
-            .cta-slogan { font-size: 1.3rem !important; }
-            .cta-slogan span[style*="font-size:1.2rem"] { font-size: 0.85rem !important; }
+            .final-cta { padding: 50px 20px !important; }
+            .cta-heading { font-size: 1.4rem !important; }
+            .cta-subtitle { font-size: 0.88rem !important; margin-bottom: 20px !important; }
+            .cta-time {
+                flex-direction: column !important;
+                gap: 8px !important;
+                padding: 28px 24px !important;
+                margin: 24px auto !important;
+                max-width: 320px !important;
+                text-align: center !important;
+            }
+            .cta-time-number {
+                font-size: 3.2rem !important;
+                text-align: center !important;
+            }
+            .cta-time-text {
+                text-align: center !important;
+            }
+            .cta-time-text .zh { font-size: 1rem !important; }
+            .cta-time-text .en { font-size: 0.78rem !important; }
+            .cta-slogan { font-size: 1.5rem !important; margin-top: 24px !important; }
+            .cta-slogan-en { font-size: 0.9rem !important; }
+            .cta-badges {
+                gap: 10px !important;
+                margin-top: 28px !important;
+            }
+            .cta-badge {
+                padding: 10px 18px !important;
+                font-size: 0.78rem !important;
+                flex: 0 0 calc(50% - 8px) !important;
+                text-align: center !important;
+                box-sizing: border-box !important;
+            }
 
             /* Medical support intro box */
             .section > div[style*="padding:36px"] {
@@ -765,8 +830,12 @@
             .support-grid { grid-template-columns: 1fr 1fr !important; }
             .vitality-grid { grid-template-columns: 1fr 1fr !important; }
             .dim-icons-grid { grid-template-columns: repeat(4, 1fr) !important; }
-            .cta-slogan { font-size: 1.1rem !important; }
-            .cta-time-number { font-size: 1.5rem !important; }
+            .cta-slogan { font-size: 1.2rem !important; }
+            .cta-slogan-en { font-size: 0.8rem !important; }
+            .cta-time-number { font-size: 2.5rem !important; }
+            .cta-time { max-width: 280px !important; padding: 24px 20px !important; }
+            .cta-time-text .zh { font-size: 0.9rem !important; }
+            .cta-badge { flex: 0 0 calc(50% - 6px) !important; padding: 8px 12px !important; font-size: 0.72rem !important; }
             .testimonial-highlight { font-size: 1.3rem !important; }
             .testimonial-title { font-size: 0.95rem !important; }
             .bridge-grid > div { padding: 14px !important; }
@@ -1400,8 +1469,8 @@
         <!-- ===== FINAL CTA ===== -->
         <div class="final-cta">
             <div style="font-size:3rem; margin-bottom:16px; animation: float 4s ease-in-out infinite;">✨</div>
-            <h2 style="font-size:1.8rem; font-weight:800; color:var(--text-primary); margin-bottom:8px;">研究結論 The Conclusion</h2>
-            <p style="font-size:1rem; color:var(--text-secondary); max-width:600px; margin:0 auto 24px;">
+            <h2 class="cta-heading">研究結論 The Conclusion</h2>
+            <p class="cta-subtitle">
                 經過數年親身見證研究，贊助研發臨床，得到多名醫生及醫學教授支持
             </p>
 
@@ -1415,23 +1484,14 @@
 
             <div class="cta-slogan">
                 <span class="gold">活得精彩</span> · <span class="cyan">繼續任性</span>
-                <br>
-                <span style="font-size:1.2rem; color:var(--text-secondary); font-weight:400;">Live Brilliantly · Stay Unstoppable</span>
             </div>
+            <div class="cta-slogan-en">Live Brilliantly · Stay Unstoppable</div>
 
-            <div style="margin-top:40px; display:flex; justify-content:center; gap:20px; flex-wrap:wrap;">
-                <div style="padding:12px 28px; border-radius:12px; background:rgba(251,191,36,0.1); border:1px solid rgba(251,191,36,0.3);">
-                    <span style="font-size:0.85rem; color:var(--accent-gold); font-weight:600;">🏛️ 古今智慧融合</span>
-                </div>
-                <div style="padding:12px 28px; border-radius:12px; background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3);">
-                    <span style="font-size:0.85rem; color:var(--accent-emerald); font-weight:600;">🔬 親身實證驗證</span>
-                </div>
-                <div style="padding:12px 28px; border-radius:12px; background:rgba(167,139,250,0.1); border:1px solid rgba(167,139,250,0.3);">
-                    <span style="font-size:0.85rem; color:var(--accent-purple); font-weight:600;">👨‍⚕️ 醫學權威背書</span>
-                </div>
-                <div style="padding:12px 28px; border-radius:12px; background:rgba(34,211,238,0.1); border:1px solid rgba(34,211,238,0.3);">
-                    <span style="font-size:0.85rem; color:var(--accent-cyan); font-weight:600;">🤖 AI 數據支持</span>
-                </div>
+            <div class="cta-badges">
+                <div class="cta-badge cta-badge-gold">🏛️ 古今智慧融合</div>
+                <div class="cta-badge cta-badge-green">🔬 親身實證驗證</div>
+                <div class="cta-badge cta-badge-purple">👨‍⚕️ 醫學權威背書</div>
+                <div class="cta-badge cta-badge-cyan">🤖 AI 數據支持</div>
             </div>
         </div>
 
