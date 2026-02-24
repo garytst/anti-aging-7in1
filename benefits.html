@@ -346,14 +346,50 @@
         @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
         @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
+        /* ===== MOBILE HAMBURGER MENU ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 24px; height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+                gap: 12px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1rem; padding: 8px 0; }
             .timeline::before { left: 20px; }
             .timeline-item { width: 85%; margin-left: 50px !important; }
             .timeline-item::before { left: -38px !important; right: auto !important; }
             .benefit-grid { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
             .case-study { padding: 24px; }
+            .container { padding: 0 16px; }
+            .hero h1 { font-size: 2rem; }
+            .metrics-banner { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        }
+        @media (max-width: 480px) {
+            .metrics-banner { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 1.6rem; }
         }
     </style>
 </head>
@@ -364,6 +400,9 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
             <div class="nav-links">
                 <a href="index.html">HOME 首頁</a>
                 <a href="7d-dimensions.html">7D DIMENSIONS</a>

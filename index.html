@@ -594,12 +594,44 @@
         .enriched-detail strong { color: var(--text-primary); }
         .enriched-metrics { display: flex; gap: 16px; margin-top: 12px; flex-wrap: wrap; }
         .enriched-metric { padding: 8px 16px; background: rgba(34,211,238,0.05); border: 1px solid rgba(34,211,238,0.15); border-radius: 8px; font-size: 0.82rem; }
+        /* ===== MOBILE HAMBURGER MENU ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 24px; height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
         @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+                gap: 12px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1rem; padding: 8px 0; }
             .strategy-compare, .dynamic-strategy { grid-template-columns: 1fr; }
             .stem-steps { grid-template-columns: 1fr 1fr; }
             .stem-step-arrow { display: none; }
             .enriched-metrics { flex-direction: column; }
-            .nav-links { display: none; }
+            .container { padding: 0 16px; }
+            .section { padding: 40px 0; }
+            .section-title { font-size: 1.4rem; }
         }
 
         /* ===== FOOTER ===== */
@@ -656,6 +688,9 @@
     <nav class="nav">
         <div class="nav-inner">
             <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
             <div class="nav-links">
                 <a href="index.html" class="active">HOME 首頁</a>
                 <a href="7d-dimensions.html">7D DIMENSIONS</a>

@@ -416,12 +416,44 @@
         }
 
         /* ===== RESPONSIVE ===== */
+        /* ===== MOBILE HAMBURGER MENU ===== */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 8px;
+            z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 24px; height: 2px;
+            background: var(--accent-cyan);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
         @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0; right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 16px 24px;
+                border-bottom: 1px solid rgba(34, 211, 238, 0.15);
+                gap: 8px;
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 0.9rem; padding: 8px 0; }
             .dim-content { grid-template-columns: 1fr; }
-            .nav-links { display: none; }
             .dim-header { flex-direction: column; text-align: center; }
             .evidence-stats { flex-direction: column; gap: 1rem; }
             .synergy-metrics { flex-direction: column; gap: 1.5rem; }
+            .hero { padding: 6rem 1rem 3rem; min-height: auto; }
+            .hero h1 { font-size: 1.8rem; }
+            .container { padding: 0 16px; }
         }
 
         /* ===== ANIMATIONS ===== */
@@ -441,6 +473,9 @@
 <!-- NAVIGATION -->
 <nav class="nav">
     <div class="nav-brand">7D ANTI-AGING SYSTEM</div>
+    <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+        <span></span><span></span><span></span>
+    </div>
     <div class="nav-links">
         <a href="#dim1">D1 EECP</a>
         <a href="#dim2">D2 mHBOT</a>
