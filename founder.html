@@ -763,31 +763,38 @@
             .cta-subtitle { font-size: 0.88rem !important; margin-bottom: 20px !important; }
             .cta-time {
                 flex-direction: column !important;
-                gap: 8px !important;
-                padding: 28px 24px !important;
+                align-items: center !important;
+                gap: 4px !important;
+                padding: 24px 20px !important;
                 margin: 24px auto !important;
-                max-width: 320px !important;
+                max-width: 300px !important;
                 text-align: center !important;
             }
             .cta-time-number {
-                font-size: 3.2rem !important;
+                font-size: 3rem !important;
                 text-align: center !important;
+                width: 100% !important;
             }
             .cta-time-text {
                 text-align: center !important;
+                width: 100% !important;
             }
             .cta-time-text .zh { font-size: 1rem !important; }
-            .cta-time-text .en { font-size: 0.78rem !important; }
+            .cta-time-text .en { font-size: 0.75rem !important; line-height: 1.4 !important; }
             .cta-slogan { font-size: 1.5rem !important; margin-top: 24px !important; }
             .cta-slogan-en { font-size: 0.9rem !important; }
             .cta-badges {
+                display: grid !important;
+                grid-template-columns: 1fr 1fr !important;
                 gap: 10px !important;
                 margin-top: 28px !important;
+                max-width: 340px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
             }
             .cta-badge {
-                padding: 10px 18px !important;
+                padding: 10px 12px !important;
                 font-size: 0.78rem !important;
-                flex: 0 0 calc(50% - 8px) !important;
                 text-align: center !important;
                 box-sizing: border-box !important;
             }
@@ -835,7 +842,8 @@
             .cta-time-number { font-size: 2.5rem !important; }
             .cta-time { max-width: 280px !important; padding: 24px 20px !important; }
             .cta-time-text .zh { font-size: 0.9rem !important; }
-            .cta-badge { flex: 0 0 calc(50% - 6px) !important; padding: 8px 12px !important; font-size: 0.72rem !important; }
+            .cta-badges { grid-template-columns: 1fr 1fr !important; max-width: 290px !important; gap: 8px !important; }
+            .cta-badge { padding: 8px 8px !important; font-size: 0.7rem !important; }
             .testimonial-highlight { font-size: 1.3rem !important; }
             .testimonial-title { font-size: 0.95rem !important; }
             .bridge-grid > div { padding: 14px !important; }
