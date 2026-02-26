@@ -65,7 +65,7 @@
                 <h1 style="
                     font-size:1.4rem; font-weight:800; color:#fff;
                     letter-spacing:3px; margin-bottom:8px;
-                ">7D ANTI-AGING 5.0</h1>
+                ">7D ANTI-AGING 5.0 RESEARCH</h1>
                 <p style="
                     font-size:0.85rem; color:rgba(255,255,255,0.5);
                     margin-bottom:32px; letter-spacing:1px;
