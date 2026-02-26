@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研究願景 | Vision | 七維逆齡系統 5.0</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.7);
+            --bg-card-hover: rgba(20, 40, 75, 0.8);
+            --border-card: rgba(56, 189, 248, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.35);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-teal: #14b8a6;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-orange: #fb923c;
+            --accent-gold: #fbbf24;
+            --accent-pink: #f472b6;
+            --glow-cyan: rgba(34, 211, 238, 0.15);
+            --glow-emerald: rgba(16, 185, 129, 0.15);
+            --glow-purple: rgba(167, 139, 250, 0.15);
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+        .nav-hamburger {
+            display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px;
+        }
+        .nav-hamburger span {
+            width: 24px; height: 2px; background: var(--accent-cyan); transition: 0.3s;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: radial-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+        /* ===== HERO ===== */
+        .page-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 120px 24px 80px;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+        .hero-bg img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.25;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(to bottom, rgba(10,22,40,0.3) 0%, rgba(10,22,40,0.7) 60%, rgba(10,22,40,1) 100%);
+        }
+        .hero-content {
+            position: relative; z-index: 1;
+            max-width: 800px;
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 24px;
+            border-radius: 50px;
+            background: linear-gradient(135deg, rgba(34,211,238,0.15), rgba(251,191,36,0.15));
+            border: 1px solid rgba(34,211,238,0.3);
+            font-size: 0.9rem;
+            color: var(--accent-gold);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #22d3ee, #fbbf24, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-content .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+        .hero-content .tagline {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            margin-top: 20px;
+        }
+        .hero-content .tagline-en {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 8px;
+        }
+
+        /* ===== SECTION COMMON ===== */
+        .vision-section {
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+        }
+        .vision-section .section-bg {
+            position: absolute; inset: 0; z-index: 0;
+        }
+        .vision-section .section-bg img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .vision-section .section-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+        }
+        .section-content {
+            position: relative; z-index: 1;
+        }
+        .section-label {
+            display: inline-block;
+            padding: 6px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+        }
+
+        /* ===== CHARITY SECTION ===== */
+        .charity-section {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(16,185,129,0.05) 50%, var(--bg-primary) 100%);
+        }
+        .charity-section .section-bg::after {
+            background: linear-gradient(135deg, rgba(10,22,40,0.85) 0%, rgba(10,22,40,0.7) 50%, rgba(10,22,40,0.9) 100%);
+        }
+        .charity-label {
+            background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(34,211,238,0.2));
+            border: 1px solid rgba(16,185,129,0.3);
+            color: var(--accent-emerald);
+        }
+        .charity-title { color: var(--accent-emerald); }
+
+        .charity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-top: 40px;
+        }
+        .charity-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        .charity-card:hover {
+            border-color: var(--accent-emerald);
+            background: var(--bg-card-hover);
+            transform: translateY(-4px);
+        }
+        .charity-card .card-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .charity-card h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-emerald);
+            margin-bottom: 8px;
+        }
+        .charity-card p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .charity-quote {
+            margin-top: 48px;
+            text-align: center;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(16,185,129,0.08), rgba(34,211,238,0.08));
+            border: 1px solid rgba(16,185,129,0.2);
+            border-radius: 20px;
+        }
+        .charity-quote blockquote {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            line-height: 1.5;
+        }
+        .charity-quote .quote-en {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-top: 12px;
+            font-style: italic;
+        }
+
+        /* ===== GOVERNMENT / OPEN VISION ===== */
+        .gov-section {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(59,130,246,0.05) 50%, var(--bg-primary) 100%);
+        }
+        .gov-section .section-bg::after {
+            background: linear-gradient(135deg, rgba(10,22,40,0.8) 0%, rgba(10,22,40,0.65) 50%, rgba(10,22,40,0.85) 100%);
+        }
+        .gov-label {
+            background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(167,139,250,0.2));
+            border: 1px solid rgba(59,130,246,0.3);
+            color: var(--accent-blue);
+        }
+        .gov-title { color: var(--accent-cyan); }
+
+        .eecp-highlight {
+            margin-top: 40px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(59,130,246,0.08));
+            border: 1px solid rgba(34,211,238,0.2);
+            border-radius: 20px;
+        }
+        .eecp-highlight h3 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .eecp-highlight .eecp-sub {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .eecp-benefits {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .eecp-benefit {
+            text-align: center;
+            padding: 24px 16px;
+            background: rgba(10,22,40,0.6);
+            border: 1px solid rgba(34,211,238,0.15);
+            border-radius: 12px;
+        }
+        .eecp-benefit .benefit-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+        }
+        .eecp-benefit h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 6px;
+        }
+        .eecp-benefit p {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .gov-impact {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .impact-card {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 16px;
+            transition: all 0.3s;
+        }
+        .impact-card:hover {
+            border-color: var(--accent-blue);
+            transform: translateY(-4px);
+        }
+        .impact-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 8px;
+        }
+        .impact-card h4 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .impact-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .gov-proposal {
+            margin-top: 48px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(167,139,250,0.08));
+            border: 1px solid rgba(59,130,246,0.2);
+            border-radius: 20px;
+        }
+        .gov-proposal h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .proposal-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+        .proposal-list li {
+            padding: 16px 20px;
+            background: rgba(10,22,40,0.5);
+            border: 1px solid rgba(59,130,246,0.15);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+        .proposal-list li strong {
+            color: var(--accent-blue);
+        }
+
+        /* ===== PRIVATE SECTION ===== */
+        .private-section {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, rgba(167,139,250,0.03) 50%, var(--bg-primary) 100%);
+        }
+        .private-section .section-bg::after {
+            background: linear-gradient(135deg, rgba(10,22,40,0.75) 0%, rgba(10,22,40,0.6) 50%, rgba(10,22,40,0.85) 100%);
+        }
+        .private-label {
+            background: linear-gradient(135deg, rgba(167,139,250,0.2), rgba(244,114,182,0.2));
+            border: 1px solid rgba(167,139,250,0.3);
+            color: var(--accent-purple);
+        }
+        .private-title { color: var(--accent-purple); }
+
+        .private-content {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .private-content .zen-text {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-gold);
+            margin: 40px 0 16px;
+            letter-spacing: 8px;
+        }
+        .private-content .zen-sub {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+        .private-content .zen-poem {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            line-height: 2.2;
+            padding: 32px;
+            background: rgba(167,139,250,0.05);
+            border: 1px solid rgba(167,139,250,0.15);
+            border-radius: 16px;
+        }
+        .private-content .zen-poem span {
+            color: var(--accent-purple);
+            font-weight: 600;
+        }
+
+        .lotus-divider {
+            text-align: center;
+            font-size: 2rem;
+            margin: 32px 0;
+            opacity: 0.6;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(56,189,248,0.1);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ===== SCROLL TO TOP ===== */
+        .scroll-top {
+            position: fixed; bottom: 30px; right: 30px; z-index: 999;
+            width: 48px; height: 48px; border-radius: 50%;
+            background: rgba(34,211,238,0.15); border: 1px solid rgba(34,211,238,0.3);
+            color: var(--accent-cyan); font-size: 1.2rem;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: all 0.3s; opacity: 0;
+        }
+        .scroll-top.visible { opacity: 1; }
+        .scroll-top:hover { background: rgba(34,211,238,0.3); transform: translateY(-3px); }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate { animation: fadeInUp 0.8s ease-out forwards; }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%; left: 0; right: 0;
+                background: rgba(10, 22, 40, 0.98);
+                flex-direction: column; padding: 20px; gap: 16px;
+                border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1rem; padding: 8px 0; }
+
+            .page-hero { min-height: 70vh; padding: 100px 20px 60px; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content .subtitle { font-size: 1rem; }
+            .hero-content .tagline { font-size: 1.2rem; }
+
+            .vision-section { padding: 60px 0; }
+            .section-title { font-size: 1.6rem; }
+            .section-subtitle { font-size: 0.95rem; }
+
+            .charity-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .charity-card { padding: 24px; }
+            .charity-quote { padding: 24px; }
+            .charity-quote blockquote { font-size: 1.2rem; }
+
+            .eecp-highlight { padding: 24px; }
+            .eecp-benefits {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .eecp-benefit { padding: 16px 12px; }
+            .eecp-benefit h4 { font-size: 0.95rem; }
+
+            .gov-impact {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .impact-number { font-size: 2rem; }
+
+            .gov-proposal { padding: 24px; }
+            .proposal-list {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .private-content .zen-text { font-size: 1.6rem; letter-spacing: 4px; }
+            .private-content .zen-poem { padding: 20px; font-size: 1rem; }
+
+            .footer { padding: 24px 16px; }
+        }
+
+        @media (max-width: 380px) {
+            .hero-content h1 { font-size: 1.6rem; }
+            .hero-content .tagline { font-size: 1rem; }
+            .section-title { font-size: 1.4rem; }
+            .eecp-benefits { grid-template-columns: 1fr; }
+            .private-content .zen-text { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+<script src="auth.js?v=2"></script>
+    <div class="bg-grid"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0</a>
+            <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html">BENEFITS 效益</a>
+                <a href="founder.html">FOUNDER 始創人</a>
+                <a href="vision.html" class="active">VISION 願景</a>
+                <a href="documents.html">DOCS 文件</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <div class="page-hero">
+        <div class="hero-bg">
+            <img src="images/vision-hero.png" alt="Vision Hero">
+        </div>
+        <div class="hero-content animate">
+            <div class="hero-badge">✦ RESEARCH VISION 研究願景 ✦</div>
+            <h1>研究願景<br>Research Vision</h1>
+            <p class="subtitle">讓更多人活得更健康、更長壽、更有活力</p>
+            <p class="subtitle" style="font-size:1rem;">Empowering More People to Live Healthier, Longer, and More Vibrant Lives</p>
+            <p class="tagline">逆齡保養 <span style="color:#f87171;">從心</span> 而發</p>
+            <p class="tagline-en">Anti-Aging Wellness — Begins from the Heart</p>
+        </div>
+    </div>
+
+    <!-- ===== SECTION 1: CHARITY / PUBLIC GOOD ===== -->
+    <section class="vision-section charity-section">
+        <div class="section-bg">
+            <img src="images/vision-charity.png" alt="Charity" style="opacity:0.15;">
+        </div>
+        <div class="container section-content">
+            <div style="text-align:center;">
+                <span class="section-label charity-label">❤️ CHARITY &amp; PUBLIC GOOD</span>
+                <h2 class="section-title charity-title">慈善公益</h2>
+                <p class="section-subtitle">讓身邊的人更健康、更長壽、更有活力、更任性<br>Helping Those Around Us Live Healthier, Longer, More Vibrant &amp; Unstoppable Lives</p>
+            </div>
+
+            <div class="charity-grid">
+                <div class="charity-card">
+                    <div class="card-icon">💚</div>
+                    <h3>更健康</h3>
+                    <p>Healthier</p>
+                    <p style="margin-top:12px; font-size:0.85rem;">透過 7D 七維逆齡系統，從血管、細胞、免疫多維度全面提升身體機能，遠離慢性疾病困擾</p>
+                </div>
+                <div class="charity-card">
+                    <div class="card-icon">🕰️</div>
+                    <h3>更長壽</h3>
+                    <p>Longer Life</p>
+                    <p style="margin-top:12px; font-size:0.85rem;">以 EECP 為核心，軟化血管、增生微絲血管，從根本延緩衰老進程，延長健康壽命</p>
+                </div>
+                <div class="charity-card">
+                    <div class="card-icon">⚡</div>
+                    <h3>更有活力</h3>
+                    <p>More Vibrant</p>
+                    <p style="margin-top:12px; font-size:0.85rem;">改善全身血液循環，增強心肺功能，讓每一天都充滿能量，精神奕奕</p>
+                </div>
+                <div class="charity-card">
+                    <div class="card-icon">🦁</div>
+                    <h3>更任性</h3>
+                    <p>Stay Unstoppable</p>
+                    <p style="margin-top:12px; font-size:0.85rem;">擁有健康的身體，才有資格繼續任性地追求夢想、享受人生每一刻</p>
+                </div>
+            </div>
+
+            <div class="charity-quote">
+                <blockquote>「健康不是一個人的事，<br>是讓身邊每一個人都活得精彩」</blockquote>
+                <p class="quote-en">"Health is not just about oneself — it's about empowering everyone around you to live brilliantly."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 2: OPEN VISION / GOVERNMENT ===== -->
+    <section class="vision-section gov-section">
+        <div class="section-bg">
+            <img src="images/vision-government.png" alt="Government Vision" style="opacity:0.12;">
+        </div>
+        <div class="container section-content">
+            <div style="text-align:center;">
+                <span class="section-label gov-label">🏛️ OPEN VISION 開放願景</span>
+                <h2 class="section-title gov-title">打動政府 · 全民健康</h2>
+                <p class="section-subtitle">全面推廣 EECP 體外反搏，改善全民血液循環<br>Advocating Government Adoption of EECP for Universal Cardiovascular Health</p>
+            </div>
+
+            <!-- EECP Core Benefits -->
+            <div class="eecp-highlight">
+                <h3>🫀 EECP 體外反搏 · 核心功效</h3>
+                <p class="eecp-sub">Enhanced External Counterpulsation — Core Benefits</p>
+                <div class="eecp-benefits">
+                    <div class="eecp-benefit">
+                        <div class="benefit-icon">🩸</div>
+                        <h4>軟化血管</h4>
+                        <p>Soften Blood Vessels</p>
+                        <p style="margin-top:6px;">恢復血管彈性<br>改善動脈硬化</p>
+                    </div>
+                    <div class="eecp-benefit">
+                        <div class="benefit-icon">🌿</div>
+                        <h4>增生微絲血管</h4>
+                        <p>Capillary Regeneration</p>
+                        <p style="margin-top:6px;">喚醒「幽靈血管」<br>建立側支循環</p>
+                    </div>
+                    <div class="eecp-benefit">
+                        <div class="benefit-icon">🛡️</div>
+                        <h4>防猝死</h4>
+                        <p>Prevent Sudden Death</p>
+                        <p style="margin-top:6px;">降低冠心病風險<br>預防心臟性猝死</p>
+                    </div>
+                    <div class="eecp-benefit">
+                        <div class="benefit-icon">🧠</div>
+                        <h4>防中風 · 防失智</h4>
+                        <p>Prevent Stroke &amp; Dementia</p>
+                        <p style="margin-top:6px;">改善腦部血流<br>降低腦血管意外風險</p>
+                    </div>
+                    <div class="eecp-benefit">
+                        <div class="benefit-icon">💪</div>
+                        <h4>增強活力</h4>
+                        <p>Boost Vitality</p>
+                        <p style="margin-top:6px;">提升心肺功能<br>全身充滿能量</p>
+                    </div>
+                    <div class="eecp-benefit">
+                        <div class="benefit-icon">❤️‍🩹</div>
+                        <h4>減低心臟負荷</h4>
+                        <p>Reduce Cardiac Load</p>
+                        <p style="margin-top:6px;">舒張期反搏輔助<br>心臟更輕鬆泵血</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Government Impact -->
+            <div class="gov-impact">
+                <div class="impact-card">
+                    <div class="impact-number" style="color: var(--accent-cyan);">65 → 75</div>
+                    <h4>延長工作年齡</h4>
+                    <p>Extend Working Age</p>
+                    <p style="margin-top:8px; font-size:0.82rem;">全民血管健康改善後，有機會將退休年齡從 65 歲延長至 75 歲，釋放龐大勞動力</p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number" style="color: var(--accent-emerald);">$17,074</div>
+                    <h4>每人每年節省</h4>
+                    <p>Annual Savings Per Patient</p>
+                    <p style="margin-top:8px; font-size:0.82rem;">研究顯示 EECP 可大幅減少住院次數，每位患者年均節省醫療費用 US$17,074<br><span style="font-size:0.75rem; color:var(--text-muted);">Source: Lawson et al., 2015, JACC</span></p>
+                </div>
+                <div class="impact-card">
+                    <div class="impact-number" style="color: var(--accent-gold);">↓ 醫療負擔</div>
+                    <h4>減輕政府開支</h4>
+                    <p>Reduce Government Healthcare Burden</p>
+                    <p style="margin-top:8px; font-size:0.82rem;">香港人口急速老化，醫療開支持續攀升。預防勝於治療，EECP 可從源頭減輕公共醫療壓力</p>
+                </div>
+            </div>
+
+            <!-- Government Proposal -->
+            <div class="gov-proposal">
+                <h3>📋 政策建議 Policy Proposals</h3>
+                <ul class="proposal-list">
+                    <li><strong>社區健康中心</strong> — 在各區設立 EECP 體外反搏服務站，讓市民方便接受預防性治療<br><span style="font-size:0.8rem; color:var(--text-muted);">Community EECP Wellness Stations in Every District</span></li>
+                    <li><strong>長者健康計劃</strong> — 將 EECP 納入長者醫療券適用範圍，鼓勵預防性保健<br><span style="font-size:0.8rem; color:var(--text-muted);">Include EECP in Elderly Healthcare Voucher Scheme</span></li>
+                    <li><strong>臨床數據支持</strong> — 資助大規模本地臨床研究，建立香港人口的 EECP 效果數據庫<br><span style="font-size:0.8rem; color:var(--text-muted);">Fund Large-Scale Local Clinical Research</span></li>
+                    <li><strong>延長退休年齡</strong> — 以全民血管健康為基礎，逐步延長健康工作年限至 75 歲<br><span style="font-size:0.8rem; color:var(--text-muted);">Gradually Extend Healthy Working Age to 75</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SECTION 3: PRIVATE PROJECTS ===== -->
+    <section class="vision-section private-section">
+        <div class="section-bg">
+            <img src="images/vision-private.png" alt="Private" style="opacity:0.2;">
+        </div>
+        <div class="container section-content">
+            <div style="text-align:center;">
+                <span class="section-label private-label">🌙 PRIVATE PROJECTS 私人項目</span>
+                <h2 class="section-title private-title">私人項目</h2>
+                <p class="section-subtitle">Private Research Projects</p>
+            </div>
+
+            <div class="private-content">
+                <div class="zen-text">隨 緣 吧</div>
+                <div class="zen-sub">Let It Flow Naturally</div>
+
+                <div class="lotus-divider">🪷</div>
+
+                <div class="zen-poem">
+                    <span>水到渠成</span>，不急不躁<br>
+                    <span>緣起緣滅</span>，順其自然<br><br>
+                    有些研究，需要時間沉澱<br>
+                    有些成果，需要機緣巧合<br><br>
+                    <span>保持初心</span>，持續探索<br>
+                    <span>逆齡保養從心而發</span><br><br>
+                    <span style="font-size:0.9rem; color:var(--text-muted); font-style:italic;">
+                    Some research needs time to mature.<br>
+                    Some breakthroughs need serendipity.<br>
+                    Stay true to the heart. Keep exploring.
+                    </span>
+                </div>
+
+                <div class="lotus-divider">🪷</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <p>七維逆齡系統 7D Anti-Aging System 5.0 | Research Vision 研究願景</p>
+        <p style="margin-top: 8px; font-size: 0.75rem;">逆齡保養從心而發 · Anti-Aging Wellness Begins from the Heart</p>
+    </footer>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">⌃</button>
+
+    <script>
+        // Scroll to top button visibility
+        window.addEventListener('scroll', () => {
+            const btn = document.querySelector('.scroll-top');
+            if (window.scrollY > 400) btn.classList.add('visible');
+            else btn.classList.remove('visible');
+        });
+
+        // Scroll animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.charity-card, .eecp-benefit, .impact-card, .charity-quote, .gov-proposal, .private-content').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
