@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog 創辦人分享 | 7D Anti-Aging 5.0 Research</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Serif+TC:wght@400;500;600;700;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.7);
+            --bg-card-hover: rgba(20, 40, 75, 0.8);
+            --border-card: rgba(56, 189, 248, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.35);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-teal: #14b8a6;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-orange: #fb923c;
+            --accent-gold: #fbbf24;
+            --accent-pink: #f472b6;
+            --glow-cyan: rgba(34, 211, 238, 0.15);
+            --glow-emerald: rgba(16, 185, 129, 0.15);
+            --glow-purple: rgba(167, 139, 250, 0.15);
+            --glow-red: rgba(248, 113, 113, 0.15);
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: radial-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            padding: 12px 0;
+        }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+
+        /* ===== MOBILE HAMBURGER ===== */
+        .nav-hamburger {
+            display: none; flex-direction: column; gap: 5px;
+            cursor: pointer; padding: 8px; z-index: 1001;
+        }
+        .nav-hamburger span {
+            width: 24px; height: 2px; background: var(--accent-cyan);
+            border-radius: 2px; transition: all 0.3s;
+        }
+        @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%;
+                left: 0; right: 0; background: rgba(10, 22, 40, 0.98);
+                backdrop-filter: blur(20px); flex-direction: column;
+                padding: 20px 24px; gap: 12px;
+                border-bottom: 1px solid rgba(34,211,238,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .nav-links a { font-size: 1rem; padding: 8px 0; }
+        }
+
+        /* ===== DISCLAIMER BANNER ===== */
+        .disclaimer-bar {
+            position: fixed; top: 56px; left: 0; right: 0; z-index: 999;
+            background: rgba(251, 191, 36, 0.95);
+            padding: 6px 16px; text-align: center;
+            font-size: 0.72rem; font-weight: 600; color: #0a0e1a;
+            letter-spacing: 1px;
+        }
+
+        /* ===== BLOG HERO ===== */
+        .blog-hero {
+            padding: 140px 24px 60px;
+            text-align: center;
+            position: relative; z-index: 1;
+            background: linear-gradient(180deg, rgba(10,22,40,0) 0%, rgba(15,31,58,0.3) 100%);
+        }
+        .blog-hero-title {
+            font-family: 'Playfair Display', 'Noto Serif TC', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .blog-hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+        .blog-hero-divider {
+            width: 60px; height: 3px;
+            background: linear-gradient(90deg, var(--accent-cyan), var(--accent-gold));
+            margin: 28px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== BLOG TABS ===== */
+        .blog-tabs {
+            max-width: 780px; margin: 0 auto;
+            padding: 0 24px;
+            position: relative; z-index: 1;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            display: flex; gap: 32px;
+        }
+        .blog-tab {
+            padding: 12px 0;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            letter-spacing: 0.5px;
+            background: none; border-top: none; border-left: none; border-right: none;
+        }
+        .blog-tab:hover { color: var(--text-secondary); }
+        .blog-tab.active {
+            color: var(--text-primary);
+            border-bottom-color: var(--text-primary);
+        }
+
+        /* ===== BLOG FEED ===== */
+        .blog-feed {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 32px 24px 80px;
+            position: relative; z-index: 1;
+        }
+
+        /* ===== BLOG ARTICLE CARD ===== */
+        .blog-card {
+            display: flex;
+            gap: 24px;
+            padding: 32px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .blog-card:hover {
+            background: rgba(255,255,255,0.02);
+            margin: 0 -16px;
+            padding: 32px 16px;
+            border-radius: 12px;
+        }
+        .blog-card-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .blog-card-avatar {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.65rem; font-weight: 700; color: #0a1628;
+        }
+        .blog-card-author {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+        .blog-card-title {
+            font-family: 'Noto Serif TC', 'Playfair Display', serif;
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        .blog-card-excerpt {
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 14px;
+        }
+        .blog-card-footer {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+        .blog-card-date { letter-spacing: 0.5px; }
+        .blog-card-reading {
+            display: flex; align-items: center; gap: 4px;
+        }
+        .blog-card-tag {
+            padding: 2px 10px;
+            background: rgba(34,211,238,0.08);
+            border: 1px solid rgba(34,211,238,0.15);
+            border-radius: 20px;
+            font-size: 0.7rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+        }
+        .blog-card-thumbnail {
+            width: 140px; height: 100px;
+            border-radius: 8px;
+            object-fit: cover;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(34,211,238,0.1), rgba(167,139,250,0.1));
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .blog-card-thumbnail-placeholder {
+            width: 140px; height: 100px;
+            border-radius: 8px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(167,139,250,0.08));
+            border: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2rem;
+        }
+
+        /* ===== FEATURED / PINNED ===== */
+        .blog-card.featured {
+            background: rgba(251,191,36,0.03);
+            border: 1px solid rgba(251,191,36,0.12);
+            border-radius: 16px;
+            padding: 32px 24px;
+            margin-bottom: 8px;
+        }
+        .blog-card.featured:hover {
+            background: rgba(251,191,36,0.06);
+            margin: 0;
+            padding: 32px 24px;
+        }
+        .featured-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 0.7rem; font-weight: 600;
+            color: var(--accent-gold);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== EMPTY STATE ===== */
+        .blog-empty {
+            text-align: center;
+            padding: 80px 24px;
+        }
+        .blog-empty-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+        .blog-empty-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .blog-empty-text {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== ARTICLE FULL VIEW ===== */
+        .article-view {
+            display: none;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 140px 24px 80px;
+            position: relative; z-index: 1;
+        }
+        .article-view.active { display: block; }
+        .article-back {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.85rem; color: var(--accent-cyan);
+            text-decoration: none; cursor: pointer;
+            margin-bottom: 32px; font-weight: 500;
+            transition: opacity 0.3s;
+        }
+        .article-back:hover { opacity: 0.7; }
+        .article-header { margin-bottom: 40px; }
+        .article-tag {
+            display: inline-block;
+            padding: 4px 14px;
+            background: rgba(34,211,238,0.08);
+            border: 1px solid rgba(34,211,238,0.15);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        .article-title {
+            font-family: 'Noto Serif TC', 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.35;
+            margin-bottom: 16px;
+        }
+        .article-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+        .article-meta {
+            display: flex; align-items: center; gap: 12px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+        .article-meta-avatar {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-cyan), var(--accent-gold));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1rem; font-weight: 700; color: #0a1628;
+        }
+        .article-meta-info { flex: 1; }
+        .article-meta-author {
+            font-size: 0.9rem; font-weight: 600; color: var(--text-primary);
+        }
+        .article-meta-details {
+            font-size: 0.78rem; color: var(--text-muted);
+            display: flex; gap: 12px;
+        }
+
+        /* ===== ARTICLE BODY ===== */
+        .article-body {
+            font-size: 1.05rem;
+            line-height: 2;
+            color: var(--text-secondary);
+        }
+        .article-body p {
+            margin-bottom: 24px;
+        }
+        .article-body h2 {
+            font-family: 'Noto Serif TC', 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 48px 0 20px;
+        }
+        .article-body h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 36px 0 16px;
+        }
+        .article-body blockquote {
+            border-left: 3px solid var(--accent-gold);
+            padding: 16px 24px;
+            margin: 32px 0;
+            background: rgba(251,191,36,0.04);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+            color: var(--text-primary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        .article-body ul, .article-body ol {
+            margin: 16px 0 24px 24px;
+        }
+        .article-body li {
+            margin-bottom: 8px;
+            line-height: 1.8;
+        }
+        .article-body strong {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        .article-body em {
+            color: var(--accent-cyan);
+            font-style: italic;
+        }
+        .article-body .highlight-box {
+            padding: 20px 24px;
+            background: rgba(34,211,238,0.05);
+            border: 1px solid rgba(34,211,238,0.15);
+            border-radius: 12px;
+            margin: 24px 0;
+        }
+        .article-body .highlight-box h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+        }
+        .article-divider {
+            text-align: center;
+            margin: 48px 0;
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            letter-spacing: 12px;
+        }
+
+        /* ===== ARTICLE FOOTER ===== */
+        .article-footer {
+            margin-top: 48px;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+        .article-footer-tags {
+            display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px;
+        }
+        .article-footer-tag {
+            padding: 4px 14px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 20px;
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+        .article-share {
+            display: flex; align-items: center; gap: 16px;
+        }
+        .article-share-label {
+            font-size: 0.82rem; color: var(--text-muted); font-weight: 500;
+        }
+        .article-share-btn {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: all 0.3s;
+            font-size: 0.85rem; color: var(--text-muted);
+        }
+        .article-share-btn:hover {
+            background: rgba(34,211,238,0.1);
+            border-color: rgba(34,211,238,0.3);
+            color: var(--accent-cyan);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            background: rgba(10, 22, 40, 0.5);
+            border-top: 1px solid rgba(56,189,248,0.08);
+            position: relative; z-index: 1;
+        }
+        footer p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .blog-hero-title { font-size: 2rem; }
+            .blog-hero-subtitle { font-size: 0.85rem; }
+            .blog-card { flex-direction: column-reverse; gap: 16px; }
+            .blog-card-thumbnail, .blog-card-thumbnail-placeholder {
+                width: 100%; height: 180px;
+            }
+            .blog-card.featured { padding: 24px 16px; }
+            .blog-card.featured:hover { padding: 24px 16px; }
+            .article-title { font-size: 1.6rem; }
+            .article-body { font-size: 0.95rem; }
+            .article-body blockquote { padding: 12px 16px; font-size: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .blog-hero { padding: 120px 16px 40px; }
+            .blog-hero-title { font-size: 1.6rem; }
+            .blog-feed { padding: 24px 16px 60px; }
+            .blog-tabs { padding: 0 16px; gap: 24px; }
+            .blog-card-title { font-size: 1.15rem; }
+            .article-view { padding: 120px 16px 60px; }
+            .article-title { font-size: 1.4rem; }
+        }
+    </style>
+    <script src="auth.js"></script>
+    <script src="theme.js"></script>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- DISCLAIMER -->
+    <div class="disclaimer-bar">
+        ⚠️ 本項目仍處於研究階段，所有內容僅供學術參考 | This project is in research phase, for academic reference only
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0 RESEARCH</a>
+            <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html">BENEFITS 效益</a>
+                <a href="founder.html">FOUNDER 始創人</a>
+                <a href="vision.html">VISION 願景</a>
+                <a href="documents.html">DOCS 文件</a>
+                <a href="blog.html" class="active">BLOG 分享</a>
+                <div class="toggle-controls">
+                    <button id="lang-toggle" class="toggle-btn" onclick="toggleLang()">EN</button>
+                    <button id="theme-toggle" class="toggle-btn" onclick="toggleTheme()">☀️</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BLOG LIST VIEW -->
+    <div id="blog-list-view">
+        <!-- BLOG HERO -->
+        <section class="blog-hero">
+            <h1 class="blog-hero-title">創辦人分享</h1>
+            <p class="blog-hero-subtitle">FOUNDER'S PERSONAL BLOG</p>
+            <div class="blog-hero-divider"></div>
+        </section>
+
+        <!-- TABS -->
+        <div class="blog-tabs">
+            <button class="blog-tab active" data-filter="all">全部 All</button>
+            <button class="blog-tab" data-filter="featured">精選 Featured</button>
+        </div>
+
+        <!-- BLOG FEED -->
+        <div class="blog-feed" id="blog-feed">
+            <!-- Articles will be rendered by JavaScript -->
+        </div>
+    </div>
+
+    <!-- ARTICLE FULL VIEW -->
+    <div class="article-view" id="article-view">
+        <div class="article-back" onclick="closeArticle()">
+            ← 返回文章列表 Back to Articles
+        </div>
+        <article>
+            <div class="article-header">
+                <div class="article-tag" id="article-tag"></div>
+                <h1 class="article-title" id="article-title"></h1>
+                <p class="article-subtitle" id="article-subtitle"></p>
+                <div class="article-meta">
+                    <div class="article-meta-avatar">G</div>
+                    <div class="article-meta-info">
+                        <div class="article-meta-author">Gary · 創辦人 Founder</div>
+                        <div class="article-meta-details">
+                            <span id="article-date"></span>
+                            <span>·</span>
+                            <span id="article-reading"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="article-body" id="article-body"></div>
+            <div class="article-footer">
+                <div class="article-footer-tags" id="article-footer-tags"></div>
+            </div>
+        </article>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>7D ANTI-AGING 5.0 RESEARCH · 七維逆齡研究系統</p>
+        <p style="margin-top:4px;">逆齡保養從心而發 · Anti-Aging Begins from the Heart</p>
+        <p style="margin-top:8px; font-size:0.65rem;">© 2025 All Rights Reserved · 僅供研究用途 For Research Purposes Only</p>
+    </footer>
+
+    <script>
+    // ===== BLOG DATA =====
+    // Articles array — add new articles here
+    const blogArticles = [
+        {
+            id: 'why-eecp',
+            featured: true,
+            tag: 'EECP 研究',
+            tagEn: 'EECP Research',
+            title: '為什麼 EECP 是逆齡系統的核心？',
+            titleEn: 'Why is EECP the Core of the Anti-Aging System?',
+            subtitle: '從心血管健康出發，探索體外反搏如何成為七維逆齡的基石',
+            subtitleEn: 'Starting from cardiovascular health, exploring how EECP became the cornerstone of 7D anti-aging',
+            date: '2025-02-15',
+            reading: '8 min',
+            readingZh: '8 分鐘',
+            emoji: '❤️',
+            tags: ['EECP', '心血管', '逆齡', '體外反搏'],
+            tagsEn: ['EECP', 'Cardiovascular', 'Anti-Aging', 'Counterpulsation'],
+            excerpt: '黃帝內經說：「心者，君主之官也。」心臟是人體的君主，而血管是生命的河流。當我們談論逆齡，必須從心開始...',
+            excerptEn: 'The Yellow Emperor\'s Classic states: "The heart is the sovereign organ." The heart is the body\'s sovereign, and blood vessels are the rivers of life. When we talk about anti-aging, we must start from the heart...',
+            body: `
+                <p>黃帝內經說：「心者，君主之官也。」心臟是人體的君主，而血管是生命的河流。當我們談論逆齡，不能只看表面的皮膚與外觀，必須從心開始。</p>
+
+                <blockquote>「經脈者，所以能決死生、處百病、調虛實，不可不通。」—— 黃帝內經</blockquote>
+
+                <h2>從一個簡單的問題開始</h2>
+                <p>什麼是真正的年輕？是外表看起來年輕，還是身體機能真正年輕？</p>
+                <p>作為一個長期研究抗衰老的人，我花了大量時間研究不同的療法和技術。從幹細胞到高壓氧，從遠紅外線到營養學，每一個領域都有其獨特的價值。但當我深入研究後發現，所有這些療法都有一個共同的前提 —— <strong>良好的血液循環</strong>。</p>
+
+                <h2>為什麼是 EECP？</h2>
+                <p>EECP（Enhanced External Counterpulsation，體外反搏）是一項經過 FDA 認證的非侵入性治療技術。它的原理很簡單：在心臟舒張期，通過氣囊對下肢加壓，將血液推回心臟，增加冠狀動脈血流量。</p>
+
+                <div class="highlight-box">
+                    <h4>EECP 的五大核心效益</h4>
+                    <ul>
+                        <li><strong>軟化血管</strong> — 恢復血管彈性，逆轉動脈硬化</li>
+                        <li><strong>增生微絲血管</strong> — 建立天然的「心臟繞道」</li>
+                        <li><strong>預防猝死、中風、腦退化</strong> — 改善全身血液供應</li>
+                        <li><strong>增強體力</strong> — 1小時 EECP ≈ 步行6公里</li>
+                        <li><strong>減輕心臟負擔</strong> — 降低靜息心率至黃金標準 50 BPM</li>
+                    </ul>
+                </div>
+
+                <h2>靜息心率 50 BPM — 逆齡的黃金指標</h2>
+                <p>為什麼運動員看起來比同齡人年輕？其中一個關鍵指標就是<strong>靜息心率</strong>。一般人的靜息心率在 60-80 BPM，而頂級運動員可以低至 40-50 BPM。</p>
+                <p>靜息心率越低，代表心臟每次跳動泵出的血液越多，心臟的效率越高，負擔越小。EECP 正是通過改善血管彈性和心臟功能，幫助降低靜息心率。</p>
+
+                <div class="article-divider">· · ·</div>
+
+                <h2>七維協同的基石</h2>
+                <p>當血液循環改善後，其他六個維度的效果都會被放大：</p>
+                <ul>
+                    <li><strong>mHBOT 微高壓氧</strong> — 更好的血液循環意味著更高效的氧氣輸送</li>
+                    <li><strong>遠紅外線</strong> — 配合改善的微循環，深層熱能效果倍增</li>
+                    <li><strong>幹細胞</strong> — 充足的血液供應讓幹細胞更好地到達目標組織</li>
+                    <li><strong>營養管理</strong> — 營養素通過血液輸送到全身每個細胞</li>
+                    <li><strong>運動處方</strong> — 更好的心血管功能支持更有效的運動</li>
+                    <li><strong>AI 追蹤</strong> — 持續監測心率、血壓等關鍵指標的改善</li>
+                </ul>
+
+                <blockquote>「逆齡保養從心而發」—— 這不僅是一句口號，更是我們整個研究系統的核心理念。</blockquote>
+
+                <p>在接下來的文章中，我會逐一分享每個維度的研究心得。如果你也對逆齡養生感興趣，歡迎持續關注。</p>
+            `,
+            bodyEn: `
+                <p>The Yellow Emperor's Classic states: "The heart is the sovereign organ." The heart is the body's sovereign, and blood vessels are the rivers of life. When we talk about anti-aging, we cannot just look at the surface — skin and appearance — we must start from the heart.</p>
+
+                <blockquote>"The meridians can determine life and death, treat all diseases, and regulate deficiency and excess — they must not be blocked." — Yellow Emperor's Classic</blockquote>
+
+                <h2>Starting with a Simple Question</h2>
+                <p>What does it truly mean to be young? Is it looking young on the outside, or having body functions that are truly youthful?</p>
+                <p>As someone who has spent years researching anti-aging, I've invested considerable time studying different therapies and technologies. From stem cells to hyperbaric oxygen, from far infrared to nutrition science, each field has its unique value. But after deep research, I discovered that all these therapies share one common prerequisite — <strong>good blood circulation</strong>.</p>
+
+                <h2>Why EECP?</h2>
+                <p>EECP (Enhanced External Counterpulsation) is an FDA-approved non-invasive treatment technology. Its principle is simple: during cardiac diastole, inflatable cuffs compress the lower limbs, pushing blood back to the heart and increasing coronary blood flow.</p>
+
+                <div class="highlight-box">
+                    <h4>Five Core Benefits of EECP</h4>
+                    <ul>
+                        <li><strong>Softens blood vessels</strong> — Restores vascular elasticity, reverses arteriosclerosis</li>
+                        <li><strong>Grows micro-capillaries</strong> — Creates natural "cardiac bypass"</li>
+                        <li><strong>Prevents sudden death, stroke, dementia</strong> — Improves whole-body blood supply</li>
+                        <li><strong>Enhances vitality</strong> — 1 hour EECP ≈ walking 6 kilometers</li>
+                        <li><strong>Reduces cardiac load</strong> — Lowers resting heart rate to gold standard 50 BPM</li>
+                    </ul>
+                </div>
+
+                <h2>Resting Heart Rate 50 BPM — The Gold Standard of Anti-Aging</h2>
+                <p>Why do athletes look younger than their peers? One key indicator is <strong>resting heart rate</strong>. The average person's resting heart rate is 60-80 BPM, while elite athletes can go as low as 40-50 BPM.</p>
+                <p>A lower resting heart rate means the heart pumps more blood with each beat, making it more efficient with less strain. EECP helps lower resting heart rate by improving vascular elasticity and cardiac function.</p>
+
+                <div class="article-divider">· · ·</div>
+
+                <h2>The Cornerstone of 7D Synergy</h2>
+                <p>When blood circulation improves, the effects of all other six dimensions are amplified:</p>
+                <ul>
+                    <li><strong>mHBOT Micro-Hyperbaric O₂</strong> — Better circulation means more efficient oxygen delivery</li>
+                    <li><strong>Far Infrared</strong> — Combined with improved microcirculation, deep thermal effects multiply</li>
+                    <li><strong>Stem Cells</strong> — Adequate blood supply helps stem cells reach target tissues</li>
+                    <li><strong>Nutrition Management</strong> — Nutrients are delivered to every cell via blood</li>
+                    <li><strong>Exercise Prescription</strong> — Better cardiovascular function supports more effective exercise</li>
+                    <li><strong>AI Tracking</strong> — Continuous monitoring of heart rate, blood pressure improvements</li>
+                </ul>
+
+                <blockquote>"Anti-Aging Begins from the Heart" — This is not just a slogan, but the core philosophy of our entire research system.</blockquote>
+
+                <p>In upcoming articles, I will share research insights on each dimension. If you're also interested in anti-aging wellness, stay tuned.</p>
+            `
+        },
+        {
+            id: 'tcm-meets-modern',
+            featured: false,
+            tag: '中醫智慧',
+            tagEn: 'TCM Wisdom',
+            title: '當黃帝內經遇上現代科技',
+            titleEn: 'When the Yellow Emperor\'s Classic Meets Modern Technology',
+            subtitle: '古人的養生智慧如何被現代醫學驗證',
+            subtitleEn: 'How ancient wellness wisdom is being validated by modern medicine',
+            date: '2025-02-20',
+            reading: '6 min',
+            readingZh: '6 分鐘',
+            emoji: '📜',
+            tags: ['中醫', '黃帝內經', '經脈', '現代醫學'],
+            tagsEn: ['TCM', 'Yellow Emperor', 'Meridians', 'Modern Medicine'],
+            excerpt: '兩千年前，黃帝內經已經告訴我們經脈暢通的重要性。今天，現代醫學用血管內皮功能、微循環檢測等技術，驗證了古人的智慧...',
+            excerptEn: 'Two thousand years ago, the Yellow Emperor\'s Classic told us about the importance of meridian flow. Today, modern medicine validates ancient wisdom through vascular endothelial function and microcirculation testing...',
+            body: `
+                <p>兩千年前，黃帝內經已經告訴我們經脈暢通的重要性。今天，現代醫學用血管內皮功能、微循環檢測等技術，驗證了古人的智慧。</p>
+
+                <blockquote>「上醫治未病，中醫治欲病，下醫治已病。」—— 黃帝內經</blockquote>
+
+                <h2>經脈與血管 — 同一條河流</h2>
+                <p>中醫講的「經脈」，與現代醫學的「血管系統」有著驚人的相似性。中醫認為「氣血」是生命的根本，氣推動血的運行，血滋養全身的臟腑。這與現代醫學對心血管系統的理解不謀而合。</p>
+                <p>當我們用現代科技的眼光重新審視黃帝內經，會發現古人早已洞察了許多我們今天才能用儀器驗證的健康原理。</p>
+
+                <h2>「治未病」的現代詮釋</h2>
+                <p>黃帝內經提出的「治未病」理念，正是現代預防醫學的先驅。我們的 7D 逆齡系統，本質上就是一套「治未病」的方案：</p>
+                <ul>
+                    <li>在血管硬化之前，用 EECP 維持血管彈性</li>
+                    <li>在細胞老化之前，用幹細胞技術進行修復</li>
+                    <li>在氧氣不足之前，用 mHBOT 提升血氧濃度</li>
+                    <li>在體能下降之前，用運動處方維持身體機能</li>
+                </ul>
+
+                <h2>數據驗證古人智慧</h2>
+                <p>現代醫學研究已經證實：</p>
+                <div class="highlight-box">
+                    <h4>古今對照</h4>
+                    <ul>
+                        <li>中醫「氣血不通則痛」→ 現代醫學「血管阻塞導致缺血性疼痛」</li>
+                        <li>中醫「腎為先天之本」→ 現代醫學「腎臟是代謝核心器官」</li>
+                        <li>中醫「肝主疏泄」→ 現代醫學「肝臟是最大的解毒器官」</li>
+                        <li>中醫「心主血脈」→ 現代醫學「心臟是循環系統的核心」</li>
+                    </ul>
+                </div>
+
+                <div class="article-divider">· · ·</div>
+
+                <p>我們的研究不是要否定傳統，也不是盲目崇拜科技。而是要找到古今智慧的交匯點，建立一套既有歷史根基、又有數據支持的養生系統。</p>
+
+                <blockquote>「結合古人及現代智慧，先進數據支持的逆齡養生系統」—— 這是我們的使命。</blockquote>
+            `,
+            bodyEn: `
+                <p>Two thousand years ago, the Yellow Emperor's Classic already told us about the importance of meridian flow. Today, modern medicine validates ancient wisdom through vascular endothelial function testing and microcirculation detection technology.</p>
+
+                <blockquote>"The superior physician prevents disease, the mediocre physician treats impending disease, the inferior physician treats existing disease." — Yellow Emperor's Classic</blockquote>
+
+                <h2>Meridians and Blood Vessels — The Same River</h2>
+                <p>The "meridians" in Traditional Chinese Medicine bear striking similarities to the "vascular system" in modern medicine. TCM believes that "qi and blood" are the foundation of life — qi drives blood circulation, and blood nourishes all organs. This aligns remarkably with modern medicine's understanding of the cardiovascular system.</p>
+                <p>When we re-examine the Yellow Emperor's Classic through the lens of modern technology, we discover that ancient practitioners had already perceived many health principles that we can only now verify with instruments.</p>
+
+                <h2>Modern Interpretation of "Preventive Medicine"</h2>
+                <p>The concept of "treating disease before it occurs" proposed in the Yellow Emperor's Classic is the precursor to modern preventive medicine. Our 7D Anti-Aging System is essentially a "preventive medicine" protocol:</p>
+                <ul>
+                    <li>Before arteriosclerosis — use EECP to maintain vascular elasticity</li>
+                    <li>Before cellular aging — use stem cell technology for repair</li>
+                    <li>Before oxygen deficiency — use mHBOT to boost blood oxygen</li>
+                    <li>Before physical decline — use exercise prescriptions to maintain body function</li>
+                </ul>
+
+                <h2>Data Validates Ancient Wisdom</h2>
+                <p>Modern medical research has confirmed:</p>
+                <div class="highlight-box">
+                    <h4>Ancient-Modern Parallels</h4>
+                    <ul>
+                        <li>TCM "blocked qi and blood causes pain" → Modern "vascular blockage causes ischemic pain"</li>
+                        <li>TCM "kidney is the root of vitality" → Modern "kidney is the core metabolic organ"</li>
+                        <li>TCM "liver governs free flow" → Modern "liver is the largest detoxification organ"</li>
+                        <li>TCM "heart governs blood vessels" → Modern "heart is the core of circulatory system"</li>
+                    </ul>
+                </div>
+
+                <div class="article-divider">· · ·</div>
+
+                <p>Our research is not about denying tradition, nor blindly worshipping technology. It's about finding the intersection of ancient and modern wisdom, building a wellness system with both historical foundation and data support.</p>
+
+                <blockquote>"Combining ancient and modern wisdom, an anti-aging wellness system supported by advanced data" — This is our mission.</blockquote>
+            `
+        },
+        {
+            id: 'stem-cell-journey',
+            featured: false,
+            tag: '幹細胞',
+            tagEn: 'Stem Cells',
+            title: '幹細胞：從科幻到現實的再生之路',
+            titleEn: 'Stem Cells: The Regenerative Path from Sci-Fi to Reality',
+            subtitle: '探索幹細胞技術如何融入逆齡養生系統',
+            subtitleEn: 'Exploring how stem cell technology integrates into the anti-aging wellness system',
+            date: '2025-03-01',
+            reading: '7 min',
+            readingZh: '7 分鐘',
+            emoji: '🧬',
+            tags: ['幹細胞', '再生醫學', 'NK細胞', '免疫療法'],
+            tagsEn: ['Stem Cells', 'Regenerative Medicine', 'NK Cells', 'Immunotherapy'],
+            excerpt: '幹細胞被譽為「萬能細胞」，它們擁有分化成各種細胞類型的能力。在我們的研究中，幹細胞技術是逆齡系統的重要一環...',
+            excerptEn: 'Stem cells are hailed as "universal cells" with the ability to differentiate into various cell types. In our research, stem cell technology is a crucial part of the anti-aging system...',
+            body: `
+                <p>幹細胞被譽為「萬能細胞」，它們擁有分化成各種細胞類型的能力。在我們的研究中，幹細胞技術是逆齡系統的重要一環 —— 從細胞層面啟動身體的自我修復機制。</p>
+
+                <h2>什麼是幹細胞？</h2>
+                <p>簡單來說，幹細胞是人體中尚未「定型」的細胞。它們可以根據身體的需要，分化成心肌細胞、神經細胞、骨骼細胞等各種類型。隨著年齡增長，我們體內的幹細胞數量和活性都在下降，這也是衰老的重要原因之一。</p>
+
+                <blockquote>「細胞是生命的基本單位。要逆轉衰老，必須從細胞開始。」</blockquote>
+
+                <h2>幹細胞的種類</h2>
+                <p>在我們的研究中，主要關注以下幾種幹細胞：</p>
+                <ul>
+                    <li><strong>間充質幹細胞（MSC）</strong> — 來源廣泛，可從骨髓、脂肪、臍帶等提取，具有強大的修復能力</li>
+                    <li><strong>造血幹細胞（HSC）</strong> — 負責生成血液中的各種細胞，維持免疫系統功能</li>
+                    <li><strong>NK 細胞</strong> — 自然殺手細胞，人體免疫系統的「巡邏兵」，能識別並消滅異常細胞</li>
+                    <li><strong>DC-CIK 細胞</strong> — 樹突狀細胞與細胞因子誘導的殺傷細胞，用於增強免疫應答</li>
+                </ul>
+
+                <h2>為什麼 EECP + 幹細胞是黃金組合？</h2>
+                <p>這是我們研究中最重要的發現之一：<strong>EECP 能顯著提升幹細胞治療的效果</strong>。原因很簡單：</p>
+                <div class="highlight-box">
+                    <h4>EECP 如何增強幹細胞效果</h4>
+                    <ul>
+                        <li>EECP 改善血液循環 → 幹細胞能更有效地到達目標組織</li>
+                        <li>EECP 增生微絲血管 → 為幹細胞提供更多「著陸點」</li>
+                        <li>EECP 提升血氧濃度 → 為幹細胞創造更好的生存環境</li>
+                        <li>EECP 促進生長因子釋放 → 激活幹細胞的分化潛能</li>
+                    </ul>
+                </div>
+
+                <div class="article-divider">· · ·</div>
+
+                <h2>我們的研究方向</h2>
+                <p>目前，我們正在研究如何將幹細胞技術與其他六個維度最優化地結合。年度幹細胞注射配合日常 EECP 療程，可能是最具潛力的逆齡方案之一。</p>
+                <p>當然，幹細胞技術仍在快速發展中，我們會持續追蹤最新的研究成果，確保我們的方案建立在最可靠的科學基礎之上。</p>
+
+                <blockquote>「再生醫學不是夢想，而是正在發生的未來。」</blockquote>
+            `,
+            bodyEn: `
+                <p>Stem cells are hailed as "universal cells" with the ability to differentiate into various cell types. In our research, stem cell technology is a crucial part of the anti-aging system — activating the body's self-repair mechanisms at the cellular level.</p>
+
+                <h2>What Are Stem Cells?</h2>
+                <p>Simply put, stem cells are cells in our body that haven't yet "specialized." They can differentiate into heart muscle cells, nerve cells, bone cells, and various other types based on the body's needs. As we age, both the number and activity of our stem cells decline, which is one of the key reasons for aging.</p>
+
+                <blockquote>"The cell is the basic unit of life. To reverse aging, we must start from the cell."</blockquote>
+
+                <h2>Types of Stem Cells</h2>
+                <p>In our research, we primarily focus on the following types:</p>
+                <ul>
+                    <li><strong>Mesenchymal Stem Cells (MSC)</strong> — Widely sourced from bone marrow, fat, umbilical cord; powerful repair capabilities</li>
+                    <li><strong>Hematopoietic Stem Cells (HSC)</strong> — Responsible for generating various blood cells, maintaining immune function</li>
+                    <li><strong>NK Cells</strong> — Natural Killer cells, the immune system's "patrol soldiers," identifying and destroying abnormal cells</li>
+                    <li><strong>DC-CIK Cells</strong> — Dendritic cells and cytokine-induced killer cells, used to enhance immune response</li>
+                </ul>
+
+                <h2>Why is EECP + Stem Cells the Golden Combination?</h2>
+                <p>This is one of the most important findings in our research: <strong>EECP can significantly enhance the effectiveness of stem cell therapy</strong>. The reason is simple:</p>
+                <div class="highlight-box">
+                    <h4>How EECP Enhances Stem Cell Effects</h4>
+                    <ul>
+                        <li>EECP improves circulation → Stem cells reach target tissues more effectively</li>
+                        <li>EECP grows micro-capillaries → Provides more "landing sites" for stem cells</li>
+                        <li>EECP boosts blood oxygen → Creates a better survival environment for stem cells</li>
+                        <li>EECP promotes growth factor release → Activates stem cell differentiation potential</li>
+                    </ul>
+                </div>
+
+                <div class="article-divider">· · ·</div>
+
+                <h2>Our Research Direction</h2>
+                <p>Currently, we are studying how to optimally combine stem cell technology with the other six dimensions. Annual stem cell injections combined with daily EECP treatments may be one of the most promising anti-aging protocols.</p>
+                <p>Of course, stem cell technology is still rapidly evolving, and we will continue to track the latest research findings to ensure our protocols are built on the most reliable scientific foundation.</p>
+
+                <blockquote>"Regenerative medicine is not a dream — it's a future that's already happening."</blockquote>
+            `
+        }
+    ];
+
+    // ===== RENDER FUNCTIONS =====
+    let currentLang = localStorage.getItem('7d_lang') || 'zh';
+    let currentFilter = 'all';
+
+    function renderFeed() {
+        const feed = document.getElementById('blog-feed');
+        let filtered = blogArticles;
+        if (currentFilter === 'featured') {
+            filtered = blogArticles.filter(a => a.featured);
+        }
+
+        if (filtered.length === 0) {
+            feed.innerHTML = `
+                <div class="blog-empty">
+                    <div class="blog-empty-icon">📝</div>
+                    <div class="blog-empty-title">${currentLang === 'zh' ? '暫無精選文章' : 'No Featured Articles Yet'}</div>
+                    <div class="blog-empty-text">${currentLang === 'zh' ? '敬請期待更多分享' : 'Stay tuned for more content'}</div>
+                </div>
+            `;
+            return;
+        }
+
+        feed.innerHTML = filtered.map(article => {
+            const isZh = currentLang === 'zh';
+            const title = isZh ? article.title : article.titleEn;
+            const excerpt = isZh ? article.excerpt : article.excerptEn;
+            const tag = isZh ? article.tag : article.tagEn;
+            const reading = isZh ? article.readingZh : article.reading;
+            const dateStr = formatDate(article.date);
+
+            return `
+                <div class="blog-card ${article.featured ? 'featured' : ''}" onclick="openArticle('${article.id}')">
+                    <div class="blog-card-content">
+                        ${article.featured ? `<div class="featured-badge">⭐ ${isZh ? '精選文章' : 'FEATURED'}</div>` : ''}
+                        <div class="blog-card-meta">
+                            <div class="blog-card-avatar">G</div>
+                            <span class="blog-card-author">Gary</span>
+                        </div>
+                        <h2 class="blog-card-title">${title}</h2>
+                        <p class="blog-card-excerpt">${excerpt}</p>
+                        <div class="blog-card-footer">
+                            <span class="blog-card-date">${dateStr}</span>
+                            <span>·</span>
+                            <span class="blog-card-reading">${reading}</span>
+                            <span class="blog-card-tag">${tag}</span>
+                        </div>
+                    </div>
+                    <div class="blog-card-thumbnail-placeholder">${article.emoji}</div>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function formatDate(dateStr) {
+        const d = new Date(dateStr);
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return `${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`;
+    }
+
+    function openArticle(id) {
+        const article = blogArticles.find(a => a.id === id);
+        if (!article) return;
+
+        const isZh = currentLang === 'zh';
+
+        document.getElementById('article-tag').textContent = isZh ? article.tag : article.tagEn;
+        document.getElementById('article-title').textContent = isZh ? article.title : article.titleEn;
+        document.getElementById('article-subtitle').textContent = isZh ? article.subtitle : article.subtitleEn;
+        document.getElementById('article-date').textContent = formatDate(article.date);
+        document.getElementById('article-reading').textContent = isZh ? article.readingZh : article.reading;
+        document.getElementById('article-body').innerHTML = isZh ? article.body : article.bodyEn;
+
+        // Render footer tags
+        const tags = isZh ? article.tags : article.tagsEn;
+        document.getElementById('article-footer-tags').innerHTML = tags.map(t =>
+            `<span class="article-footer-tag">${t}</span>`
+        ).join('');
+
+        document.getElementById('blog-list-view').style.display = 'none';
+        document.getElementById('article-view').classList.add('active');
+        window.scrollTo(0, 0);
+    }
+
+    function closeArticle() {
+        document.getElementById('blog-list-view').style.display = '';
+        document.getElementById('article-view').classList.remove('active');
+        window.scrollTo(0, 0);
+    }
+
+    // ===== TAB HANDLING =====
+    document.querySelectorAll('.blog-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            document.querySelectorAll('.blog-tab').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            currentFilter = this.dataset.filter;
+            renderFeed();
+        });
+    });
+
+    // ===== LANGUAGE INTEGRATION =====
+    // Override toggleLang to also update blog
+    const originalToggleLang = window.toggleLang;
+    window.toggleLang = function() {
+        if (originalToggleLang) originalToggleLang();
+        // Update current lang
+        currentLang = localStorage.getItem('7d_lang') || 'zh';
+        renderFeed();
+        // Update hero text
+        updateBlogLang();
+    };
+
+    function updateBlogLang() {
+        const isZh = currentLang === 'zh';
+        const heroTitle = document.querySelector('.blog-hero-title');
+        const heroSub = document.querySelector('.blog-hero-subtitle');
+        if (heroTitle) heroTitle.textContent = isZh ? '創辦人分享' : "Founder's Blog";
+        if (heroSub) heroSub.textContent = isZh ? 'FOUNDER\'S PERSONAL BLOG' : '創辦人個人分享';
+
+        // Update tabs
+        const tabs = document.querySelectorAll('.blog-tab');
+        if (tabs[0]) tabs[0].textContent = isZh ? '全部 All' : 'All';
+        if (tabs[1]) tabs[1].textContent = isZh ? '精選 Featured' : 'Featured';
+
+        // Update back button
+        const backBtn = document.querySelector('.article-back');
+        if (backBtn) backBtn.innerHTML = isZh ? '← 返回文章列表 Back to Articles' : '← Back to Articles';
+
+        // If article is open, re-render it
+        const articleView = document.getElementById('article-view');
+        if (articleView.classList.contains('active')) {
+            const currentTitle = document.getElementById('article-title').textContent;
+            const article = blogArticles.find(a => a.title === currentTitle || a.titleEn === currentTitle);
+            if (article) openArticle(article.id);
+        }
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', function() {
+        currentLang = localStorage.getItem('7d_lang') || 'zh';
+        renderFeed();
+        updateBlogLang();
+    });
+    </script>
+    <script src="lang.js"></script>
+</body>
+</html>
