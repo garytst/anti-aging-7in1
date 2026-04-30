@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Founder Self-Use Products | 創辦人自用健康產品 | 7D Anti-Aging 5.0</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a1628;
+            --bg-secondary: #0f1f3a;
+            --bg-card: rgba(15, 31, 58, 0.7);
+            --bg-card-hover: rgba(20, 40, 75, 0.8);
+            --border-card: rgba(56, 189, 248, 0.15);
+            --border-hover: rgba(56, 189, 248, 0.35);
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --accent-cyan: #22d3ee;
+            --accent-teal: #14b8a6;
+            --accent-emerald: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a78bfa;
+            --accent-red: #f87171;
+            --accent-orange: #fb923c;
+            --accent-gold: #fbbf24;
+            --accent-pink: #f472b6;
+            --glow-cyan: rgba(34, 211, 238, 0.15);
+            --glow-emerald: rgba(16, 185, 129, 0.15);
+            --glow-purple: rgba(167, 139, 250, 0.15);
+        }
+
+        /* Light Theme */
+        body.light-mode {
+            --bg-primary: #f8fafc;
+            --bg-secondary: #f1f5f9;
+            --bg-card: rgba(255, 255, 255, 0.9);
+            --bg-card-hover: rgba(248, 250, 252, 0.95);
+            --border-card: rgba(148, 163, 184, 0.2);
+            --border-hover: rgba(34, 211, 238, 0.4);
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Inter', system-ui, sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            position: fixed; inset: 0; z-index: 0;
+            background-image: radial-gradient(rgba(56,189,248,0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10, 22, 40, 0.92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(34, 211, 238, 0.1);
+            padding: 12px 0;
+        }
+        body.light-mode .nav { background: rgba(248, 250, 252, 0.92); border-bottom-color: rgba(148,163,184,0.2); }
+        .nav-inner {
+            max-width: 1280px; margin: 0 auto; padding: 0 24px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            text-decoration: none; letter-spacing: 1px;
+        }
+        .nav-logo span { color: var(--accent-gold); }
+        .nav-links { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .nav-links a {
+            color: var(--text-secondary); text-decoration: none; font-size: 0.85rem;
+            font-weight: 500; transition: color 0.3s; letter-spacing: 0.5px;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent-cyan); }
+        .nav-hamburger { display: none; cursor: pointer; flex-direction: column; gap: 4px; }
+        .nav-hamburger span { width: 22px; height: 2px; background: var(--text-primary); transition: 0.3s; }
+        .toggle-controls { display: flex; gap: 8px; margin-left: 12px; }
+        .toggle-btn {
+            background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.3);
+            color: var(--accent-cyan); padding: 4px 10px; border-radius: 6px;
+            font-size: 0.75rem; cursor: pointer; font-weight: 600; transition: 0.3s;
+        }
+        .toggle-btn:hover { background: rgba(34,211,238,0.2); }
+
+        /* ===== MAIN CONTENT ===== */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 1; }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 60px;
+            text-align: center;
+        }
+        .hero-badge {
+            display: inline-block; padding: 6px 18px;
+            background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);
+            border-radius: 20px; font-size: 0.8rem; color: var(--accent-emerald);
+            letter-spacing: 2px; margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 2.4rem; font-weight: 800; margin-bottom: 12px;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-orange));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero-sub {
+            font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 8px;
+        }
+        .hero-tagline {
+            font-size: 1.4rem; font-weight: 700; color: var(--accent-cyan);
+            font-style: italic; margin-top: 16px;
+        }
+
+        /* Trust Badges */
+        .trust-section {
+            margin: 40px 0;
+            padding: 32px;
+            background: linear-gradient(135deg, rgba(16,185,129,0.06), rgba(34,211,238,0.04));
+            border: 1px solid rgba(16,185,129,0.25);
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+        .trust-section::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--accent-emerald), var(--accent-cyan), var(--accent-gold));
+        }
+        .trust-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+            margin-top: 20px;
+        }
+        .trust-card {
+            text-align: center; padding: 24px 16px;
+            background: rgba(10,22,40,0.4); border: 1px solid var(--border-card);
+            border-radius: 12px; transition: 0.3s;
+        }
+        .trust-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+        .trust-icon { font-size: 2.2rem; margin-bottom: 10px; }
+        .trust-title { font-size: 0.9rem; font-weight: 700; color: var(--accent-gold); margin-bottom: 6px; }
+        .trust-desc { font-size: 0.8rem; color: var(--text-secondary); line-height: 1.6; }
+
+        /* Section Headers */
+        .section-header {
+            display: flex; align-items: center; gap: 14px;
+            margin: 50px 0 24px; padding-bottom: 14px;
+            border-bottom: 1px solid var(--border-card);
+        }
+        .section-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; flex-shrink: 0;
+        }
+        .section-title { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
+        .section-subtitle { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+
+        /* Product Cards */
+        .product-grid {
+            display: grid; grid-template-columns: 1fr; gap: 20px;
+            margin-top: 20px;
+        }
+        .product-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-card);
+            border-radius: 14px;
+            padding: 24px 28px;
+            transition: 0.3s;
+            position: relative;
+        }
+        .product-card:hover { border-color: var(--border-hover); transform: translateY(-2px); }
+        .product-card.placeholder {
+            border-style: dashed;
+            text-align: center;
+            padding: 40px 28px;
+        }
+        .product-num {
+            position: absolute; top: 16px; right: 20px;
+            font-size: 0.7rem; font-weight: 700; color: var(--accent-cyan);
+            background: rgba(34,211,238,0.1); padding: 3px 10px;
+            border-radius: 12px; letter-spacing: 1px;
+        }
+        .product-name {
+            font-size: 1.1rem; font-weight: 700; color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+        .product-name-en {
+            font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 12px;
+        }
+        .product-points {
+            list-style: none; padding: 0;
+        }
+        .product-points li {
+            font-size: 0.85rem; color: var(--text-secondary); line-height: 1.8;
+            padding-left: 20px; position: relative;
+        }
+        .product-points li::before {
+            content: '•'; position: absolute; left: 0;
+            color: var(--accent-emerald); font-weight: 700;
+        }
+        .product-points li strong { color: var(--text-primary); }
+        .product-tag {
+            display: inline-block; margin-top: 12px; padding: 3px 10px;
+            background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.25);
+            border-radius: 8px; font-size: 0.7rem; color: var(--accent-gold);
+            font-weight: 600; letter-spacing: 0.5px;
+        }
+
+        /* Tips Section */
+        .tips-section {
+            margin: 50px 0 30px;
+            padding: 28px;
+            background: rgba(251,191,36,0.04);
+            border: 1px solid rgba(251,191,36,0.2);
+            border-radius: 14px;
+        }
+        .tips-title {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-gold);
+            margin-bottom: 16px;
+        }
+        .tips-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+        }
+        .tip-card {
+            padding: 16px;
+            background: rgba(10,22,40,0.4);
+            border: 1px solid var(--border-card);
+            border-radius: 10px;
+        }
+        .tip-card h4 {
+            font-size: 0.85rem; color: var(--accent-cyan); margin-bottom: 8px;
+        }
+        .tip-card p {
+            font-size: 0.8rem; color: var(--text-secondary); line-height: 1.7;
+        }
+
+        /* Cost Reduction Section */
+        .cost-section {
+            margin: 40px 0;
+            padding: 28px;
+            background: linear-gradient(135deg, rgba(34,211,238,0.04), rgba(167,139,250,0.04));
+            border: 1px solid rgba(34,211,238,0.2);
+            border-radius: 14px;
+        }
+        .cost-title {
+            font-size: 1.1rem; font-weight: 700; color: var(--accent-cyan);
+            margin-bottom: 16px;
+        }
+        .cost-points {
+            list-style: none; padding: 0;
+        }
+        .cost-points li {
+            font-size: 0.85rem; color: var(--text-secondary); line-height: 2;
+            padding-left: 24px; position: relative;
+        }
+        .cost-points li::before {
+            content: '💡'; position: absolute; left: 0; font-size: 0.8rem;
+        }
+        .cost-points li strong { color: var(--text-primary); }
+
+        /* Footer */
+        .footer {
+            text-align: center; padding: 40px 0 60px;
+            border-top: 1px solid var(--border-card); margin-top: 60px;
+        }
+        .footer p { font-size: 0.8rem; color: var(--text-muted); }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-hamburger { display: flex; }
+            .nav-links {
+                display: none; position: absolute; top: 100%;
+                left: 0; right: 0; background: rgba(10, 22, 40, 0.98);
+                flex-direction: column; padding: 16px 24px; gap: 12px;
+                border-bottom: 1px solid rgba(34,211,238,0.1);
+            }
+            .nav-links.active { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+            .trust-grid { grid-template-columns: 1fr; }
+            .tips-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Fade-in Animation */
+        .fade-in {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">7D <span>ANTI-AGING</span> 5.0 RESEARCH</a>
+            <div class="nav-hamburger" onclick="this.nextElementSibling.classList.toggle('active')">
+                <span></span><span></span><span></span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">HOME 首頁</a>
+                <a href="7d-dimensions.html">7D DIMENSIONS</a>
+                <a href="benefits.html">BENEFITS 效益</a>
+                <a href="founder.html">FOUNDER 始創人</a>
+                <a href="vision.html">VISION 願景</a>
+                <a href="documents.html">DOCS 文件</a>
+                <a href="blog.html">BLOG 分享</a>
+                <a href="products.html" class="active">PRODUCTS 產品</a>
+                <div class="toggle-controls">
+                    <button id="lang-toggle" class="toggle-btn" onclick="toggleLang()">EN</button>
+                    <button id="theme-toggle" class="toggle-btn" onclick="toggleTheme()">☀️</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- HERO -->
+        <section class="hero">
+            <div class="hero-badge">FOUNDER SHARING 創辦人分享</div>
+            <h1>創辦人自用健康產品</h1>
+            <div class="hero-sub">Founder Health Self-Use Products</div>
+            <p style="font-size: 0.95rem; color: var(--text-secondary); max-width: 700px; margin: 16px auto 0;">
+                以下所有產品均為創辦人親身長期服用、實測有效後才推薦。<br>
+                All products listed below have been personally used and tested long-term by the founder.
+            </p>
+            <div class="hero-tagline">KEEP HEALTHY KEEP NAUGHTY !</div>
+        </section>
+
+        <!-- TRUST BADGES -->
+        <section class="trust-section fade-in">
+            <h3 style="text-align:center; font-size:1.1rem; color:var(--text-primary); margin-bottom:4px;">
+                三重驗證保障 Triple Verification Guarantee
+            </h3>
+            <p style="text-align:center; font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
+                每一款產品都經過嚴格的三重驗證流程，確保安全、有效、可靠
+            </p>
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="trust-icon">👨‍⚕️</div>
+                    <div class="trust-title">Doctor Advised</div>
+                    <div class="trust-title" style="color:var(--text-primary); font-size:0.8rem;">醫生建議</div>
+                    <div class="trust-desc">所有產品均經過專業醫生評估及建議，確保安全性及適用性</div>
+                    <div class="trust-desc" style="margin-top:4px; font-size:0.75rem; color:var(--text-muted);">All products reviewed and advised by qualified medical professionals</div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">🤖</div>
+                    <div class="trust-title">AI Fact-Checked</div>
+                    <div class="trust-title" style="color:var(--text-primary); font-size:0.8rem;">AI 事實查核</div>
+                    <div class="trust-desc">運用 AI 技術交叉比對國際醫學文獻及臨床數據，驗證產品功效聲明</div>
+                    <div class="trust-desc" style="margin-top:4px; font-size:0.75rem; color:var(--text-muted);">Cross-referenced with international medical literature & clinical data via AI</div>
+                </div>
+                <div class="trust-card">
+                    <div class="trust-icon">🧪</div>
+                    <div class="trust-title">Founder Self-Tested</div>
+                    <div class="trust-title" style="color:var(--text-primary); font-size:0.8rem;">創辦人親身實測</div>
+                    <div class="trust-desc">創辦人長期親身服用，以自身健康數據驗證效果，非紙上談兵</div>
+                    <div class="trust-desc" style="margin-top:4px; font-size:0.75rem; color:var(--text-muted);">Personally used long-term by the founder with tracked health data results</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REDUCE HK MEDICAL COSTS -->
+        <section class="cost-section fade-in">
+            <h3 class="cost-title">💰 減低香港醫療成本的方法 Ways to Reduce HK Medical Costs</h3>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-bottom:16px;">
+                香港醫療費用高昂，以下是創辦人研究出的省錢方法，讓健康保養不再是奢侈品。<br>
+                <span style="font-size:0.8rem; color:var(--text-muted);">Hong Kong medical costs are high. Here are practical ways to maintain health without breaking the bank.</span>
+            </p>
+            <ul class="cost-points">
+                <li><strong>善用政府醫療券</strong> — 每年 $2,000 醫療券可用於中醫、物理治療等預防性保健</li>
+                <li><strong>Use Government Health Vouchers</strong> — Annual $2,000 HKD voucher for preventive care (TCM, physiotherapy)</li>
+                <li><strong>iHerb / 海外直購</strong> — 同款保健品比本地藥房便宜 30-60%，直送香港免運費</li>
+                <li><strong>iHerb / Overseas Direct Purchase</strong> — Same supplements 30-60% cheaper than local pharmacies, free shipping to HK</li>
+                <li><strong>Costco / 山姆會員店</strong> — 大包裝保健品性價比極高，適合長期服用者</li>
+                <li><strong>Costco / Sam's Club</strong> — Bulk supplements offer excellent value for long-term users</li>
+                <li><strong>善用醫管局專科門診</strong> — 慢性病患者可以低成本獲得專科跟進</li>
+                <li><strong>HA Specialist Clinics</strong> — Chronic disease patients can get specialist follow-up at minimal cost</li>
+                <li><strong>預防勝於治療</strong> — 每日保健投資遠低於日後的醫療開支</li>
+                <li><strong>Prevention Over Cure</strong> — Daily health investment is far cheaper than future medical bills</li>
+            </ul>
+        </section>
+
+        <!-- PURCHASE TIPS -->
+        <section class="tips-section fade-in">
+            <h3 class="tips-title">🛒 購買貼士 Purchase Tips</h3>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <h4>📦 iHerb 海外直購</h4>
+                    <p>
+                        • 首次購物折扣碼可省 10-20%<br>
+                        • 滿 USD $40 免費直送香港<br>
+                        • 選擇「超級優惠」區域找最佳價格<br>
+                        • 留意每週三「品牌特賣」<br>
+                        <span style="color:var(--text-muted); font-size:0.75rem;">First-order discount 10-20% | Free shipping over USD $40 | Check weekly brand sales</span>
+                    </p>
+                </div>
+                <div class="tip-card">
+                    <h4>🏪 本地購買建議</h4>
+                    <p>
+                        • 萬寧 / 屈臣氏會員日額外折扣<br>
+                        • HKTV Mall 比價功能善用<br>
+                        • 中環 / 銅鑼灣健康食品店比較<br>
+                        • 留意「買二送一」等促銷活動<br>
+                        <span style="color:var(--text-muted); font-size:0.75rem;">Mannings/Watsons member days | HKTVmall price comparison | Buy-2-get-1 promotions</span>
+                    </p>
+                </div>
+                <div class="tip-card">
+                    <h4>🔍 品質辨別要點</h4>
+                    <p>
+                        • 認準 GMP / NSF / USP 認證標誌<br>
+                        • 查看有效成分含量（非只看總量）<br>
+                        • 選擇第三方檢測的品牌<br>
+                        • 避免過多添加劑和填充物<br>
+                        <span style="color:var(--text-muted); font-size:0.75rem;">Look for GMP/NSF/USP | Check active ingredient dosage | Third-party tested brands</span>
+                    </p>
+                </div>
+                <div class="tip-card">
+                    <h4>⏰ 服用時間建議</h4>
+                    <p>
+                        • 脂溶性維生素（D3, K2）隨餐服用<br>
+                        • 水溶性維生素（B群, C）空腹吸收更佳<br>
+                        • 魚油 / Omega-3 隨最大餐服用<br>
+                        • CoQ10 早上服用效果最佳<br>
+                        <span style="color:var(--text-muted); font-size:0.75rem;">Fat-soluble with meals | Water-soluble on empty stomach | Fish oil with largest meal</span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRODUCTS SECTION -->
+        <div class="section-header fade-in">
+            <div class="section-icon" style="background: var(--glow-emerald);">💊</div>
+            <div>
+                <div class="section-title">創辦人自用產品清單 Founder's Product List</div>
+                <div class="section-subtitle">以下產品將陸續更新，每款均附上使用心得及效果分享</div>
+            </div>
+        </div>
+
+        <div class="product-grid">
+            <!-- Placeholder Products - To be filled later -->
+            <div class="product-card placeholder fade-in">
+                <div style="font-size: 2.5rem; margin-bottom: 12px;">📋</div>
+                <div class="product-name">產品資料即將更新</div>
+                <div class="product-name-en">Product Details Coming Soon</div>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); max-width: 500px; margin: 0 auto;">
+                    創辦人正在整理長期使用的健康產品清單，包括保健品、營養補充劑、中藥方劑等。<br>
+                    每款產品都會附上：使用時長、個人體感、醫生建議、AI 查核結果。
+                </p>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 12px;">
+                    The founder is compiling a comprehensive list of health products used long-term,<br>
+                    including supplements, nutrients, and TCM formulas — each with personal experience notes.
+                </p>
+                <div style="margin-top: 20px; display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                    <span class="product-tag">保健品 Supplements</span>
+                    <span class="product-tag">營養補充 Nutrients</span>
+                    <span class="product-tag">中藥方劑 TCM Formulas</span>
+                    <span class="product-tag">外用產品 Topical</span>
+                    <span class="product-tag">檢測工具 Testing Tools</span>
+                </div>
+            </div>
+
+            <!-- Template Card (hidden, for future use) -->
+            <!--
+            <div class="product-card fade-in">
+                <div class="product-num">#01</div>
+                <div class="product-name">產品名稱</div>
+                <div class="product-name-en">Product Name in English</div>
+                <ul class="product-points">
+                    <li><strong>類別：</strong>保健品 / 營養補充劑</li>
+                    <li><strong>品牌：</strong>品牌名稱</li>
+                    <li><strong>服用時長：</strong>X 個月 / 年</li>
+                    <li><strong>個人體感：</strong>效果描述</li>
+                    <li><strong>醫生建議：</strong>醫生評語</li>
+                    <li><strong>AI 查核：</strong>文獻支持度</li>
+                    <li><strong>購買建議：</strong>最佳購買渠道及價格</li>
+                </ul>
+                <div class="product-tag">CATEGORY</div>
+            </div>
+            -->
+        </div>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <p>Anti-Aging System 5.0 | 七維逆齡系統 | 從心出發 · 由內到外</p>
+            <p style="margin-top: 8px;">Powered by Clinical Evidence & AI Intelligence</p>
+            <p style="margin-top: 8px; color: var(--accent-cyan); font-style: italic; font-weight: 700;">KEEP HEALTHY KEEP NAUGHTY !</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="auth.js"></script>
+    <script src="theme.js"></script>
+    <script src="lang.js"></script>
+    <script>
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    </script>
+    <div style="position:fixed;bottom:0;left:0;right:0;background:rgba(251,191,36,0.95);color:#0a1628;text-align:center;padding:6px 16px;font-size:0.75rem;font-weight:600;z-index:9998;letter-spacing:0.5px;">⚠️ 本項目仍處於研究階段 This project is still in the research stage ⚠️</div>
+</body>
+</html>

@@ -15,6 +15,7 @@
         'VISION 願景': 'VISION',
         'DOCS 文件': 'DOCS',
         'BLOG 分享': 'BLOG',
+        'PRODUCTS 產品': 'PRODUCTS',
         '← Main Site': '← Main Site',
 
         // ===== INDEX.HTML - HERO =====
